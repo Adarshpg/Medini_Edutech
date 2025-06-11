@@ -64,11 +64,6 @@ const CourseCard = ({ course }) => {
         {/* Course Stats */}
         <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-4">
           <div className="flex items-center">
-            <Clock className="w-4 h-4 mr-1" style={{ color: mainColor }} />
-            <span>{duration}</span>
-          </div>
-          
-          <div className="flex items-center">
             <BookOpen className="w-4 h-4 mr-1" style={{ color: mainColor }} />
             <span>12 Modules</span>
           </div>

@@ -24,7 +24,7 @@ function Footer() {
     { name: "Revit Structure Fundamentals", path: "/courses/AUTODESK-revit-structure" },
     { name: "Civil 3D Essentials", path: "/courses/AUTODESK-civil-3d" },
     { name: "Maya for Architectural Visualization", path: "/courses/AUTODESK-maya" },
-    { name: "DigiDhBIM for Construction Management", path: "/courses/BIM_CONSTRUCTION-bim-construction" },
+    { name: "BIM for Construction Management", path: "/courses/BIM_CONSTRUCTION-bim-construction" },
     { name: "SolidWorks 3D Design", path: "/courses/DASSAULT-solidworks" }
   ];
 

@@ -15,8 +15,6 @@
               "description": "Cloud-based 3D CAD/CAM software for product design and manufacturing, combining industrial and mechanical design with simulation and collaboration tools.",
               "duration": "40 Hours",
               "difficulty": "Beginner to Intermediate",
-              "price": 899,
-              "instructor": "Jason Miller",
               "targetAudience": "Product Designers, Engineers, Makers (PROD/MECH)",
               "curriculum": [
                  "Introduction to Fusion 360 & Cloud Workflow",

@@ -4,6 +4,7 @@ import {
   Code, Building2, Settings, Check, Play, Headset, FileText, BarChart2, Briefcase, Star,
   Award, Users, Clock, Laptop, Zap, BookOpen, UserCheck, DollarSign, TrendingUp, CheckCircle, GitBranch
 } from 'lucide-react';
+import InternshipRegistrationForm from '../../components/InternshipRegistrationForm';
 
 const FeatureCard = ({ icon, title, children }) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
@@ -197,7 +198,8 @@ const InternshipPage = () => {
                   ))}
                 </ul>
                 <Link 
-                  to="/internship/it" 
+                  to="/internship#registration-form"
+                  state={{ selectedProgram: 'it' }}
                   className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 px-4 rounded-md font-medium transition-colors"
                 >
                   Explore Program
@@ -222,7 +224,8 @@ const InternshipPage = () => {
                   ))}
                 </ul>
                 <Link 
-                  to="/internship/civil" 
+                  to="/internship#registration-form"
+                  state={{ selectedProgram: 'civil' }}
                   className="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-3 px-4 rounded-md font-medium transition-colors"
                 >
                   Explore Program
@@ -247,7 +250,8 @@ const InternshipPage = () => {
                   ))}
                 </ul>
                 <Link 
-                  to="/internship/mechanical" 
+                  to="/internship#registration-form"
+                  state={{ selectedProgram: 'mechanical' }}
                   className="block w-full bg-amber-600 hover:bg-amber-700 text-white text-center py-3 px-4 rounded-md font-medium transition-colors"
                 >
                   Explore Program
@@ -312,30 +316,7 @@ const InternshipPage = () => {
             <div className="lg:w-2/3">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">{currentCourse.title}</h2>
               <div className="space-y-6 text-gray-700">
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                    <div className="mb-4 md:mb-0">
-                      <h3 className="text-xl font-semibold text-gray-800">Program Duration</h3>
-                      <p className="text-blue-600 font-medium">{currentCourse.duration}</p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800">Program Fee</h3>
-                      <p className="text-blue-600 font-medium">{currentCourse.price}</p>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">What You'll Learn:</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {currentCourse.highlights.map((highlight, index) => (
-                      <div key={index} className="flex items-start">
-                        <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
-                          <CheckCircle className="h-5 w-5" />
-                        </div>
-                        <span className="text-gray-700">{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                
 
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <h3 className="text-2xl font-bold text-blue-600 mb-4">Program Overview</h3>
@@ -373,19 +354,6 @@ const InternshipPage = () => {
                   </p>
                 </div>
               </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-2xl font-bold text-blue-600 mb-4">Program Overview</h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  This Comprehensive Hybrid Program is designed to bridge the gap between academic learning and industry requirements. Our program enables students to complete their academic final year projects with originality and technical depth while gaining job-ready skills in AI/ML or Full Stack Development through hands-on labs and real-world applications.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  <span className="font-semibold">5. Job Readiness:</span> Mock interviews, technical presentation practice, and LinkedIn profile reviews.
-                </p>
-              </div>
-
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold text-blue-600 mb-3">Program Structure</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
@@ -444,132 +412,8 @@ const InternshipPage = () => {
 
             {/* Right Side - Registration Form */}
             <div id="registration-form" className="lg:w-1/3">
-              <div className="bg-white p-6 rounded-lg shadow-lg sticky top-6">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Register Now</h3>
-                  <div className="flex items-center justify-center space-x-2">
-                    <span className="text-3xl font-bold text-blue-600">₹8,000</span>
-                    <span className="text-gray-500 line-through">₹15,000</span>
-                    <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">47% OFF</span>
-                  </div>
-                  <p className="text-sm text-green-600 font-medium mt-1">Limited Time Offer</p>
-                </div>
-                <form className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your full name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your phone number"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-1">Select Program</label>
-                    <select
-                      id="course"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      value={selectedProgram}
-                      onChange={handleProgramChange}
-                      required
-                    >
-                      <option value="">Select a program</option>
-                      <option value="it">IT Internship</option>
-                      <option value="civil">Civil Engineering</option>
-                      <option value="mechanical">Mechanical Engineering</option>
-                    </select>
-                    {showItSpecializations && (
-                      <div className="mt-2 pl-4 border-l-4 border-blue-200">
-                        <p className="text-sm font-medium text-gray-700 mb-2">Select Specialization:</p>
-                        <div className="space-y-2">
-                          <label className="flex items-center">
-                            <input 
-                              type="radio" 
-                              name="it-specialization" 
-                              value="ai-ml" 
-                              checked={selectedCourse === 'ai-ml'}
-                              onChange={handleCourseSelect}
-                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
-                            />
-                            <span className="ml-2 text-gray-700">AI & Machine Learning</span>
-                          </label>
-                          <label className="flex items-center">
-                            <input 
-                              type="radio" 
-                              name="it-specialization" 
-                              value="data-science" 
-                              checked={selectedCourse === 'data-science'}
-                              onChange={handleCourseSelect}
-                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
-                            />
-                            <span className="ml-2 text-gray-700">Data Science</span>
-                          </label>
-                          <label className="flex items-center">
-                            <input 
-                              type="radio" 
-                              name="it-specialization" 
-                              value="java-fullstack" 
-                              checked={selectedCourse === 'java-fullstack'}
-                              onChange={handleCourseSelect}
-                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
-                            />
-                            <span className="ml-2 text-gray-700">Java Fullstack</span>
-                          </label>
-                          <label className="flex items-center">
-                            <input 
-                              type="radio" 
-                              name="it-specialization" 
-                              value="python-fullstack" 
-                              checked={selectedCourse === 'python-fullstack'}
-                              onChange={handleCourseSelect}
-                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
-                            />
-                            <span className="ml-2 text-gray-700">Python Fullstack</span>
-                          </label>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
-                    <textarea
-                      id="message"
-                      rows="3"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Any specific requirements or questions?"
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
-                  >
-                    Submit Application
-                  </button>
-                  <p className="text-xs text-gray-500 mt-2 text-center">
-                    We'll get back to you within 24 hours
-                  </p>
-                </form>
+              <div className="sticky top-6">
+                <InternshipRegistrationForm />
               </div>
             </div>
           </div>

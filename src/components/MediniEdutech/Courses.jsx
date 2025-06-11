@@ -11,67 +11,67 @@ import coursesData from "../courses.json"
 // Icon mapping for different course types
 const courseIcons = {
   // Design & Drafting
-  fusion: "🔄",
-  autocad: "📐",
-  "autocad-electrical": "⚡",
+  fusion: "",
+  autocad: "",
+  "autocad-electrical": "",
 
   // BIM
-  "revit-architecture": "🏢",
-  "revit-mep": "🔧",
-  "revit-structure": "🏗️",
+  "revit-architecture": "",
+  "revit-mep": "",
+  "revit-structure": "",
 
   // Civil Infrastructure
-  "civil-3d": "🛣️",
+  "civil-3d": "",
 
   // Visualization
-  "3ds-max": "🎨",
-  maya: "🎬",
+  "3ds-max": "",
+  maya: "",
 
   // Project Coordination
-  navisworks: "🔍",
+  navisworks: "",
 
   // Infrastructure
-  infrawork: "🌉",
+  infrawork: "",
 
   // Bentley
-  "openroads-designer": "📐",
-  "openflows-watergems": "💧",
-  "openflows-sewergems": "🌊",
-  "staad-pro": "🏗️",
-  microstation: "📐",
+  "openroads-designer": "",
+  "openflows-watergems": "",
+  "openflows-sewergems": "",
+  "staad-pro": "",
+  microstation: "",
 
   // Dassault
-  solidworks: "🔧",
+  solidworks: "",
 
   // Other
-  sketchup: "🏠",
-  "V-Ray": "🖼️",
-  lumion: "🏙️",
-  enscape: "🖥️",
-  primavera: "📊",
-  rhino: "🦏",
-  grasshopper: "🦗",
-  photoshop: "🎨",
-  illustrator: "✏️",
-  etabs: "🏢",
-  "ms-project": "📅",
-  qgis: "🌍",
-  "adobe-animate": "🎥",
+  sketchup: "",
+  "V-Ray": "",
+  lumion: "",
+  enscape: "",
+  primavera: "",
+  rhino: "",
+  grasshopper: "",
+  photoshop: "",
+  illustrator: "",
+  etabs: "",
+  "ms-project": "",
+  qgis: "",
+  "adobe-animate": "",
 
   // IT Courses
-  "java-fullstack": "☕",
-  "python-fullstack": "🐍",
-  "mern-stack": "🌐",
-  "cloud-app-dev": "☁️",
+  "java-fullstack": "",
+  "python-fullstack": "",
+  "mern-stack": "",
+  "cloud-app-dev": "",
 
   // Product Design
-  "fusion-360": "📱",
+  "fusion-360": "",
 
   // BIM Management
-  "bim-infrastructure": "🌉",
-  "bim-construction": "🏗️",
+  "bim-infrastructure": "",
+  "bim-construction": "",
 
-  default: "📚",
+  default: "",
 }
 
 export function Courses() {

@@ -121,44 +121,44 @@ export default function CourseDetailsPage() {
 
   // Icon mapping for course types
   const courseIcons = {
-    fusion: "🔄",
-    autocad: "📐",
-    "autocad-electrical": "⚡",
-    "revit-architecture": "🏢",
-    "revit-mep": "🔧",
-    "revit-structure": "🏗️",
-    "civil-3d": "🛣️",
-    "3ds-max": "🎨",
-    maya: "🎬",
-    navisworks: "🔍",
-    infrawork: "🌉",
-    "openroads-designer": "📐",
-    "openflows-watergems": "💧",
-    "openflows-sewergems": "🌊",
-    "staad-pro": "🏗️",
-    microstation: "📐",
-    solidworks: "🔧",
-    sketchup: "🏠",
-    "V-Ray": "🖼️",
-    lumion: "🏙️",
-    enscape: "🖥️",
-    primavera: "📊",
-    rhino: "🦏",
-    grasshopper: "🦗",
-    photoshop: "🎨",
-    illustrator: "✏️",
-    etabs: "🏢",
-    "ms-project": "📅",
-    qgis: "🌍",
-    "adobe-animate": "🎥",
-    "java-fullstack": "☕",
-    "python-fullstack": "🐍",
-    "mern-stack": "🌐",
-    "cloud-app-dev": "☁️",
-    "fusion-360": "📱",
-    "bim-infrastructure": "🌉",
-    "bim-construction": "🏗️",
-    default: "📚",
+    fusion: "",
+    autocad: "",
+    "autocad-electrical": "",
+    "revit-architecture": "",
+    "revit-mep": "",
+    "revit-structure": "",
+    "civil-3d": "",
+    "3ds-max": "",
+    maya: "",
+    navisworks: "",
+    infrawork: "",
+    "openroads-designer": "",
+    "openflows-watergems": "",
+    "openflows-sewergems": "",
+    "staad-pro": "",
+    microstation: "",
+    solidworks: "",
+    sketchup: "",
+    "V-Ray": "",
+    lumion: "",
+    enscape: "",
+    primavera: "",
+    rhino: "",
+    grasshopper: "",
+    photoshop: "",
+    illustrator: "",
+    etabs: "",
+    "ms-project": "",
+    qgis: "",
+    "adobe-animate": "",
+    "java-fullstack": "",
+    "python-fullstack": "",
+    "mern-stack": "",
+    "cloud-app-dev": "",
+    "fusion-360": "",
+    "bim-infrastructure": "",
+    "bim-construction": "",
+    default: "",
   }
 
   const getIcon = (courseId) => {
@@ -196,11 +196,7 @@ export default function CourseDetailsPage() {
                     <span className="text-sm text-muted-foreground">Level</span>
                     <span className="font-medium">{course.difficulty}</span>
                   </div>
-                  <div className="flex flex-col items-center p-3 bg-muted rounded-lg">
-                    <DollarSign className="h-5 w-5 mb-2 text-primary" />
-                    <span className="text-sm text-muted-foreground">Price</span>
-                    <span className="font-bold">₹{course.price?.toLocaleString()}</span>
-                  </div>
+
                   <div className="flex flex-col items-center p-3 bg-muted rounded-lg">
                     <Users className="h-5 w-5 mb-2 text-primary" />
                     <span className="text-sm text-muted-foreground">Audience</span>
