@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Code, Building2, Settings, Check, Play, Headset, FileText, BarChart2, Briefcase, Star,
   Award, Users, Clock, Laptop, Zap, BookOpen, UserCheck, DollarSign, TrendingUp, CheckCircle, GitBranch
@@ -13,50 +13,158 @@ const FeatureCard = ({ icon, title, children }) => (
   </div>
 );
 
-const InternshipPage = () => {
-  const [selectedProgram, setSelectedProgram] = React.useState('');
-  const [showItSpecializations, setShowItSpecializations] = React.useState(false);
+// Course details mapping
+const courseDetails = {
+  'ai-ml': {
+    title: 'AI & Machine Learning Internship',
+    duration: '6 Months',
+    price: '₹15,000',
+    highlights: [
+      'Deep Learning with TensorFlow & Keras',
+      'Neural Networks & Computer Vision',
+      'Natural Language Processing (NLP)',
+      'Real-world AI projects',
+      'Model Deployment & MLOps',
+      'Industry case studies'
+    ]
+  },
+  'data-science': {
+    title: 'Data Science Internship',
+    duration: '5 Months',
+    price: '₹12,000',
+    highlights: [
+      'Data Analysis with Python & Pandas',
+      'SQL for Data Science',
+      'Data Visualization with Matplotlib & Seaborn',
+      'Machine Learning basics',
+      'Statistical Analysis',
+      'Real-world data projects'
+    ]
+  },
+  'java-fullstack': {
+    title: 'Java Fullstack Internship',
+    duration: '6 Months',
+    price: '₹14,000',
+    highlights: [
+      'Core Java & Advanced Java',
+      'Spring Boot & Spring Security',
+      'React.js for frontend',
+      'RESTful APIs & Microservices',
+      'Database Management',
+      'Project Deployment'
+    ]
+  },
+  'python-fullstack': {
+    title: 'Python Fullstack Internship',
+    duration: '5 Months',
+    price: '₹13,000',
+    highlights: [
+      'Python & Django Framework',
+      'Django REST Framework',
+      'Frontend with React.js',
+      'Database Management with PostgreSQL',
+      'API Development',
+      'Project Deployment'
+    ]
+  },
+  'default': {
+    title: 'Internship Program',
+    duration: 'Varies by program',
+    price: 'Contact for pricing',
+    highlights: [
+      'Hands-on project experience',
+      'Industry mentorship',
+      'Practical training',
+      'Certificate upon completion',
+      'Job placement assistance',
+      'Lifetime access to learning materials'
+    ]
+  }
+};
 
+const InternshipPage = () => {
+  const location = useLocation();
+  const [selectedProgram, setSelectedProgram] = React.useState('');
+  const [selectedCourse, setSelectedCourse] = React.useState('');
+  const [showItSpecializations, setShowItSpecializations] = React.useState(false);
+  
+  // Get current course details based on selection
+  const currentCourse = selectedCourse ? courseDetails[selectedCourse] : courseDetails['default'];
+
+  // Handle program selection and update showItSpecializations
   const handleProgramChange = (e) => {
     const value = e.target.value;
     setSelectedProgram(value);
     setShowItSpecializations(value === 'it');
+    // Clear selected course when program changes
+    if (value !== 'it') {
+      setSelectedCourse('');
+    }
   };
+
+  // Handle course selection
+  const handleCourseSelect = (e) => {
+    setSelectedCourse(e.target.value);
+  };
+
+  // Handle state from navigation
+  useEffect(() => {
+    if (location.state) {
+      const { selectedProgram, selectedCourse } = location.state;
+      if (selectedProgram) {
+        setSelectedProgram(selectedProgram);
+        setShowItSpecializations(selectedProgram === 'it');
+        
+        if (selectedCourse) {
+          setSelectedCourse(selectedCourse);
+        }
+
+        // Scroll to registration form if coming from a course page
+        if (window.location.hash === '#registration-form') {
+          const element = document.getElementById('registration-form');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    }
+  }, [location.state]);
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-24 pb-16">
+      <div 
+        className="relative text-white pt-24 pb-16 bg-cover bg-center"
+        style={{
+          backgroundImage: 'url(/IMAGES/ilya-sonin-IsX2ZkbSk1Y-unsplash.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Internship-cum-Final Year Project Program
+          <div className="max-w-4xl mx-auto">
+            <div className="w-full relative z-10">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg text-left">
+                Internship cum Final Year Project Program
               </h1>
-              <p className="text-xl mb-8 text-blue-100">
+              <p className="text-xl md:text-2xl mb-8 text-white/90 font-medium drop-shadow-lg text-left max-w-3xl">
                 Bridge the gap between academia and industry with hands-on experience
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-              </div>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <div className="relative w-full max-w-md">
-                <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 shadow-xl">
-                  <h3 className="text-2xl font-bold mb-4">Key Highlights</h3>
-                  <ul className="space-y-3">
-                    {[
-                      '6 Months Industry-Ready Program',
-                      'Live Project Experience',
-                      '1:1 Mentorship',
-                      'Certificate & Internship Letter',
-                      'Job Placement Assistance'
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center">
-                        <Check className="h-5 w-5 text-green-400 mr-2" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a 
+                  href="#registration-form" 
+                  className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-md font-medium text-lg transition-colors duration-200 text-center sm:text-left"
+                >
+                  Register Now
+                </a>
+                <a 
+                  href="#programs" 
+                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-md font-medium text-lg transition-colors duration-200 text-center sm:text-left"
+                >
+                  View Programs
+                </a>
               </div>
             </div>
           </div>
@@ -202,29 +310,31 @@ const InternshipPage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Left Side - Content */}
             <div className="lg:w-2/3">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Program Details</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">{currentCourse.title}</h2>
               <div className="space-y-6 text-gray-700">
                 <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold text-blue-600 mb-3">About the Program</h3>
-                  <p className="mb-4">Our internship program is designed to provide hands-on experience and industry-relevant skills to bridge the gap between academic learning and professional requirements.</p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                      <span>6 Months of intensive training and project work</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                      <span>Live project experience with industry mentors</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                      <span>1:1 mentorship and career guidance</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                      <span>Certificate and internship letter upon completion</span>
-                    </li>
-                  </ul>
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div className="mb-4 md:mb-0">
+                      <h3 className="text-xl font-semibold text-gray-800">Program Duration</h3>
+                      <p className="text-blue-600 font-medium">{currentCourse.duration}</p>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800">Program Fee</h3>
+                      <p className="text-blue-600 font-medium">{currentCourse.price}</p>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">What You'll Learn:</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {currentCourse.highlights.map((highlight, index) => (
+                      <div key={index} className="flex items-start">
+                        <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
+                          <CheckCircle className="h-5 w-5" />
+                        </div>
+                        <span className="text-gray-700">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="bg-white p-6 rounded-lg shadow-md">
@@ -262,58 +372,70 @@ const InternshipPage = () => {
                     <span className="font-semibold">5. Job Readiness:</span> Mock interviews, technical presentation practice, and LinkedIn profile reviews.
                   </p>
                 </div>
+              </div>
 
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold text-blue-600 mb-3">Program Structure</h3>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    <span className="font-semibold">Phase 1: Foundation (Weeks 1-4)</span> - This initial phase focuses on building a strong foundation in core concepts, tools, and technologies essential for the chosen track. Students will become familiar with the fundamental principles and prepare for hands-on project work.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    <span className="font-semibold">Phase 2: Project Development (Weeks 5-12)</span> - During this intensive phase, students will engage in hands-on project work under the guidance of experienced mentors. This is where theoretical knowledge is applied to practical, real-world scenarios.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    <span className="font-semibold">Phase 3: Deployment & Presentation (Weeks 13-16)</span> - The final phase focuses on deploying the completed project and preparing professional presentations. Students will learn how to showcase their work effectively to potential employers and stakeholders.
-                  </p>
-                </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">Program Overview</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  This Comprehensive Hybrid Program is designed to bridge the gap between academic learning and industry requirements. Our program enables students to complete their academic final year projects with originality and technical depth while gaining job-ready skills in AI/ML or Full Stack Development through hands-on labs and real-world applications.
+                </p>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  <span className="font-semibold">5. Job Readiness:</span> Mock interviews, technical presentation practice, and LinkedIn profile reviews.
+                </p>
+              </div>
 
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold text-blue-600 mb-4">Benefits</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
-                        <CheckCircle className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800">100% Placement Support</h4>
-                        <p className="text-gray-600">Tie-ups with 500+ hiring partners (TCS, Infosys, startups).</p>
-                      </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">Program Structure</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  <span className="font-semibold">Phase 1: Foundation (Weeks 1-4)</span> - This initial phase focuses on building a strong foundation in core concepts, tools, and technologies essential for the chosen track. Students will become familiar with the fundamental principles and prepare for hands-on project work.
+                </p>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  <span className="font-semibold">Phase 2: Project Development (Weeks 5-12)</span> - During this intensive phase, students will engage in hands-on project work under the guidance of experienced mentors. This is where theoretical knowledge is applied to practical, real-world scenarios.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  <span className="font-semibold">Phase 3: Deployment & Presentation (Weeks 13-16)</span> - The final phase focuses on deploying the completed project and preparing professional presentations. Students will learn how to showcase their work effectively to potential employers and stakeholders.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-xl font-semibold text-blue-600 mb-4">Benefits</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
+                      <CheckCircle className="h-6 w-6" />
                     </div>
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
-                        <CheckCircle className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800">Mock Interviews & Resume Workshops</h4>
-                        <p className="text-gray-600">Tailored for freshers/experienced professionals.</p>
-                      </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">100% Placement Support</h4>
+                      <p className="text-gray-600">Tie-ups with 500+ hiring partners (TCS, Infosys, startups).</p>
                     </div>
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
-                        <CheckCircle className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800">Lifetime Access to LMS</h4>
-                        <p className="text-gray-600">Course materials, project templates, and interview Q&A.</p>
-                      </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
+                      <CheckCircle className="h-6 w-6" />
                     </div>
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
-                        <CheckCircle className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800">Internship Certificate</h4>
-                        <p className="text-gray-600">Recognized by academia and employers.</p>
-                      </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Mock Interviews & Resume Workshops</h4>
+                      <p className="text-gray-600">Tailored for freshers/experienced professionals.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
+                      <CheckCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Lifetime Access to LMS</h4>
+                      <p className="text-gray-600">Course materials, project templates, and interview Q&A.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
+                      <CheckCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Internship Certificate</h4>
+                      <p className="text-gray-600">Recognized by academia and employers.</p>
                     </div>
                   </div>
                 </div>
@@ -382,19 +504,47 @@ const InternshipPage = () => {
                         <p className="text-sm font-medium text-gray-700 mb-2">Select Specialization:</p>
                         <div className="space-y-2">
                           <label className="flex items-center">
-                            <input type="radio" name="it-specialization" value="ai-ml" className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                            <input 
+                              type="radio" 
+                              name="it-specialization" 
+                              value="ai-ml" 
+                              checked={selectedCourse === 'ai-ml'}
+                              onChange={handleCourseSelect}
+                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
+                            />
                             <span className="ml-2 text-gray-700">AI & Machine Learning</span>
                           </label>
                           <label className="flex items-center">
-                            <input type="radio" name="it-specialization" value="data-science" className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                            <input 
+                              type="radio" 
+                              name="it-specialization" 
+                              value="data-science" 
+                              checked={selectedCourse === 'data-science'}
+                              onChange={handleCourseSelect}
+                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
+                            />
                             <span className="ml-2 text-gray-700">Data Science</span>
                           </label>
                           <label className="flex items-center">
-                            <input type="radio" name="it-specialization" value="java-fullstack" className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                            <input 
+                              type="radio" 
+                              name="it-specialization" 
+                              value="java-fullstack" 
+                              checked={selectedCourse === 'java-fullstack'}
+                              onChange={handleCourseSelect}
+                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
+                            />
                             <span className="ml-2 text-gray-700">Java Fullstack</span>
                           </label>
                           <label className="flex items-center">
-                            <input type="radio" name="it-specialization" value="python-fullstack" className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                            <input 
+                              type="radio" 
+                              name="it-specialization" 
+                              value="python-fullstack" 
+                              checked={selectedCourse === 'python-fullstack'}
+                              onChange={handleCourseSelect}
+                              className="h-4 w-4 text-blue-600 focus:ring-blue-500" 
+                            />
                             <span className="ml-2 text-gray-700">Python Fullstack</span>
                           </label>
                         </div>
