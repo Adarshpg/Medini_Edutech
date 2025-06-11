@@ -423,6 +423,11 @@ const Header = () => {
                 <div className="nav-item">
                   <Link to="/contact">Contact</Link>
                 </div>
+                <div className="nav-item">
+                  <Link to="/internship" className="font-semibold hover:text-amber-600">
+                    Internship Courses
+                  </Link>
+                </div>
               </div>
               
 

@@ -12,6 +12,8 @@ import Contact from "./components/MediniEdutech/Contact"
 import AboutPage from "./pages/AboutPage"
 import BlogPage from "./pages/BlogPage"
 import ContactPage from "./pages/ContactPage"
+import InternshipPage from "./pages/internship/InternshipPage"
+import ItInternshipPage from "./pages/internship/ItInternshipPage"
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/internship" element={<InternshipPage />} />
+              <Route path="/internship/it" element={<ItInternshipPage />} />
             </Routes>
           </main>
           <Footer />
