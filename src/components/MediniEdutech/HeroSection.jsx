@@ -169,9 +169,9 @@ function HeroSection() {
                 <Link to="/courses" className="px-8 py-3 bg-white text-gray-900 font-semibold rounded-md hover:bg-gray-100 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                   Explore Now
                 </Link>
-                <a href="#explore-courses" className="px-8 py-3 bg-transparent border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300">
-                  View Courses
-                </a>
+                <Link href="/contact" className="px-8 py-3 bg-transparent border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300">
+                  Contact us
+                </Link>
               </motion.div>
             </div>
           </div>
