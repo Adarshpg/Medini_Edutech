@@ -6,11 +6,11 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { motion, AnimatePresence } from "framer-motion"
-import logo from "@/assets/Logos/Medini_logo.png"
-import autodeskLogo from "@/assets/NAVBAR/Autodesk ALP White.png"
-import solidworksLogo from "@/assets/NAVBAR/Solidworks White.png"
-import bentleyLogo from "@/assets/NAVBAR/Bentley White.png"
-import sketchupLogo from "@/assets/NAVBAR/Sketch White.png"
+import logo from "../assets/Logos/Medini_logo.png";
+import autodeskLogo from "../assets/NAVBAR/Autodesk ALP White.png";
+import solidworksLogo from "../assets/NAVBAR/Solidworks White.png";
+import bentleyLogo from "../assets/NAVBAR/Bentley White.png";
+import sketchupLogo from "../assets/NAVBAR/Sketch White.png";
 import ThemeToggle from "./ThemeToggle"
 import coursesData from '@/components/courses.json';
 
