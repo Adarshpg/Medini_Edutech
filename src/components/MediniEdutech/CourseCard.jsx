@@ -9,7 +9,7 @@ const CourseCard = ({ course }) => {
   // Destructure with fallback values
   const {
     title = "Advanced Design Masterclass",
-    instructor = "Elena Rodriguez",
+    
     duration = "8 Weeks",
     difficulty = "Advanced",
     coverImage = "/placeholder.svg?height=200&width=300",
@@ -49,15 +49,10 @@ const CourseCard = ({ course }) => {
       {/* Course Content */}
       <div className="p-5">
         {/* Title */}
-        <h3 className="text-lg font-semibold dark:text-white mb-2">
+        <h3 className="text-lg font-semibold dark:text-white mb-4">
           {title}
         </h3>
 
-        {/* Instructor */}
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-          by <span className="font-medium">{instructor}</span>
-        </p>
-        
         {/* Divider */}
         <div className="w-full h-px bg-gray-200 dark:bg-gray-700 my-3"></div>
 

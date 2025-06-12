@@ -259,16 +259,6 @@ export default function CourseDetailsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="font-medium mb-2">Instructor</h4>
-                  <div className="flex items-center gap-2">
-                    <div className="bg-primary/10 rounded-full w-10 h-10 flex items-center justify-center">
-                      {course.instructor.charAt(0)}
-                    </div>
-                    <span>{course.instructor}</span>
-                  </div>
-                </div>
-
-                <div>
                   <h4 className="font-medium mb-2">Provider</h4>
                   <span>{course.provider}</span>
                 </div>
