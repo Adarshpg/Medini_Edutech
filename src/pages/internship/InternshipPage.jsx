@@ -136,7 +136,7 @@ const InternshipPage = () => {
       <div 
         className="relative text-white pt-24 pb-16 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(/IMAGES/ilya-sonin-IsX2ZkbSk1Y-unsplash.jpg)',
+          backgroundImage: 'url(/src/assets/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
