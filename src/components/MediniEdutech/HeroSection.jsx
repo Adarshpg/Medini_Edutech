@@ -1,15 +1,17 @@
 import { useState, useRef, useEffect } from "react"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
-import bg_image from "@/assets/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
-import autocad from "@/assets/IMAGES/AutoCAD.jpg"
-import civil3d from "@/assets/IMAGES/tool-inc-AkpJnHXu6Hg-unsplash.jpg"
-import solidworks from "@/assets/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
-import microstation from "@/assets/IMAGES/getty-images-ItieuN1ec0k-unsplash.jpg"
-import itImage from "@/assets/IMAGES/thisisengineering-AvGIBmvdcac-unsplash.jpg"
-import infraworks from "@/assets/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg"
 import { Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import FeedbackSection from "./FeedbackSection"
+
+const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
+const autocad = "/IMAGES/AutoCAD.jpg"
+const civil3d = "/IMAGES/tool-inc-AkpJnHXu6Hg-unsplash.jpg"
+const solidworks = "/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
+const microstation = "/IMAGES/getty-images-ItieuN1ec0k-unsplash.jpg"
+const itImage = "/IMAGES/thisisengineering-AvGIBmvdcac-unsplash.jpg"
+const infraworks = "/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg"
+
 
 function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
