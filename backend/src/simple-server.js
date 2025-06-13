@@ -11,13 +11,22 @@ dotenv.config({ path: path.join(__dirname, 'config', 'config.env') });
 const app = express();
 
 // CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:5177',
+  'http://127.0.0.1:5177',
+  'http://localhost:5180',
+  'http://127.0.0.1:5180'
+];
+
+// Add production frontend URL if present in env
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
+
 const corsOptions = {
-  origin: [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'http://localhost:5177',
-    'http://127.0.0.1:5177'
-  ],
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -87,5 +96,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
-  console.log(`CORS enabled for: http://localhost:5173 and http://127.0.0.1:5173`);
+  console.log(`CORS enabled for: http://localhost:5173, http://127.0.0.1:5173, http://localhost:5177, http://127.0.0.1:5177, http://localhost:5180, and http://127.0.0.1:5180`);
 });

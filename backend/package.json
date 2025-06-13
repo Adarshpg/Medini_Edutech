@@ -4,8 +4,8 @@
   "description": "Medini Edutech Backend API",
   "main": "src/production-server.js",
   "scripts": {
-    "start": "node src/production-server.js",
-    "dev": "nodemon src/production-server.js",
+    "start": "node src/simple-server.js",
+"dev": "nodemon src/simple-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

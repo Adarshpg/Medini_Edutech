@@ -1,4 +1,4 @@
-import image from "@/assets/images/getty-images-82LbsqatQNA-unsplash.jpg"
+import image from "@/assets/IMAGES/getty-images-82LbsqatQNA-unsplash.jpg"
 
 export function MissionSection() {
     return (

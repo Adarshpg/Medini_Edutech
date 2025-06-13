@@ -4,13 +4,13 @@ import { Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import FeedbackSection from "./FeedbackSection"
 
-const bg_image = "/images/getty-images-OB7KJ7WtHOs-unsplash.jpg"
-const autocad = "/images/AutoCAD.jpg"
-const civil3d = "/images/tool-inc-AkpJnHXu6Hg-unsplash.jpg"
-const solidworks = "/images/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
-const microstation = "/images/getty-images-ItieuN1ec0k-unsplash.jpg"
-const itImage = "/images/thisisengineering-AvGIBmvdcac-unsplash.jpg"
-const infraworks = "/images/getty-images-KD_fT_T4D24-unsplash.jpg"
+const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
+const autocad = "/IMAGES/AutoCAD.jpg"
+const civil3d = "/IMAGES/tool-inc-AkpJnHXu6Hg-unsplash.jpg"
+const solidworks = "/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
+const microstation = "/IMAGES/getty-images-ItieuN1ec0k-unsplash.jpg"
+const itImage = "/IMAGES/thisisengineering-AvGIBmvdcac-unsplash.jpg"
+const infraworks = "/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg"
 
 
 function HeroSection() {
