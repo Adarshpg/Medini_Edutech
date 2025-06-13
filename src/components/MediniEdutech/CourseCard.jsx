@@ -14,7 +14,7 @@ const CourseCard = ({ course }) => {
   } = course || {};
 
   // Use direct path from public directory
-  const courseImage = coverImage.startsWith('http') ? coverImage : `/IMAGES/${coverImage}`;
+  const courseImage = coverImage.startsWith('http') ? coverImage : `/images/${coverImage}`;
 
   const mainColor = "rgb(25,65,75)";
 
