@@ -108,18 +108,18 @@ const InternshipPage = () => {
     setSelectedCourse(e.target.value);
   };
 
-  // Handle state from navigation
+  // Handle state from navigation (fix: also respond to location.key)
   useEffect(() => {
     if (location.state) {
       const { selectedProgram, selectedCourse } = location.state;
       if (selectedProgram) {
         setSelectedProgram(selectedProgram);
         setShowItSpecializations(selectedProgram === 'it');
-        
         if (selectedCourse) {
           setSelectedCourse(selectedCourse);
+        } else {
+          setSelectedCourse('');
         }
-
         // Scroll to registration form if coming from a course page
         if (window.location.hash === '#registration-form') {
           const element = document.getElementById('registration-form');
@@ -129,7 +129,7 @@ const InternshipPage = () => {
         }
       }
     }
-  }, [location.state]);
+  }, [location.state, location.key]);
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
@@ -182,18 +182,17 @@ const InternshipPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* IT Program Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-blue-600 h-2"></div>
+            <Link to="/internship/it" className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 block focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ textDecoration: 'none' }}>
               <div className="p-6">
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Code className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-center mb-4">IT Internship</h3>
+                <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">IT Internship</h3>
                 <ul className="space-y-3 mb-6">
                   {['AI & Machine Learning', 'Data Science', 'Java Fullstack', 'Python Fullstack'].map((item, index) => (
                     <li key={index} className="flex items-center">
                       <Check className="h-5 w-5 text-green-500 mr-2" />
-                      <span>{item}</span>
+                      <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -205,7 +204,7 @@ const InternshipPage = () => {
                   Explore Program
                 </Link>
               </div>
-            </div>
+            </Link>
 
             {/* Civil Program Card */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
@@ -214,12 +213,12 @@ const InternshipPage = () => {
                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Building2 className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-center mb-4">Civil Engineering</h3>
+                <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">Civil Engineering</h3>
                 <ul className="space-y-3 mb-6">
                   {['Structural Design', 'Construction Management', 'AutoCAD & Revit', 'Project Planning'].map((item, index) => (
                     <li key={index} className="flex items-center">
                       <Check className="h-5 w-5 text-green-500 mr-2" />
-                      <span>{item}</span>
+                      <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -240,12 +239,12 @@ const InternshipPage = () => {
                 <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Settings className="h-8 w-8 text-amber-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-center mb-4">Mechanical Engineering</h3>
+                <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">Mechanical Engineering</h3>
                 <ul className="space-y-3 mb-6">
                   {['CAD/CAM', 'Product Design', 'Manufacturing', 'Thermodynamics'].map((item, index) => (
                     <li key={index} className="flex items-center">
                       <Check className="h-5 w-5 text-green-500 mr-2" />
-                      <span>{item}</span>
+                      <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
                 </ul>
