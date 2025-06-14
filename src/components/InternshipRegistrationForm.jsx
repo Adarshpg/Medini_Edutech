@@ -128,10 +128,10 @@ const InternshipRegistrationForm = () => {
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
           >
-            <option value="IT">IT</option>
-            <option value="Civil">Civil</option>
-            <option value="Mechanical">Mechanical</option>
-            <option value="Other">Other</option>
+            <option value="IT" style={{ color: 'black' }}>IT</option>
+            <option value="Civil" style={{ color: 'black' }}>Civil</option>
+            <option value="Mechanical" style={{ color: 'black' }}>Mechanical</option>
+            <option value="Other" style={{ color: 'black' }}>Other</option>
           </select>
         </div>
 

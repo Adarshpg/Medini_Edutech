@@ -182,7 +182,8 @@ const InternshipPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* IT Program Card */}
-            <Link to="/internship/it" className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 block focus:outline-none focus:ring-2 focus:ring-blue-500" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <div className="bg-blue-600 h-2"></div>
               <div className="p-6">
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Code className="h-8 w-8 text-blue-600" />
@@ -204,7 +205,7 @@ const InternshipPage = () => {
                   Explore Program
                 </Link>
               </div>
-            </Link>
+            </div>
 
             {/* Civil Program Card */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
