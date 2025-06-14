@@ -54,7 +54,7 @@ app.use('/api/internships', internshipRoutes);
 // Update MongoDB connection in simple-server.js
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb+srv://gayadolliadarsh:Adarsh@2003@cluster0.nxsbxoz.mongodb.net/medini_edutech', {
+    const conn = await mongoose.connect('mongodb+srv://gayadolliadarsh:Adarsh@2003@cluster0.nxsbxoz.mongodb.net/', {
       // Remove deprecated options
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
