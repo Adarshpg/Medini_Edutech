@@ -23,7 +23,8 @@ const corsOptions = {
     'http://localhost:5177',
     'http://127.0.0.1:5177',
     'http://localhost:5180',
-    'http://127.0.0.1:5180'
+    'http://127.0.0.1:5180',
+    'https://medini-edutech-rho.vercel.app/'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
