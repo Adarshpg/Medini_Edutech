@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance with base URL
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Directly target the backend server
+  baseURL: import.meta.env.VITE_API_URL, // Use environment variable for backend URL
   headers: {
     'Content-Type': 'application/json',
   },
@@ -26,7 +26,8 @@ api.interceptors.request.use(
 export const registerForInternship = async (internshipData) => {
   try {
     console.log('Sending registration data to server...');
-    const response = await api.post('/register', internshipData);
+    // FIXED: Correct endpoint for registration
+    const response = await api.post('/api/register', internshipData);
     console.log('Registration successful:', response.data);
     return response.data;
   } catch (error) {
@@ -36,13 +37,13 @@ export const registerForInternship = async (internshipData) => {
       status: error.response?.status,
       statusText: error.response?.statusText,
     });
-    
+
     // Handle validation errors
     if (error.response?.data?.errors) {
       const errorMessages = error.response.data.errors.map(err => err.msg || err.message).join(', ');
       throw new Error(errorMessages || 'Validation failed');
     }
-    
+
     // Handle other errors
     throw new Error(error.response?.data?.message || error.message || 'Something went wrong. Please try again.');
   }

@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BookOpen, Clock, Award, ChevronRight } from "lucide-react";
+const images = import.meta.glob("/src/assets/IMAGES/*.jpg", { eager: true });
+
 const CourseCard = ({ course }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   // Destructure with fallback values
   const {
     title = "Advanced Design Masterclass",
+    
     duration = "8 Weeks",
     difficulty = "Advanced",
     coverImage = "/placeholder.svg?height=200&width=300",
     id = ""
   } = course || {};
 
-  // Use direct path from public directory
-  const courseImage = coverImage.startsWith('http') ? coverImage : `/IMAGES/${coverImage}`;
+  const courseImage = images[`/src/assets/IMAGES/${coverImage}`]?.default || "/placeholder.svg";
 
   const mainColor = "rgb(25,65,75)";
 

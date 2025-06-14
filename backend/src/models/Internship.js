@@ -24,6 +24,10 @@ const internshipSchema = new mongoose.Schema({
     required: [true, 'Please select a program'],
     enum: ['IT', 'Civil', 'Mechanical', 'Other']
   },
+  course: {
+    type: String,
+    required: [true, 'Please select a course']
+  },
   qualification: {
     type: String,
     required: [true, 'Please add your qualification']
