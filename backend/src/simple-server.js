@@ -54,12 +54,12 @@ app.use('/api/internships', internshipRoutes);
 // Update MongoDB connection in simple-server.js
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb+srv://gayadolliadarsh:Adarsh@2003@cluster0.nxsbxoz.mongodb.net/', {
+    const conn = await mongoose.connect(process.env.MONGO_URI ,{
       // Remove deprecated options
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     });
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    console.log(`MongoDB Connected: ${conn.connection.host} on uri ${process.env.MONGO_URI}`);
   } catch (err) {
     console.error(`MongoDB Connection Error: ${err.message}`);
     process.exit(1);
