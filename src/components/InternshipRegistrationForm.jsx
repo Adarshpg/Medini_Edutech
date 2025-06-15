@@ -56,7 +56,7 @@ const InternshipRegistrationForm = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 text-black">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Register for Internship</h2>
       
       {error && (
@@ -71,9 +71,9 @@ const InternshipRegistrationForm = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 text-black">
         <div>
-          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="fullName" className="block text-sm font-medium text-black">
             Full Name *
           </label>
           <input
@@ -83,12 +83,12 @@ const InternshipRegistrationForm = () => {
             value={formData.fullName}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="email" className="block text-sm font-medium text-black">
             Email *
           </label>
           <input
@@ -98,12 +98,12 @@ const InternshipRegistrationForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           />
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="phone" className="block text-sm font-medium text-black">
             Phone Number *
           </label>
           <input
@@ -113,12 +113,12 @@ const InternshipRegistrationForm = () => {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           />
         </div>
 
         <div>
-          <label htmlFor="program" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="program" className="block text-sm font-medium text-black">
             Program *
           </label>
           <select
@@ -126,7 +126,7 @@ const InternshipRegistrationForm = () => {
             name="program"
             value={formData.program}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           >
             <option value="IT" style={{ color: 'black' }}>IT</option>
             <option value="Civil" style={{ color: 'black' }}>Civil</option>
@@ -136,7 +136,7 @@ const InternshipRegistrationForm = () => {
         </div>
 
         <div>
-          <label htmlFor="qualification" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="qualification" className="block text-sm font-medium text-black">
             Qualification *
           </label>
           <input
@@ -146,13 +146,13 @@ const InternshipRegistrationForm = () => {
             value={formData.qualification}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
             placeholder="e.g., B.Tech, BCA, MCA, etc."
           />
         </div>
 
         <div>
-          <label htmlFor="college" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="college" className="block text-sm font-medium text-black">
             College/University *
           </label>
           <input
@@ -162,12 +162,12 @@ const InternshipRegistrationForm = () => {
             value={formData.college}
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           />
         </div>
 
         <div>
-          <label htmlFor="graduationYear" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="graduationYear" className="block text-sm font-medium text-black">
             Graduation Year *
           </label>
           <input
@@ -179,12 +179,12 @@ const InternshipRegistrationForm = () => {
             required
             min="2000"
             max="2030"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="message" className="block text-sm font-medium text-black">
             Message (Optional)
           </label>
           <textarea
@@ -193,7 +193,7 @@ const InternshipRegistrationForm = () => {
             rows="3"
             value={formData.message}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
           />
         </div>
 

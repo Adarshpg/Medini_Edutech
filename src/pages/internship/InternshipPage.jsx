@@ -85,27 +85,25 @@ const courseDetails = {
 
 const InternshipPage = () => {
   const location = useLocation();
+  // Toggle state for UI only (not used in registration form or course details)
   const [selectedProgram, setSelectedProgram] = React.useState('');
-  const [selectedCourse, setSelectedCourse] = React.useState('');
   const [showItSpecializations, setShowItSpecializations] = React.useState(false);
+  // Registration/course state, always independent
+  const [registrationCourse, setRegistrationCourse] = React.useState('');
   
-  // Get current course details based on selection
-  const currentCourse = selectedCourse ? courseDetails[selectedCourse] : courseDetails['default'];
+  // Get current course details for registration/content, always independent of toggle
+  const currentCourse = registrationCourse ? courseDetails[registrationCourse] : courseDetails['default'];
 
-  // Handle program selection and update showItSpecializations
+  // Handle program toggle for UI (not for registration)
   const handleProgramChange = (e) => {
     const value = e.target.value;
     setSelectedProgram(value);
     setShowItSpecializations(value === 'it');
-    // Clear selected course when program changes
-    if (value !== 'it') {
-      setSelectedCourse('');
-    }
   };
 
-  // Handle course selection
-  const handleCourseSelect = (e) => {
-    setSelectedCourse(e.target.value);
+  // Handle course selection for registration/content
+  const handleRegistrationCourseSelect = (e) => {
+    setRegistrationCourse(e.target.value);
   };
 
   // Handle state from navigation (fix: also respond to location.key)
@@ -115,17 +113,17 @@ const InternshipPage = () => {
       if (selectedProgram) {
         setSelectedProgram(selectedProgram);
         setShowItSpecializations(selectedProgram === 'it');
-        if (selectedCourse) {
-          setSelectedCourse(selectedCourse);
-        } else {
-          setSelectedCourse('');
-        }
-        // Scroll to registration form if coming from a course page
-        if (window.location.hash === '#registration-form') {
-          const element = document.getElementById('registration-form');
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
+      }
+      if (selectedCourse) {
+        setRegistrationCourse(selectedCourse);
+      } else {
+        setRegistrationCourse('');
+      }
+      // Scroll to registration form if coming from a course page
+      if (window.location.hash === '#registration-form') {
+        const element = document.getElementById('registration-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
         }
       }
     }
@@ -216,7 +214,7 @@ const InternshipPage = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">Civil Engineering</h3>
                 <ul className="space-y-3 mb-6">
-                  {['Structural Design', 'Construction Management', 'AutoCAD & Revit', 'Project Planning'].map((item, index) => (
+                  {['BIM Construction', 'BIM infrastructure', 'BIM architecture'].map((item, index) => (
                     <li key={index} className="flex items-center">
                       <Check className="h-5 w-5 text-green-500 mr-2" />
                       <span className="text-gray-700">{item}</span>
@@ -242,7 +240,7 @@ const InternshipPage = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">Mechanical Engineering</h3>
                 <ul className="space-y-3 mb-6">
-                  {['CAD/CAM', 'Product Design', 'Manufacturing', 'Thermodynamics'].map((item, index) => (
+                  {['CAD/CAM', 'Product Design', 'Manufacturing',].map((item, index) => (
                     <li key={index} className="flex items-center">
                       <Check className="h-5 w-5 text-green-500 mr-2" />
                       <span className="text-gray-700">{item}</span>
@@ -412,7 +410,7 @@ const InternshipPage = () => {
 
             {/* Right Side - Registration Form */}
             <div id="registration-form" className="lg:w-1/3">
-              <div className="sticky top-6">
+              <div>
                 <InternshipRegistrationForm />
               </div>
             </div>
