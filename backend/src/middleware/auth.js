@@ -5,15 +5,10 @@ const User = require('../models/User');
 exports.protect = async (req, res, next) => {
   let token;
 
-  if (
-    req.headers.authorization && 
-    req.headers.authorization.startsWith('Bearer')
-  ) {
-    // Set token from Bearer token in header
+  // Safely check for authorization header
+  if (req.headers && req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
-  }
-  // Set token from cookie
-  else if (req.cookies.token) {
+  } else if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
   }
 
@@ -21,7 +16,7 @@ exports.protect = async (req, res, next) => {
   if (!token) {
     return res.status(401).json({
       success: false,
-      message: 'Not authorized to access this route'
+      message: 'Not authorized, no token provided'
     });
   }
 
@@ -34,7 +29,7 @@ exports.protect = async (req, res, next) => {
     console.error('Auth Error:', err);
     return res.status(401).json({
       success: false,
-      message: 'Not authorized to access this route'
+      message: 'Not authorized, token failed'
     });
   }
 };

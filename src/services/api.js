@@ -31,6 +31,7 @@ export const registerForInternship = async (internshipData) => {
     console.log('Registration successful:', response.data);
     return response.data;
   } catch (error) {
+    console.log(error);
     console.error('Registration error:', {
       message: error.message,
       response: error.response?.data,
