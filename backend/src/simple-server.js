@@ -22,8 +22,8 @@ app.use(morgan('dev'));
 // CORS configuration
 const corsOptions = {
   origin: [
-    'http://localhost:5177', // local dev
-    // 'https://mediniedutech.com' // production
+    //'http://localhost:5177', // local dev
+    'https://mediniedutech.com'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
