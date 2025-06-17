@@ -46,6 +46,11 @@ exports.registerForInternship = async (req, res) => {
       message,
     });
 
+    // Emit real-time event for dashboard stats
+    if (global.io) {
+      global.io.emit('internshipRegistered', registration.toObject());
+    }
+
     res.status(201).json({
       success: true,
       message: 'Registration successful! We will contact you soon.',
@@ -65,17 +70,20 @@ exports.registerForInternship = async (req, res) => {
 // @access  Private/Admin
 exports.getInternships = async (req, res) => {
   try {
+    console.log('[API] GET /api/internships called');
     const registrations = await Internship.find().sort({ createdAt: -1 });
+    console.log(`[API] Registrations found: ${registrations.length}`);
     res.status(200).json({
       success: true,
       count: registrations.length,
-      data: registrations
+      data: registrations || []
     });
   } catch (error) {
     console.error('Get Registrations Error:', error);
     res.status(500).json({
       success: false,
-      message: 'Error fetching registrations'
+      message: 'Error fetching registrations',
+      data: []
     });
   }
 };

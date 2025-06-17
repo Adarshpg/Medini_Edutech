@@ -4,12 +4,16 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 const morgan = require('morgan');
+const http = require('http');
+const socketIo = require('socket.io');
 
 // Load environment variables
 dotenv.config({ path: path.join(__dirname, 'config', 'config.env') });
 
 // Initialize express
 const app = express();
+const httpServer = http.createServer(app);
+let io = null;
 let server = null; // Initialize server as null
 
 // Request logging
@@ -18,15 +22,10 @@ app.use(morgan('dev'));
 // CORS configuration
 const corsOptions = {
   origin: [
-    // 'https://medini-edutech-rho.vercel.app/',
-    // "https://medini-edutech-rho.vercel.app",/
-    "https://mediniedutech.com",
-    // 'http://localhost:5173',
-    // 'http://127.0.0.1:5173',
-    // 'http://localhost:5177',
-    // 'http://127.0.0.1:5177',
-    // 'http://localhost:5180',
-    // 'http://127.0.0.1:5180'
+    //'http://localhost:5177', // local dev
+    'https://mediniedutech.com',
+    "https://medini-edutech-rho.vercel.app"
+
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -50,9 +49,11 @@ app.use((req, res, next) => {
 // Import and mount routers
 const authRoutes = require('./routes/authRoutes');
 const internshipRoutes = require('./routes/internshipRoutes');
+const studentRoutes = require('./routes/studentRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/internships', internshipRoutes);
+app.use('/api/students', studentRoutes);
 
 // Update MongoDB connection in simple-server.js
 const connectDB = async () => {
@@ -113,8 +114,12 @@ app.post('/api/register', async (req, res) => {
     };
 
     const internship = await Internship.create(registrationData);
-    
-    // Don't send the entire document back
+
+    // Emit real-time event for dashboard stats
+    if (global.io) {
+      global.io.emit('internshipRegistered', internship.toObject());
+    }
+
     const { _id, email, fullName } = internship.toObject();
     
     res.status(201).json({
@@ -214,13 +219,40 @@ process.on('SIGINT', gracefulShutdown);
 const initializeServer = async () => {
   try {
     await connectDB();
-    
-    server = app.listen(PORT, '0.0.0.0', () => {
+
+    // Initialize Socket.IO
+    io = socketIo(httpServer, {
+      cors: {
+        origin: ['http://localhost:5177'],
+        methods: ['GET', 'POST']
+      }
+    });
+
+    // Make io accessible globally for event emission
+    global.io = io;
+
+    io.on('connection', (socket) => {
+      console.log('Client connected:', socket.id);
+      socket.on('disconnect', () => console.log('Client disconnected:', socket.id));
+    });
+
+    // MongoDB Change Stream for real-time student registrations
+    mongoose.connection.once('open', () => {
+      const changeStream = mongoose.connection.collection('students').watch();
+      changeStream.on('change', (change) => {
+        if (change.operationType === 'insert') {
+          io.emit('studentRegistered', change.fullDocument);
+        }
+      });
+    });
+
+    server = httpServer.listen(PORT, '0.0.0.0', () => {
       console.log(`
         Server running in ${process.env.NODE_ENV || 'development'} mode
         Listening on port ${PORT}
         MongoDB: ${process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/medini_edutech'}
         CORS enabled for development
+        Socket.IO enabled
       `);
     });
 

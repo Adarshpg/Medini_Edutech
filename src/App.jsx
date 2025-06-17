@@ -14,8 +14,17 @@ import BlogPage from "./pages/BlogPage"
 import ContactPage from "./pages/ContactPage"
 import InternshipPage from "./pages/internship/InternshipPage"
 import ItInternshipPage from "./pages/internship/ItInternshipPage"
+import StudentDashboard from "./components/StudentDashboard"
+import Login from "./components/Login";
+import React, { useState } from "react";
 
 function App() {
+  const [loggedIn, setLoggedIn] = React.useState(!!localStorage.getItem('dashboard_token'));
+  const handleLogin = () => setLoggedIn(true);
+  const handleLogout = () => {
+    localStorage.removeItem('dashboard_token');
+    setLoggedIn(false);
+  };
   return (
     <ThemeProvider>
       <Router>
@@ -32,6 +41,7 @@ function App() {
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/internship" element={<InternshipPage />} />
               <Route path="/internship/it" element={<ItInternshipPage />} />
+              <Route path="/dashboard" element={loggedIn ? <div style={{maxWidth:1100,margin:'0 auto',padding:'0 24px'}}><div style={{display:'flex',justifyContent:'flex-end',margin:'40px 0 14px 0'}}><button style={{background:'#ef4444',color:'#fff',border:'none',borderRadius:8,padding:'10px 24px',fontWeight:700,cursor:'pointer',fontSize:17,boxShadow:'0 2px 8px #0002'}} onClick={handleLogout}>Logout</button></div><StudentDashboard /></div> : <Login onLogin={handleLogin} />} />
             </Routes>
           </main>
           <Footer />
