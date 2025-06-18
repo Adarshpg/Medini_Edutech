@@ -151,16 +151,7 @@ const Header = () => {
               className="h-14 mr-2"
             />
             
-            {isCourse && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img
-                  src={getCourseProviderLogo()}
-                  alt="Course Provider"
-                  className="h-8 ml-1"
-                />
-              </>
-            )}
+
 
             
           </NavLink>
