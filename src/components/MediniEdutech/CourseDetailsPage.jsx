@@ -2,10 +2,119 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Clock, DollarSign, GraduationCap, Users } from "lucide-react"
+import { ArrowLeft, Clock, DollarSign, GraduationCap, Users, X } from "lucide-react"
 
 // Import your courses data
 import courseData from "../courses.json"
+
+const courseIcons = {
+  fusion: "",
+  autocad: "",
+  "autocad-electrical": "",
+  "revit-architecture": "🏛️",
+  "revit-mep": "",
+  "revit-structure": "",
+  "civil-3d": "🏗️",
+  "3ds-max": "",
+  maya: "",
+  navisworks: "",
+  infrawork: "",
+  "openroads-designer": "",
+  "openflows-watergems": "",
+  "openflows-sewergems": "",
+  "staad-pro": "",
+  microstation: "",
+  solidworks: "",
+  sketchup: "",
+  "V-Ray": "",
+  lumion: "",
+  enscape: "",
+  primavera: "",
+  rhino: "",
+  grasshopper: "",
+  photoshop: "",
+  illustrator: "",
+  etabs: "",
+  "ms-project": "",
+  qgis: "",
+  "adobe-animate": "",
+  "java-fullstack": "",
+  "python-fullstack": "",
+  "mern-stack": "",
+  "cloud-app-dev": "",
+  "fusion-360": "",
+  "bim-infrastructure": "🏗️",
+  "bim-construction": "🏗️",
+  default: "",
+}
+
+const getIcon = (courseId) => {
+  return courseIcons[courseId] || courseIcons.default
+}
+
+const specialMappings = {
+  'fusion-360': 'fusion',
+  'autocad-mechanical': 'autocad',
+  '3ds-max': '3ds-max',
+  'bim-construction': 'revit-architecture',
+  'bim-infrastructure': 'civil-3d'
+};
+
+const findCourse = (courseName) => {
+  try {
+    // Get all courses from all providers and categories
+    const allCourses = [];
+    
+    courseData.courseProviders.forEach(provider => {
+      provider.categories.forEach(category => {
+        category.courses.forEach(course => {
+          allCourses.push({...course, provider: provider.id, category: category.name});
+        });
+      });
+    });
+    
+    // Check for special mappings first
+    let found = null;
+    if (specialMappings[courseName]) {
+      const mappedId = specialMappings[courseName];
+      console.log(`Special mapping found: ${courseName} -> ${mappedId}`);
+      found = allCourses.find(c => c.id === mappedId);
+    }
+    
+    // If no special mapping or not found with mapping, try exact match
+    if (!found) {
+      found = allCourses.find(c => c.id === courseName);
+    }
+    
+    // If still not found, try different matching strategies
+    if (!found) {
+      
+      // Try without hyphens
+      const simplifiedId = courseName.replace(/-/g, '');
+      found = allCourses.find(c => c.id.replace(/-/g, '') === simplifiedId);
+      
+      // Try partial match
+      if (!found) {
+        found = allCourses.find(c => 
+          courseName.includes(c.id) || c.id.includes(courseName)
+        );
+      }
+      
+      // If still not found, use the first course (for testing)
+      if (!found && allCourses.length > 0) {
+        found = allCourses[0];
+      }
+    }
+    
+    if (found) {
+      return found;
+    } else {
+      console.error('No courses found at all');
+    }
+  } catch (error) {
+    console.error('Error finding course:', error);
+  }
+}
 
 export default function CourseDetailsPage() {
   const { courseName } = useParams()
@@ -13,86 +122,14 @@ export default function CourseDetailsPage() {
   const [course, setCourse] = useState(null)
   const [loading, setLoading] = useState(true)
 
-   useEffect(() => {
-    
-    // Create a mapping for special cases
-    const specialMappings = {
-      'fusion-360': 'fusion',
-      'autocad-mechanical': 'autocad',
-      '3ds-max': '3ds-max'
-    };
-    
-    // Find the course by ID
-    const findCourse = () => {
-      try {
-        // Get all courses from all providers and categories
-        const allCourses = [];
-        
-        courseData.courseProviders.forEach(provider => {
-          provider.categories.forEach(category => {
-            category.courses.forEach(course => {
-              allCourses.push({...course, provider: provider.id, category: category.name});
-            });
-          });
-        });
-        
-        // Check for special mappings first
-        let found = null;
-        if (specialMappings[courseName]) {
-          const mappedId = specialMappings[courseName];
-          console.log(`Special mapping found: ${courseName} -> ${mappedId}`);
-          found = allCourses.find(c => c.id === mappedId);
-        }
-        
-        // If no special mapping or not found with mapping, try exact match
-        if (!found) {
-          found = allCourses.find(c => c.id === courseName);
-        }
-        
-        // If still not found, try different matching strategies
-        if (!found) {
-          
-          // Try without hyphens
-          const simplifiedId = courseName.replace(/-/g, '');
-          found = allCourses.find(c => c.id.replace(/-/g, '') === simplifiedId);
-          
-          // Try partial match
-          if (!found) {
-            found = allCourses.find(c => 
-              courseName.includes(c.id) || c.id.includes(courseName)
-            );
-          }
-          
-          // If still not found, use the first course (for testing)
-          if (!found && allCourses.length > 0) {
-            found = allCourses[0];
-          }
-        }
-        
-        if (found) {
-          setCourse(found);
-          
-          // Find the provider for this course
-          const provider = courseData.courseProviders.find(p => 
-            p.categories.some(cat => 
-              cat.courses.some(c => c.id === found.id)
-            )
-          );
-          
-          
-        } else {
-          console.error('No courses found at all');
-        }
-      } catch (error) {
-        console.error('Error finding course:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    findCourse();
+  useEffect(() => {
+    const foundCourse = findCourse(courseName);
+    if (foundCourse) {
+      setCourse(foundCourse);
+    }
+    setLoading(false);
   }, [courseName]);
-  
+
   const handleGoBack = () => {
     navigate(-1)
   }
@@ -119,52 +156,6 @@ export default function CourseDetailsPage() {
     )
   }
 
-  // Icon mapping for course types
-  const courseIcons = {
-    fusion: "",
-    autocad: "",
-    "autocad-electrical": "",
-    "revit-architecture": "",
-    "revit-mep": "",
-    "revit-structure": "",
-    "civil-3d": "",
-    "3ds-max": "",
-    maya: "",
-    navisworks: "",
-    infrawork: "",
-    "openroads-designer": "",
-    "openflows-watergems": "",
-    "openflows-sewergems": "",
-    "staad-pro": "",
-    microstation: "",
-    solidworks: "",
-    sketchup: "",
-    "V-Ray": "",
-    lumion: "",
-    enscape: "",
-    primavera: "",
-    rhino: "",
-    grasshopper: "",
-    photoshop: "",
-    illustrator: "",
-    etabs: "",
-    "ms-project": "",
-    qgis: "",
-    "adobe-animate": "",
-    "java-fullstack": "",
-    "python-fullstack": "",
-    "mern-stack": "",
-    "cloud-app-dev": "",
-    "fusion-360": "",
-    "bim-infrastructure": "",
-    "bim-construction": "",
-    default: "",
-  }
-
-  const getIcon = (courseId) => {
-    return courseIcons[courseId] || courseIcons.default
-  }
-
   return (
     <section className="py-20">
       <div className="container">
@@ -181,7 +172,7 @@ export default function CourseDetailsPage() {
                   <span className="text-4xl">{getIcon(course.id)}</span>
                   <span className="bg-secondary px-3 py-1 rounded text-sm">{course.category}</span>
                 </div>
-                <CardTitle className="text-3xl mb-2">{course.title}</CardTitle>
+                <CardTitle className="text-3xl mb-2">{course.name || course.title}</CardTitle>
                 <CardDescription className="text-lg">{course.description}</CardDescription>
               </CardHeader>
               <CardContent>

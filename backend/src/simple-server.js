@@ -22,7 +22,7 @@ app.use(morgan('dev'));
 // CORS configuration
 const corsOptions = {
   origin: [
-    //'http://localhost:5177', // local dev
+    //'http://localhost:5180',//
     'https://mediniedutech.com',
     "https://medini-edutech-rho.vercel.app"
 

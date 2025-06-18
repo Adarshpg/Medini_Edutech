@@ -111,34 +111,33 @@
               "title": "Revit Architecture Advanced",
               "name": "Revit Architecture",
               "icon": "",
-              "description": "Building Information Modeling (BIM) software for architects to design, visualize, and document buildings. Enables accurate 3D modeling, construction documentation, and coordination across disciplines.",
-              "duration": "40 Hours",
-              "difficulty": "Intermediate",
-              "price": 1299,
-              "targetAudience": "Civil (CIV)",
+              "description": "Master the art of architectural design and documentation using Building Information Modeling (BIM) technology. This comprehensive course covers advanced architectural modeling, parametric design, energy analysis, and construction documentation. Learn to create intelligent 3D models that integrate with structural and MEP systems for seamless project coordination and collaboration.",
+              "duration": "8 weeks",
+              "difficulty": "Intermediate to Advanced",
+              "price": 1399,
+              "targetAudience": "Architects, Architectural Designers, BIM Specialists (ARCH)",
               "curriculum": [
-                "Introduction to BIM & Revit Interface",
-                "Walls, Doors, and Windows",
-                "Floors, Roofs, Ceilings, and Stairs",
-                "Views, Sections, Elevations, and Sheets",
-                "Schedules and Quantities",
-                "Conceptual Massing and Families",
-                "Rendering and Walkthroughs",
-                "Project Collaboration and Exporting"
+                "Advanced BIM Concepts for Architecture",
+                "Parametric Design and Massing Studies",
+                "Detailed Building Envelope Design",
+                "Interior Design and Space Planning",
+                "Advanced Family Creation and Management",
+                "Energy Analysis and Sustainability Tools",
+                "Construction Documentation and Detailing",
+                "Collaboration with Structural and MEP Teams"
               ],
               "learningOutcomes": [
-                "Create complex architectural models",
-                "Understand BIM methodology",
-                "Develop professional-level Revit skills",
-                "Creating accurate 3D architectural models",
-                "Developing floor plans, sections, elevations, and schedules",
-                "Applying materials, rendering, and walkthrough creation",
-                "Managing families and components",
-                "Collaboration tools for multi-disciplinary workflows"
+                "Develop comprehensive architectural BIM models from concept to construction",
+                "Create parametric and adaptive components for complex geometries",
+                "Perform energy analysis and sustainability evaluations",
+                "Generate accurate construction documents and schedules",
+                "Coordinate with engineering disciplines using BIM collaboration tools",
+                "Implement BIM standards and best practices in architectural workflows"
               ],
               "prerequisites": [
-                "Basic AutoCAD knowledge",
-                "Understanding of architectural principles"
+                "Basic understanding of architectural principles and design",
+                "Familiarity with CAD concepts",
+                "No prior Revit experience required"
               ],
               "coverImage": "revit-architecture.jpg"
             }
@@ -147,6 +146,41 @@
         {
           "name": "BIM Engineering",
           "courses": [
+            {
+              "id": "bim-infrastructure",
+              "title": "BIM for Infrastructure",
+              "name": "BIM Infrastructure",
+              "icon": "",
+              "description": "Master the application of BIM technology in civil infrastructure projects including roads, bridges, tunnels, and utilities. This course covers the integration of GIS, 3D modeling, and construction sequencing for large-scale infrastructure projects, enabling better project visualization, analysis, and collaboration among stakeholders.",
+              "duration": "8 weeks",
+              "difficulty": "Advanced",
+              "price": 1499,
+              "targetAudience": "Civil Engineers, Infrastructure Planners, BIM Specialists (CIV/INFRA)",
+              "curriculum": [
+                "Introduction to BIM for Infrastructure",
+                "GIS Integration and Geospatial Data Management",
+                "3D Modeling of Linear Infrastructure",
+                "Drainage and Utility Coordination",
+                "4D Construction Sequencing for Infrastructure",
+                "Quantity Takeoff and Cost Estimation",
+                "Clash Detection and Resolution",
+                "Asset Management and Maintenance Planning"
+              ],
+              "learningOutcomes": [
+                "Develop comprehensive 3D models of infrastructure projects",
+                "Integrate GIS data with BIM models for accurate site analysis",
+                "Create 4D construction sequences for better project planning",
+                "Perform clash detection and coordination for underground utilities",
+                "Generate accurate quantity takeoffs and cost estimates",
+                "Implement BIM for infrastructure asset management"
+              ],
+              "prerequisites": [
+                "Civil engineering background or infrastructure experience",
+                "Basic understanding of BIM concepts",
+                "Familiarity with Civil 3D or similar software is a plus"
+              ],
+              "coverImage": "bim-infrastructure.jpg"
+            },
             {
               "id": "revit-mep",
               "title": "Revit MEP Essentials",
@@ -704,29 +738,36 @@
             },
             {
               "id": "bim-construction",
-              "title": "BIM for Construction Management",
-              "name": "BIM for Construction",
+              "title": "BIM Construction",
+              "name": "BIM Construction",
               "icon": "",
-              "description": "Covers collaborative construction management, BIM standards, and on-site workflow optimization.",
-              "duration": "7 weeks",
-              "difficulty": "Intermediate",
-              "price": 1099,
-              "targetAudience": "Civil (CIV)",
+              "description": "The main objectives of BIM in construction are to improve project performance, enhance collaboration, and create more efficient and cost-effective processes. This course covers advanced BIM methodologies specifically tailored for construction management, including 4D scheduling, 5D cost estimation, and field coordination. Learn how to leverage BIM for clash detection, quantity takeoffs, and construction sequencing to optimize project delivery.",
+              "duration": "8 weeks",
+              "difficulty": "Intermediate to Advanced",
+              "price": 1299,
+              "targetAudience": "Construction Managers, Civil Engineers, BIM Modelers (CIV/CONST)",
               "curriculum": [
-                "BIM for Construction Planning",
-                "Model-Based Quantity Takeoff",
-                "Coordination Workflows",
-                "Field BIM Implementation",
-                "As-Built Documentation"
+                "Introduction to BIM in Construction Management",
+                "4D Scheduling and Construction Sequencing",
+                "5D Cost Estimation and Quantity Takeoff",
+                "Clash Detection and Resolution Strategies",
+                "Field BIM and Mobile Applications",
+                "As-Built Documentation and Handover",
+                "BIM for Facility Management",
+                "Case Studies of Successful BIM Implementation"
               ],
               "learningOutcomes": [
-                "Leverage BIM for construction management",
-                "Optimize on-site workflows",
-                "Implement collaborative BIM processes"
+                "Develop comprehensive 4D construction schedules integrated with BIM models",
+                "Generate accurate quantity takeoffs and cost estimates from BIM data",
+                "Implement effective clash detection and resolution workflows",
+                "Utilize mobile BIM solutions for field coordination and quality control",
+                "Create as-built documentation for facility management and operations",
+                "Apply lean construction principles through BIM integration"
               ],
               "prerequisites": [
-                "Construction industry experience",
-                "Basic BIM knowledge"
+                "2+ years of construction industry experience",
+                "Basic understanding of BIM concepts and Revit/Navisworks",
+                "Familiarity with construction documentation and processes"
               ],
               "coverImage": "bim-construction.jpg"
             }

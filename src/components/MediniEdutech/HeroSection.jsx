@@ -28,42 +28,43 @@ function HeroSection() {
       id: 1,
       image: `${autocad}?height=200&width=300`,
       name: "BIM for Construction",
-      description: "Master 2D and 3D design fundamentals",
-      // link: "/courses/autocad",
+      description: "Master construction project management with BIM",
+      link: "/courses/bim-construction"
     },
     {
       id: 2,
       image: `${civil3d}?height=200&width=300`,
       name: "BIM for Infrastructure",
-      description: "Advanced civil engineering modeling",
-      // link: "/courses/civil3d",
+      description: "Advanced infrastructure design and management",
+      link: "/courses/bim-infrastructure"
     },
     {
       id: 3,
       image: `${solidworks}?height=200&width=300`,
       name: "BIM for Architecture",
-      description: "Professional 3D CAD design",
-      // link: "/courses/solidworks",
+      description: "Architectural design and documentation with BIM",
+      link: "/courses/revit-architecture"
     },
     {
       id: 4,
       image: `${microstation}?height=200&width=300`,
       name: "Product Design and Manufacturing",
-      description: "Infrastructure design solutions",
-      // link: "/courses/microstation",
+      description: "Industrial design and manufacturing solutions",
+      link: "/courses/fusion-360"
     },
     {
       id: 5,
       image: `${infraworks}?height=200&width=300`,
       name: "AEC",
       description: "Architecture, Engineering & Construction design solutions",
-      // link: "/courses/aec",
+      link: "/courses/revit-architecture"
     },
     {
       id: 6,
       image: `${itImage}?height=200&width=300`,
       name: 'IT',
-      description: "Software development courses including Java, Python, MERN Stack, and Cloud technologies"
+      description: "Software development courses including Java, Python, MERN Stack, and Cloud technologies",
+      link: "/courses/it"
     }
   ]
   
@@ -335,7 +336,7 @@ function HeroSection() {
                         </div>
                       </div>
                     ) : (
-                      <Link to={`/medinischoolofdesign${card.link}`}>
+                      <Link to={card.link ? (card.link.startsWith('/') ? card.link : `/${card.link}`) : '#'}>
                         <div className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full">
                           <div className="relative">
                             <img 
