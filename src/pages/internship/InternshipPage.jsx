@@ -77,8 +77,7 @@ const courseDetails = {
       'Industry mentorship',
       'Practical training',
       'Certificate upon completion',
-      'Job placement assistance',
-      'Lifetime access to learning materials'
+      'Job placement assistance'
     ]
   }
 };
@@ -339,16 +338,26 @@ const InternshipPage = () => {
                   </p>
                   <p className="text-gray-700 leading-relaxed mb-4">
                     <span className="font-semibold">3. Domain-Specialized Training:</span>
-                    <span className="block font-medium text-blue-700 mt-1">AI/ML Track:</span>
-                    <span className="text-sm">Python, TensorFlow, NLP, Computer Vision, Cloud Deployment</span>
-                    <span className="block font-medium text-blue-700 mt-2">Full Stack Track:</span>
-                    <span className="text-sm">Django/Spring Boot, REST APIs, Databases (SQL/NoSQL), CI/CD</span>
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-2">
+                    <span className="font-semibold">4. Affordable Career Investment:</span> <span className="font-medium">₹8000 per student</span> for 16 weeks of training + project support (for IT courses: AI/ML, Java Fullstack, Python Fullstack, Data Science).
+                  </p>
+                  <p className="text-gray-700 leading-relaxed mb-2">
+                    <span className="font-semibold">5. Mechanical Courses:</span> CAD/CAM, Product Design, Manufacturing. Contact for pricing details.
                   </p>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    <span className="font-semibold">4. Affordable Career Investment:</span> <span className="font-medium">₹8000 per student</span> for 16 weeks of training + project support.
+                    <span className="font-semibold">6. Civil Courses:</span> BIM Construction, BIM Infrastructure, BIM Architecture. Contact for pricing details.
+                    <a 
+                      href="https://wa.me/919606781005" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center mt-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 w-full max-w-xs"
+                    >
+                      Contact on WhatsApp (9606781005)
+                    </a>
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    <span className="font-semibold">5. Job Readiness:</span> Mock interviews, technical presentation practice, and LinkedIn profile reviews.
+                    <span className="font-semibold">6. Job Readiness:</span> Mock interviews, technical presentation practice, and LinkedIn profile reviews.
                   </p>
                 </div>
               </div>
@@ -374,7 +383,7 @@ const InternshipPage = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">100% Placement Support</h4>
-                      <p className="text-gray-600">Tie-ups with 500+ hiring partners (TCS, Infosys, startups).</p>
+                      <p className="text-gray-600">Tie-ups with 50+ hiring partners</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -384,15 +393,6 @@ const InternshipPage = () => {
                     <div>
                       <h4 className="font-semibold text-gray-800">Mock Interviews & Resume Workshops</h4>
                       <p className="text-gray-600">Tailored for freshers/experienced professionals.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 h-6 w-6 text-green-500 mr-3 mt-0.5">
-                      <CheckCircle className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-800">Lifetime Access to LMS</h4>
-                      <p className="text-gray-600">Course materials, project templates, and interview Q&A.</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -419,33 +419,27 @@ const InternshipPage = () => {
       </div>
 
       {/* CTA Section - Simplified */}
-      <div className="bg-blue-700 text-white py-16">
+      <div className="bg-white py-16 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Ready to Kickstart Your Career?
             </h2>
-            <p className="mt-4 text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
               Join our internship program and gain the skills and experience needed to succeed in your career.
             </p>
-            <div className="mt-8 flex justify-center space-x-4">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <button
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('registration-form').scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-600 transition-colors cursor-pointer"
+                className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-orange-600 transition-colors cursor-pointer"
               >
                 Apply Now
               </button>
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-6 py-3 border border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-blue-600 transition-colors"
-              >
-                Contact Us
-              </Link>
             </div>
-            <p className="mt-4 text-sm text-blue-200">
+            <p className="mt-4 text-sm text-gray-500">
               Next batch starting soon. Limited seats available.
             </p>
           </div>
