@@ -216,29 +216,29 @@ const Header = () => {
                 <ThemeToggle />
                 <Button variant="outline" className="w-full">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/">Home</Link>
+                    <Link to="/">Home</Link>
                   </SheetTrigger>
                 </Button>
                 
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/courses">Courses</Link>
+                    <Link to="/courses">Courses</Link>
                   </SheetTrigger>
                 </Button>
                 
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/about">About</Link>
+                    <Link to="/about">About</Link>
                   </SheetTrigger>
                 </Button>
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/blog">Blog</Link>
+                    <Link to="/blog">Blog</Link>
                   </SheetTrigger>
                 </Button>
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/contact">Contact</Link>
+                    <Link to="/contact">Contact</Link>
                   </SheetTrigger>
                 </Button>
               </div>
@@ -282,7 +282,7 @@ const Header = () => {
                         <h4 className="mb-4 text-sm font-medium">AutoDesk</h4>
                         {courseCategories[0].categories.flatMap(category => 
                           category.courses.map((course) => (
-                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
+                            <Link to={`/courses/${course.id}`} key={course.id}>
                               <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                                 {course.name}
                               </div>
@@ -295,7 +295,7 @@ const Header = () => {
                         <h4 className="mb-4 text-sm font-medium">Bentley Systems</h4>
                         {courseCategories[1].categories.flatMap(category => 
                           category.courses.map((course) => (
-                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
+                            <Link to={`/courses/${course.id}`} key={course.id}>
                               <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                                 {course.name}
                               </div>
@@ -383,7 +383,7 @@ const Header = () => {
                         <h4 className="mb-4 text-sm font-medium">Programming</h4>
                         {courseCategories[4].categories.flatMap(category => 
                           category.courses.map((course) => (
-                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
+                            <Link to={`/courses/${course.id}`} key={course.id}>
                               <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                                 {course.name}
                               </div>
