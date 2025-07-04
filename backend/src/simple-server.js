@@ -15,7 +15,7 @@ const app = express();
 const httpServer = http.createServer(app);
 
 // Initialize Socket.IO with CORS and path
-const io = socketIo(httpServer, {
+let io = socketIo(httpServer, {
   cors: {
     origin: [
       'http://localhost:5177',
@@ -345,8 +345,13 @@ const initializeServer = async () => {
       }
     };
 
-    // Initialize Socket.IO
-    io = socketIo(httpServer, ioOptions);
+    // Update Socket.IO configuration if not already initialized
+    if (!io) {
+      io = socketIo(httpServer, ioOptions);
+    } else {
+      // Update existing io instance with new options
+      io.engine.opts = { ...io.engine.opts, ...ioOptions };
+    }
     
     // Log all socket events
     io.use((socket, next) => {

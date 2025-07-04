@@ -2,7 +2,10 @@ import React, { useEffect, useState, useCallback } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
-const backendUrl = 'https://medini-edutech-9qbb.onrender.com';
+// For local development
+const backendUrl = 'http://localhost:5000';
+// For production
+// const backendUrl = 'https://medini-edutech-9qbb.onrender.com';
 const socket = io(backendUrl, {
   path: '/socket.io/',
   transports: ['websocket', 'polling'], // Try both WebSocket and polling
