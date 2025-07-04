@@ -13,105 +13,49 @@ dotenv.config({ path: path.join(__dirname, 'config', 'config.env') });
 // Initialize express
 const app = express();
 const httpServer = http.createServer(app);
-
-// Initialize Socket.IO with CORS and path
-let io = socketIo(httpServer, {
-  cors: {
-    origin: [
-      'http://localhost:5177',
-      'http://localhost:5173',
-      'https://mediniedutech.com',
-      'https://medini-edutech-rho.vercel.app'
-    ],
-    methods: ['GET', 'POST'],
-    credentials: true
-  },
-  path: '/socket.io/'  // Match the path we're using in the frontend
-});
-
-// Make io available globally for other modules
-global.io = io;
-
+let io = null;
 let server = null; // Initialize server as null
 
 // Request logging
 app.use(morgan('dev'));
 
-// Allowed origins for CORS and WebSocket
-const allowedOrigins = [
-  'http://localhost:5177',
-  'http://localhost:5173',
-  'https://medini-edutech-9qbb.onrender.com',
-  'https://mediniedutech.com',
-  'https://www.mediniedutech.com',
-  'https://medini-edutech-rho.vercel.app'
-];
-
 // CORS configuration
 const corsOptions = {
-  origin: function (origin, callback) {
-    console.log('Request origin:', origin);
-    
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.warn('Blocked by CORS:', origin);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    'http://localhost:5177',
+    'https://mediniedutech.com',
+    'https://medini-edutech-rho.vercel.app'
+  ],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: [
-    'Content-Type',
-    'Authorization',
-    'X-Requested-With',
-    'Accept',
-    'Origin',
-    'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Origin',
-    'X-Requested-With'
-  ],
-  exposedHeaders: [
-    'Content-Length',
-    'X-Foo',
-    'X-Bar',
-    'Access-Control-Allow-Origin',
-    'Access-Control-Allow-Credentials'
-  ],
-  optionsSuccessStatus: 200, // Some legacy browsers choke on 204
-  preflightContinue: false,
-  maxAge: 86400 // 24 hours
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 };
-
-// Enable CORS pre-flight
-app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
-
-// Apply CORS to all routes
-app.use((req, res, next) => {
-  // Log all incoming requests
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.originalUrl}`);
-  console.log('Request headers:', req.headers);
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    console.log('Handling preflight request');
-    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Max-Age', '86400'); // 24 hours
-    return res.status(200).end();
-  }
-  
-  // For non-OPTIONS requests, use the CORS middleware
-  cors(corsOptions)(req, res, next);
-});
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Middleware
 app.use(express.json({ limit: '10kb' }));
+
+// Serve static files from the React app
+const frontendBuildPath = path.join(__dirname, '../../dist');
+app.use(express.static(frontendBuildPath, {
+  index: 'index.html'
+}));
+
+// Redirect root to home page
+app.get('/', (req, res) => {
+  res.redirect('/home');
+});
+
+// Handle direct access to /home
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
+});
+
+// Handle client-side routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
+});
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Security headers
@@ -131,18 +75,19 @@ app.use('/api/auth', authRoutes);
 app.use('/api/internships', internshipRoutes);
 app.use('/api/students', studentRoutes);
 
-// Update MongoDB connection in simple-server.js
+// MongoDB connection
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI ,{
-      // Remove deprecated options
+    console.log('Connecting to MongoDB...');
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     });
-    console.log(`MongoDB Connected: ${conn.connection.host} on uri ${process.env.MONGO_URI}`);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    return conn;
   } catch (err) {
-    console.error(`MongoDB Connection Error: ${err.message}`);
-    process.exit(1);
+    console.error('MongoDB Connection Error:', err.message);
+    throw err; // Re-throw to be caught by the caller
   }
 };
 
@@ -294,69 +239,23 @@ process.on('SIGINT', gracefulShutdown);
 // Initialize server
 const initializeServer = async () => {
   try {
+    console.log('Starting server initialization...');
+    
+    // Connect to MongoDB
     await connectDB();
 
-    // Configure CORS for Socket.IO
-    const ioOptions = {
+    // Initialize Socket.IO
+    console.log('Initializing Socket.IO...');
+    io = socketIo(httpServer, {
       cors: {
-        origin: function(origin, callback) {
-          console.log('WebSocket connection origin:', origin);
-          
-          // Allow requests with no origin (like mobile apps or curl requests)
-          if (!origin) return callback(null, true);
-          
-          if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-          } else {
-            console.warn('WebSocket connection blocked by CORS:', origin);
-            callback(new Error('Not allowed by CORS'));
-          }
-        },
-        methods: ['GET', 'POST', 'OPTIONS'],
-        allowedHeaders: [
-          'Content-Type',
-          'Authorization',
-          'X-Requested-With',
-          'Accept',
-          'Origin',
-          'Access-Control-Allow-Headers',
-          'Access-Control-Allow-Origin'
+        origin: [
+          'http://localhost:5177',
+          'https://mediniedutech.com',
+          'https://medini-edutech-rho.vercel.app'
         ],
-        credentials: true,
-        optionsSuccessStatus: 200 // Some legacy browsers choke on 204
-      },
-      path: '/socket.io/',
-      serveClient: false,
-      pingTimeout: 60000,
-      pingInterval: 25000,
-      cookie: false,
-      // Enable compatibility mode
-      allowEIO3: true,
-      // Enable HTTP long-polling as fallback
-      transports: ['websocket', 'polling'],
-      // Increase the maximum allowed event listeners
-      maxHttpBufferSize: 1e8,
-      // Add connection state recovery
-      connectionStateRecovery: {
-        // The backup duration of the sessions and the packets
-        maxDisconnectionDuration: 2 * 60 * 1000,
-        // Whether to skip middlewares upon successful recovery
-        skipMiddlewares: true,
+        methods: ['GET', 'POST'],
+        credentials: true
       }
-    };
-
-    // Update Socket.IO configuration if not already initialized
-    if (!io) {
-      io = socketIo(httpServer, ioOptions);
-    } else {
-      // Update existing io instance with new options
-      io.engine.opts = { ...io.engine.opts, ...ioOptions };
-    }
-    
-    // Log all socket events
-    io.use((socket, next) => {
-      console.log('Socket connection attempt:', socket.handshake);
-      next();
     });
 
     // Make io accessible globally for event emission
@@ -367,46 +266,58 @@ const initializeServer = async () => {
       socket.on('disconnect', () => console.log('Client disconnected:', socket.id));
     });
 
-    // MongoDB Change Stream for real-time internship registrations
-    mongoose.connection.once('open', async () => {
-      console.log('MongoDB connected, setting up change stream...');
-      try {
-        const collection = mongoose.connection.collection('internships');
-        const changeStream = collection.watch();
-        
-        changeStream.on('change', (change) => {
-          console.log('Change detected in internships collection:', change.operationType);
-          if (change.operationType === 'insert') {
-            console.log('New internship registration:', change.fullDocument);
-            io.emit('internshipRegistered', change.fullDocument);
-          }
-        });
-        
-        console.log('Change stream initialized on internships collection');
-      } catch (error) {
-        console.error('Error setting up change stream:', error);
-      }
+    // MongoDB Change Stream for real-time student registrations
+    mongoose.connection.once('open', () => {
+      console.log('Setting up MongoDB change stream...');
+      const changeStream = mongoose.connection.collection('students').watch();
+      changeStream.on('change', (change) => {
+        if (change.operationType === 'insert') {
+          io.emit('studentRegistered', change.fullDocument);
+        }
+      });
     });
 
+    // Start the server
     server = httpServer.listen(PORT, '0.0.0.0', () => {
-      console.log(`
-        Server running in ${process.env.NODE_ENV || 'development'} mode
-        Listening on port ${PORT}
-        MongoDB: ${process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/medini_edutech'}
-        CORS enabled for development
-        Socket.IO enabled
-      `);
+      console.log('\n' + '='.repeat(60));
+      console.log(`🚀 Server is running in ${process.env.NODE_ENV || 'development'} mode`);
+      console.log(`🌐 Access the app at: http://localhost:${PORT}`);
+      console.log(`🔌 MongoDB: ${process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/medini_edutech'}`);
+      console.log('🔒 CORS enabled for configured origins');
+      console.log('🔌 Socket.IO enabled');
+      console.log('='.repeat(60) + '\n');
+    });
+
+    // Handle server errors
+    server.on('error', (error) => {
+      if (error.syscall !== 'listen') throw error;
+      
+      // Handle specific listen errors with friendly messages
+      switch (error.code) {
+        case 'EACCES':
+          console.error(`Port ${PORT} requires elevated privileges`);
+          process.exit(1);
+          break;
+        case 'EADDRINUSE':
+          console.error(`Port ${PORT} is already in use`);
+          process.exit(1);
+          break;
+        default:
+          throw error;
+      }
     });
 
     // Handle unhandled rejections
     process.on('unhandledRejection', (err) => {
-      console.error('UNHANDLED REJECTION! 💥', err.name, err.message);
+      console.error('\n' + '⚠️ UNHANDLED REJECTION! Shutting down...'.red);
+      console.error('Error:', err.name, err.message);
       console.error(err.stack);
       gracefulShutdown();
     });
 
   } catch (error) {
-    console.error('Failed to start server:', error);
+    console.error('\n❌ Failed to start server:');
+    console.error(error);
     process.exit(1);
   }
 };

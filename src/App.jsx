@@ -34,14 +34,24 @@ function App() {
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/mediniedutech/" element={<Home />} />
               <Route path="/courses/:courseName" element={<CourseDetailsPage />} />
+              <Route path="/mediniedutech/courses/:courseName" element={<CourseDetailsPage />} />
               <Route path="/courses" element={<Courses />} />
+              <Route path="/mediniedutech/courses" element={<Courses />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/mediniedutech/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/mediniedutech/about" element={<AboutPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/mediniedutech/blog" element={<BlogPage />} />
               <Route path="/internship" element={<InternshipPage />} />
+              <Route path="/mediniedutech/internship" element={<InternshipPage />} />
               <Route path="/internship/it" element={<ItInternshipPage />} />
+              <Route path="/mediniedutech/internship/it" element={<ItInternshipPage />} />
               <Route path="/dashboard" element={loggedIn ? <div style={{maxWidth:1100,margin:'0 auto',padding:'0 24px'}}><div style={{display:'flex',justifyContent:'flex-end',margin:'40px 0 14px 0'}}><button style={{background:'#ef4444',color:'#fff',border:'none',borderRadius:8,padding:'10px 24px',fontWeight:700,cursor:'pointer',fontSize:17,boxShadow:'0 2px 8px #0002'}} onClick={handleLogout}>Logout</button></div><StudentDashboard /></div> : <Login onLogin={handleLogin} />} />
+              <Route path="/mediniedutech/dashboard" element={loggedIn ? <div style={{maxWidth:1100,margin:'0 auto',padding:'0 24px'}}><div style={{display:'flex',justifyContent:'flex-end',margin:'40px 0 14px 0'}}><button style={{background:'#ef4444',color:'#fff',border:'none',borderRadius:8,padding:'10px 24px',fontWeight:700,cursor:'pointer',fontSize:17,boxShadow:'0 2px 8px #0002'}} onClick={handleLogout}>Logout</button></div><StudentDashboard /></div> : <Login onLogin={handleLogin} />} />
             </Routes>
           </main>
           <Footer />

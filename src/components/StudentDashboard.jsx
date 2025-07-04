@@ -1,45 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
-// For local development
-const backendUrl = 'http://localhost:5000';
-// For production
-// const backendUrl = 'https://medini-edutech-9qbb.onrender.com';
-const socket = io(backendUrl, {
-  path: '/socket.io/',
-  transports: ['websocket', 'polling'], // Try both WebSocket and polling
-  reconnection: true,
-  reconnectionAttempts: 10,
-  reconnectionDelay: 1000,
-  reconnectionDelayMax: 10000,
-  timeout: 20000,
-  secure: true,
-  rejectUnauthorized: false, // Only for development with self-signed certificates
-  query: {
-    clientType: 'dashboard',
-    version: '1.0.0',
-    _t: Date.now() // Prevent caching
-  },
-  // Additional WebSocket options
-  upgrade: true,
-  forceNew: true,
-  autoConnect: true,
-  transports: ['websocket', 'polling'],
-  extraHeaders: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
-  }
-});
-
-// Log all socket events
-const events = ['connect', 'connect_error', 'connect_timeout', 'reconnect', 'reconnecting', 'reconnect_error', 'reconnect_failed', 'disconnect', 'error'];
-events.forEach(event => {
-  socket.on(event, (data) => {
-    console.log(`Socket ${event}:`, data || 'No data');
-  });
-});
+const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:5001');
 
 const csvBtnStyle = {background:'#2563eb',color:'#fff',border:'none',borderRadius:8,padding:'8px 18px',fontWeight:600,cursor:'pointer',fontSize:15,boxShadow:'0 1px 4px #0001'};
 
@@ -67,263 +30,80 @@ const StudentDashboard = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProgram, setModalProgram] = useState(null);
 
-  // Configure axios defaults with retry logic
-  const api = axios.create({
-    baseURL: backendUrl,
-    timeout: 15000, // Increased timeout
-    withCredentials: false, // Keep this false to avoid CORS preflight issues
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0',
-      'X-Requested-With': 'XMLHttpRequest'
-    },
-    // Add retry logic
-    retry: 3,
-    retryDelay: (retryCount) => {
-      console.log(`Retry attempt: ${retryCount}`);
-      return retryCount * 1000; // time interval between retries
-    },
-    // Ensure axios doesn't try to handle the response
-    transformResponse: [
-      function (data) {
-        // Do whatever you want to transform the data
-        console.log('Response data:', data);
-        return data;
-      }
-    ]
-  });
-  
-  // Add a request interceptor to add headers
-  api.interceptors.request.use(
-    (config) => {
-      console.log(`Making ${config.method.toUpperCase()} request to ${config.url}`);
-      config.headers['X-Requested-With'] = 'XMLHttpRequest';
-      return config;
-    },
-    (error) => {
-      console.error('Request error:', error);
-      return Promise.reject(error);
-    }
-  );
-
-  // Add request interceptor to include auth token if available
-  api.interceptors.request.use(
-    (config) => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        config.headers['Authorization'] = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
-
-  // Add response interceptor to handle errors globally
-  api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error('Response error:', {
-          status: error.response.status,
-          data: error.response.data,
-          headers: error.response.headers
-        });
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error('No response received:', error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error('Request setup error:', error.message);
-      }
-      return Promise.reject(error);
-    }
-  );
-
-  // Function to make API call with retry logic
-  const fetchWithRetry = async (url, options = {}, retries = 3, backoff = 1000) => {
-    try {
-      const response = await api({
-        url,
-        method: 'GET',
-        ...options,
-        params: {
-          ...options.params,
-          _t: Date.now() // Always add timestamp to prevent caching
-        }
-      });
-      return response;
-    } catch (error) {
-      if (retries === 0) {
-        console.error(`Max retries reached for ${url}:`, error.message);
-        throw error;
-      }
-      console.warn(`Retrying ${url} (${retries} attempts left)...`);
-      await new Promise(resolve => setTimeout(resolve, backoff));
-      return fetchWithRetry(url, options, retries - 1, backoff * 2);
-    }
-  };
-
-  const fetchInternships = useCallback(async () => {
-    console.log('Fetching internships...');
-    try {
-      // Add a timestamp to prevent caching
-      const timestamp = Date.now();
-      
-      console.log('Making parallel API requests...');
-      
-      // Fetch both endpoints in parallel with retry logic
-      const [internshipsRes, statsRes] = await Promise.allSettled([
-        fetchWithRetry('/api/internships', {
-          params: { t: timestamp },
-          timeout: 15000
-        }).catch(error => {
-          console.error('Failed to fetch internships after retries:', error.message);
-          return { data: { data: [] } }; // Fallback empty data
-        }),
-        
-        fetchWithRetry('/api/internships/stats', {
-          params: { t: timestamp },
-          timeout: 15000
-        }).catch(error => {
-          console.error('Failed to fetch stats after retries:', error.message);
-          return { data: { success: false, data: [] } }; // Fallback empty stats
-        })
-      ]);
-      
-      // Extract values from settled promises
-      const internshipsData = internshipsRes.status === 'fulfilled' ? 
-        internshipsRes.value.data : { data: [] };
-      const statsData = statsRes.status === 'fulfilled' ? 
-        statsRes.value.data : { success: false, data: [] };
-      
-      console.log('API Responses:', {
-        internships: {
-          status: internshipsRes.status,
-          data: internshipsData
-        },
-        stats: {
-          status: statsRes.status,
-          data: statsData
-        }
-      });
-      
-      // Process internships
-      const internships = Array.isArray(internshipsData?.data) 
-        ? internshipsData.data 
-        : [];
-      setStudents(internships);
-      
-      // Process stats - try server stats first, fallback to client-side calculation
-      if (statsData?.success && Array.isArray(statsData.data)) {
-        // Convert server stats to our format
-        const serverStats = { IT: 0, Civil: 0, Mechanical: 0 };
-        statsData.data.forEach(stat => {
-          if (stat._id && serverStats.hasOwnProperty(stat._id)) {
-            serverStats[stat._id] = stat.count;
-          }
-        });
-        setStats(serverStats);
-      } else {
-        // Fallback: Calculate stats from internships data
-        console.warn('Using client-side stats calculation');
-        const newStats = { IT: 0, Civil: 0, Mechanical: 0 };
-        internships.forEach(internship => {
-          if (internship.program && newStats.hasOwnProperty(internship.program)) {
-            newStats[internship.program]++;
-          }
-        });
-        setStats(newStats);
-      }
-      
-    } catch (error) {
-      console.error('Error in fetchInternships:', {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-        url: error.config?.url,
-        method: error.config?.method,
-      });
-      
-      // Set empty state on error to prevent UI from breaking
-      setStudents([]);
-      setStats({ IT: 0, Civil: 0, Mechanical: 0 });
-    }
-  }, [backendUrl]);
-
   useEffect(() => {
-    console.log('Setting up WebSocket connection...');
-    
-    const handleConnect = () => {
-      console.log('Connected to WebSocket server');
-      fetchInternships(); // Fetch latest data on connect
-    };
-    
-    const handleDisconnect = (reason) => {
-      console.warn('WebSocket disconnected:', reason);
-      if (reason === 'io server disconnect') {
-        // The disconnection was initiated by the server, you need to reconnect manually
-        socket.connect();
-      }
-    };
-    
-    const handleNewInternship = (newInternship) => {
-      console.log('New internship registered via WebSocket:', newInternship);
-      
-      // Update students list
-      setStudents(prev => {
-        // Prevent duplicates
-        const exists = prev.some(s => s._id === newInternship._id);
-        return exists ? prev : [newInternship, ...prev];
+    // Fetch internship stats
+    axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/internships`)
+      .then(res => setStudents(res.data && Array.isArray(res.data.data) ? res.data.data : []))
+      .catch(() => setStudents([]));
+
+    // First, let's see what data we have for students
+    axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/internships`)
+      .then(res => {
+        console.log('All students data:', res.data);
+        const allStudents = Array.isArray(res.data?.data) ? res.data.data : [];
+        // Count students per program manually
+        const manualCounts = {
+          IT: allStudents.filter(s => (s.program || '').toLowerCase() === 'it').length,
+          Civil: allStudents.filter(s => (s.program || '').toLowerCase() === 'civil').length,
+          Mechanical: allStudents.filter(s => (s.program || '').toLowerCase() === 'mechanical').length
+        };
+        console.log('Manually calculated counts:', manualCounts);
+        setStats(manualCounts);
+      })
+      .catch(err => {
+        console.error('Error fetching all students:', err);
+        setStats({ IT: 0, Civil: 0, Mechanical: 0 });
       });
-      
-      // Update stats
-      if (newInternship.program) {
-        setStats(prev => ({
-          ...prev,
-          [newInternship.program]: (prev[newInternship.program] || 0) + 1
-        }));
+
+    // Keep the original stats API call but with better error handling
+    axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/internships/stats`)
+      .then(res => {
+        console.log('Stats API Response:', res.data);
+        if (!res.data) {
+          console.warn('Empty response from stats API');
+          return;
+        }
+        
+        const statObj = { IT: 0, Civil: 0, Mechanical: 0 };
+        const statsData = Array.isArray(res.data) ? res.data : [];
+        
+        console.log('Processing stats data:', statsData);
+        
+        statsData.forEach(item => {
+          if (!item || !item._id) return;
+          
+          // Try different variations of the program name
+          const program = (item._id || '').toString().toLowerCase().trim();
+          console.log(`Processing program: ${program} with count: ${item.count}`);
+          
+          if (program === 'it' || program === 'information technology') {
+            statObj.IT = parseInt(item.count) || 0;
+          } else if (program === 'civil') {
+            statObj.Civil = parseInt(item.count) || 0;
+          } else if (program === 'mechanical') {
+            statObj.Mechanical = parseInt(item.count) || 0;
+          }
+        });
+        
+        console.log('Final stats from API:', statObj);
+        setStats(statObj);
+      })
+      .catch(err => {
+        console.error('Error in stats API:', err);
+        // Don't reset stats here as we might have manual counts
+      });
+
+    // Listen for real-time internship registrations
+    socket.on('internshipRegistered', newStudent => {
+      setStudents(prev => [newStudent, ...prev]);
+      // Optionally, update stats live
+      if (newStudent.program && ['IT', 'Civil', 'Mechanical'].includes(newStudent.program)) {
+        setStats(prev => ({ ...prev, [newStudent.program]: (prev[newStudent.program] || 0) + 1 }));
       }
-    };
-    
-    const handleError = (error) => {
-      console.error('WebSocket error:', error);
-    };
-    
-    // Set up event listeners
-    socket.on('connect', handleConnect);
-    socket.on('disconnect', handleDisconnect);
-    socket.on('internshipRegistered', handleNewInternship);
-    socket.on('error', handleError);
-    socket.on('connect_error', (error) => {
-      console.error('WebSocket connection error:', error);
-      // Attempt to reconnect after a delay
-      setTimeout(() => socket.connect(), 5000);
     });
-    
-    // Initial data fetch
-    fetchInternships();
-    
-    // Set up interval to refresh data every 30 seconds as fallback
-    const refreshInterval = setInterval(fetchInternships, 30000);
-    
-    // Clean up WebSocket connection and interval
-    return () => {
-      console.log('Cleaning up WebSocket connection...');
-      socket.off('connect', handleConnect);
-      socket.off('disconnect', handleDisconnect);
-      socket.off('internshipRegistered', handleNewInternship);
-      socket.off('error', handleError);
-      socket.off('connect_error');
-      clearInterval(refreshInterval);
-    };
-  }, [fetchInternships]);
+
+    return () => socket.disconnect();
+  }, []);
 
   // Calculate total and percentages for progress bars
   const total = stats.IT + stats.Civil + stats.Mechanical;
@@ -392,9 +172,12 @@ const StudentDashboard = () => {
             title={`View all ${card.label} students`}
           >
             <div style={{ position: 'absolute', top: 22, right: 30, fontSize: 32, opacity: 0.23 }}>{card.icon}</div>
-            <div style={{ fontSize: 38, fontWeight: 800, marginBottom: 8 }}>{stats[card.key]}</div>
+            <div style={{ fontSize: 38, fontWeight: 800, marginBottom: 8 }}>{stats[card.key] || 0}</div>
             <div style={{ fontWeight: 600, fontSize: 22 }}>{card.label}</div>
             <div style={{ fontSize: 15, opacity: 0.85, marginTop: 8 }}>{card.desc}</div>
+            <div style={{ fontSize: 14, opacity: 0.9, marginTop: 12, background: 'rgba(255,255,255,0.2)', padding: '4px 8px', borderRadius: 12, display: 'inline-block' }}>
+              {stats[card.key] || 0} {stats[card.key] === 1 ? 'Member' : 'Members'} Registered
+            </div>
           </div>
         ))}
       </div>

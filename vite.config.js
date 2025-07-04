@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  base: '/', // This ensures the app is served from the root
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -12,16 +12,10 @@ export default defineConfig({
   },
   server: {
     port: 5177,
-    host: '0.0.0.0',
+    historyApiFallback: true,
     proxy: {
-      '^/socket.io': {
-        target: 'http://127.0.0.1:5000',
-        ws: true,
-        changeOrigin: true,
-        secure: false,
-      },
       '^/api': {
-        target: 'http://127.0.0.1:5000',
+        target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
