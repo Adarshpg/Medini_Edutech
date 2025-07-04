@@ -37,7 +37,7 @@ let server = null; // Initialize server as null
 // Request logging
 app.use(morgan('dev'));
 
-// CORS configuration
+// Allowed origins for CORS and WebSocket
 const allowedOrigins = [
   'http://localhost:5177',
   'http://localhost:5173',
@@ -47,6 +47,7 @@ const allowedOrigins = [
   'https://medini-edutech-rho.vercel.app'
 ];
 
+// CORS configuration
 const corsOptions = {
   origin: function (origin, callback) {
     console.log('Request origin:', origin);
@@ -296,15 +297,6 @@ const initializeServer = async () => {
     await connectDB();
 
     // Configure CORS for Socket.IO
-    const allowedOrigins = [
-      'http://localhost:5177',
-      'http://localhost:5173',
-      'https://medini-edutech-9qbb.onrender.com',
-      'https://mediniedutech.com',
-      'https://www.mediniedutech.com',
-      'https://medini-edutech-rho.vercel.app'
-    ];
-
     const ioOptions = {
       cors: {
         origin: function(origin, callback) {
