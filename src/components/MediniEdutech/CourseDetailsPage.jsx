@@ -57,63 +57,115 @@ const specialMappings = {
   'autocad-mechanical': 'autocad',
   '3ds-max': '3ds-max',
   'bim-construction': 'revit-architecture',
-  'bim-infrastructure': 'civil-3d'
+  'bim-infrastructure': 'civil-3d',
+  'openroads-designer': 'openroads-designer',
+  'openroads': 'openroads-designer',
+  'open-roads': 'openroads-designer',
+  'open roads': 'openroads-desider'
 };
 
 const findCourse = (courseName) => {
   try {
+    if (!courseName) {
+      console.error('No course name provided');
+      return null;
+    }
+    
+    // Clean up the course name
+    const cleanCourseName = courseName.trim().toLowerCase();
+    console.log('Cleaned course name:', cleanCourseName);
+    
+    // Check special mappings first
+    if (specialMappings[cleanCourseName]) {
+      const mappedId = specialMappings[cleanCourseName];
+      console.log(`Special mapping found: ${cleanCourseName} -> ${mappedId}`);
+    }
+    
     // Get all courses from all providers and categories
     const allCourses = [];
     
     courseData.courseProviders.forEach(provider => {
-      provider.categories.forEach(category => {
-        category.courses.forEach(course => {
-          allCourses.push({...course, provider: provider.id, category: category.name});
+      provider.categories?.forEach(category => {
+        category.courses?.forEach(course => {
+          allCourses.push({
+            ...course, 
+            provider: provider.id, 
+            category: category.name,
+            providerName: provider.name,
+            categoryName: category.name
+          });
         });
       });
     });
     
-    // Check for special mappings first
+    console.log(`Searching for course: '${cleanCourseName}' among ${allCourses.length} courses`);
+    
+    // Try different matching strategies
     let found = null;
-    if (specialMappings[courseName]) {
-      const mappedId = specialMappings[courseName];
-      console.log(`Special mapping found: ${courseName} -> ${mappedId}`);
+    
+    // 1. Exact ID match
+    found = allCourses.find(c => c.id.toLowerCase() === cleanCourseName);
+    if (found) {
+      console.log('Found by exact ID match');
+      return found;
+    }
+    
+    // 2. Special mapping
+    if (specialMappings[cleanCourseName]) {
+      const mappedId = specialMappings[cleanCourseName];
       found = allCourses.find(c => c.id === mappedId);
-    }
-    
-    // If no special mapping or not found with mapping, try exact match
-    if (!found) {
-      found = allCourses.find(c => c.id === courseName);
-    }
-    
-    // If still not found, try different matching strategies
-    if (!found) {
-      
-      // Try without hyphens
-      const simplifiedId = courseName.replace(/-/g, '');
-      found = allCourses.find(c => c.id.replace(/-/g, '') === simplifiedId);
-      
-      // Try partial match
-      if (!found) {
-        found = allCourses.find(c => 
-          courseName.includes(c.id) || c.id.includes(courseName)
-        );
-      }
-      
-      // If still not found, use the first course (for testing)
-      if (!found && allCourses.length > 0) {
-        found = allCourses[0];
+      if (found) {
+        console.log(`Found by special mapping: ${cleanCourseName} -> ${mappedId}`);
+        return found;
       }
     }
+    
+    // 3. Check if courseName is part of any ID or title
+    found = allCourses.find(c => 
+      c.id.toLowerCase().includes(cleanCourseName) ||
+      (c.title && c.title.toLowerCase().includes(cleanCourseName)) ||
+      (c.name && c.name.toLowerCase().includes(cleanCourseName))
+    );
     
     if (found) {
+      console.log('Found by partial match');
       return found;
-    } else {
-      console.error('No courses found at all');
+    }
+    
+    // 4. Try without hyphens
+    const noHyphenName = cleanCourseName.replace(/-/g, '');
+    found = allCourses.find(c => 
+      c.id.toLowerCase().replace(/-/g, '') === noHyphenName ||
+      (c.title && c.title.toLowerCase().replace(/-/g, '').includes(noHyphenName)) ||
+      (c.name && c.name.toLowerCase().replace(/-/g, '').includes(noHyphenName))
+    );
+    
+    if (found) {
+      console.log('Found by matching without hyphens');
+      return found;
     }
   } catch (error) {
     console.error('Error finding course:', error);
   }
+  
+  // If we get here, no course was found
+  console.log('No matching course found');
+  try {
+    console.log('Available course IDs:', courseData.courseProviders.flatMap(
+      p => p.categories?.flatMap(
+        c => c.courses?.map(cc => ({
+          id: cc.id,
+          name: cc.name || cc.title,
+          provider: p.id,
+          category: c.name
+        }))
+      ).filter(Boolean).flat()
+    ));
+  } catch (e) {
+    console.error('Error logging available courses:', e);
+  }
+  
+  return null;
 }
 
 export default function CourseDetailsPage() {
@@ -123,9 +175,34 @@ export default function CourseDetailsPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    console.log('CourseDetailsPage mounted with courseName:', courseName);
     const foundCourse = findCourse(courseName);
+    console.log('Found course data:', foundCourse);
+    
     if (foundCourse) {
+      console.log('Setting course state with:', foundCourse);
       setCourse(foundCourse);
+    } else {
+      console.error('No course found for:', courseName);
+      // Try to find what courses are available
+      try {
+        const allCourses = [];
+        courseData.courseProviders.forEach(provider => {
+          provider.categories?.forEach(category => {
+            category.courses?.forEach(course => {
+              allCourses.push({
+                id: course.id,
+                name: course.name,
+                provider: provider.id,
+                category: category.name
+              });
+            });
+          });
+        });
+        console.log('All available courses:', allCourses);
+      } catch (error) {
+        console.error('Error getting course list:', error);
+      }
     }
     setLoading(false);
   }, [courseName]);

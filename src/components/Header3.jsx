@@ -216,34 +216,29 @@ const Header = () => {
                 <ThemeToggle />
                 <Button variant="outline" className="w-full">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/">Home</Link>
-                  </SheetTrigger>
-                </Button>
-                
-                  <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/courses">Courses</Link>
+                    <Link to="/mediniedutech/">Home</Link>
                   </SheetTrigger>
                 </Button>
                 
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/about">About</Link>
+                    <Link to="/mediniedutech/courses">Courses</Link>
+                  </SheetTrigger>
+                </Button>
+                
+                <Button variant="outline" className="w-full flex items-center">
+                  <SheetTrigger asChild className="md:hidden">
+                    <Link to="/mediniedutech/about">About</Link>
                   </SheetTrigger>
                 </Button>
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/blog">Blog</Link>
+                    <Link to="/mediniedutech/blog">Blog</Link>
                   </SheetTrigger>
                 </Button>
-                {/* <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/awards">Awards</Link>
-                  </SheetTrigger>
-                </Button> */}
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
-                    <Link to="/contact">Contact</Link>
+                    <Link to="/mediniedutech/contact">Contact</Link>
                   </SheetTrigger>
                 </Button>
               </div>
@@ -273,10 +268,10 @@ const Header = () => {
             
                 <div className="flex items-center gap-6 py-3 px-4 min-w-max">
                 <div className="nav-item">
-                  <Link to="/">Home</Link>
+                  <Link to="/mediniedutech/">Home</Link>
                 </div>
                 {/* Courses */}
-                  <Popover>
+                <Popover>
                   <PopoverTrigger className="flex items-center font-semibold hover:text-amber-600 cursor-pointer group">
                     Courses
                     <ChevronDown className="ml-1 group-hover:rotate-180 transition-transform" size={16} />
@@ -287,7 +282,7 @@ const Header = () => {
                         <h4 className="mb-4 text-sm font-medium">AutoDesk</h4>
                         {courseCategories[0].categories.flatMap(category => 
                           category.courses.map((course) => (
-                            <Link to={`/courses/${course.id}`} key={course.id}>
+                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
                               <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                                 {course.name}
                               </div>
@@ -300,7 +295,7 @@ const Header = () => {
                         <h4 className="mb-4 text-sm font-medium">Bentley Systems</h4>
                         {courseCategories[1].categories.flatMap(category => 
                           category.courses.map((course) => (
-                            <Link to={`/medinischoolofdesign/courses/${course.id}`} key={course.id}>
+                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
                               <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                                 {course.name}
                               </div>
@@ -311,24 +306,24 @@ const Header = () => {
                       
                       <ScrollArea className="w-1/3 p-4 border-r">
                         <h4 className="mb-4 text-sm font-medium">Dassault</h4>
-                        <Link to={`/medinischoolofdesign/courses/solidworks`}>
+                        <Link to={`/mediniedutech/courses/solidworks`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             SolidWorks
                           </div>
                         </Link>
                         <div className="text-sm py-2 font-medium text-gray-700 dark:text-gray-300 mt-3 mb-1">Trimble</div>
-                        <Link to={`/medinischoolofdesign/courses/sketchup`}>
+                        <Link to={`/mediniedutech/courses/sketchup`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             SketchUp
                           </div>
                         </Link>
                         <div className="text-sm py-2 font-medium text-gray-700 dark:text-gray-300 mt-3 mb-1">Chaos</div>
-                        <Link to={`/medinischoolofdesign/courses/vray`}>
+                        <Link to={`/mediniedutech/courses/vray`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             V-Ray
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/enscape`}>
+                        <Link to={`/mediniedutech/courses/enscape`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Enscape
                           </div>
@@ -337,47 +332,47 @@ const Header = () => {
                       
                       <ScrollArea className="w-1/3 p-4 border-r">
                         <h4 className="mb-4 text-sm font-medium">Others</h4>
-                        <Link to={`/medinischoolofdesign/courses/lumion`}>
+                        <Link to={`/mediniedutech/courses/lumion`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Lumion
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/rhino`}>
+                        <Link to={`/mediniedutech/courses/rhino`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Rhino
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/grasshopper`}>
+                        <Link to={`/mediniedutech/courses/grasshopper`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Grasshopper
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/photoshop`}>
+                        <Link to={`/mediniedutech/courses/photoshop`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Photoshop
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/illustrator`}>
+                        <Link to={`/mediniedutech/courses/illustrator`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Illustrator
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/etabs`}>
+                        <Link to={`/mediniedutech/courses/etabs`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             ETABS
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/ms-project`}>
+                        <Link to={`/mediniedutech/courses/ms-project`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             MS Project
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/qgis`}>
+                        <Link to={`/mediniedutech/courses/qgis`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             QGIS
                           </div>
                         </Link>
-                        <Link to={`/medinischoolofdesign/courses/adobe-animate`}>
+                        <Link to={`/mediniedutech/courses/adobe-animate`}>
                           <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                             Adobe Animate
                           </div>
@@ -388,7 +383,7 @@ const Header = () => {
                         <h4 className="mb-4 text-sm font-medium">Programming</h4>
                         {courseCategories[4].categories.flatMap(category => 
                           category.courses.map((course) => (
-                            <Link to={`/medinischoolofdesign/courses/${course.id}`} key={course.id}>
+                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
                               <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
                                 {course.name}
                               </div>
@@ -405,17 +400,17 @@ const Header = () => {
                 </div> */}
 
                 <div className="nav-item">
-                  <Link to="/blog">Blog</Link>
+                  <Link to="/mediniedutech/blog">Blog</Link>
                 </div>
 
                 <div className="nav-item">
-                  <Link to="/about">About</Link>
+                  <Link to="/mediniedutech/about">About</Link>
                 </div>
                 <div className="nav-item">
-                  <Link to="/contact">Contact</Link>
+                  <Link to="/mediniedutech/contact">Contact</Link>
                 </div>
                 <div className="nav-item">
-                  <Link to="/internship" className="font-semibold hover:text-amber-600">
+                  <Link to="/mediniedutech/internship" className="font-semibold hover:text-amber-600">
                     Internship Courses
                   </Link>
                 </div>
