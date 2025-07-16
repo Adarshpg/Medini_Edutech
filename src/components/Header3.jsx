@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
-import {ChevronDown,} from "lucide-react"
+import { ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -20,38 +20,51 @@ const Header = () => {
   const [showLinks, setShowLinks] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false)
+  const [mainPopoverOpen, setMainPopoverOpen] = useState(false)
+  const [openPopovers, setOpenPopovers] = useState({})
+
+  const handleCourseClick = (providerId) => {
+    // Close both the main popover and the provider's submenu
+    setMainPopoverOpen(false)
+    setOpenPopovers(prev => ({
+      ...prev,
+      [providerId]: false
+    }))
+  }
 
   
-  // get all Courses
+  // Map all course providers to the menu structure
   const courseCategories = [
     {
+      id: "AUTODESK",
       name: "AutoDesk",
       categories: coursesData.courseProviders.find(p => p.id === "AUTODESK")?.categories || []
     },
     {
+      id: "BENTLEY",
       name: "Bentley Systems",
       categories: coursesData.courseProviders.find(p => p.id === "BENTLEY")?.categories || []
     },
     {
+      id: "DASSAULT",
       name: "Dassault",
       categories: coursesData.courseProviders.find(p => p.id === "DASSAULT")?.categories || []
     },
     {
-      name: "Others",
+      id: "BIM_CONSTRUCTION",
+      name: "BIM & Construction",
+      categories: coursesData.courseProviders.find(p => p.id === "BIM_CONSTRUCTION")?.categories || []
+    },
+    {
+      id: "OTHER",
+      name: "Other Software",
       categories: coursesData.courseProviders.find(p => p.id === "OTHER")?.categories || []
     },
     {
-      name: "Programming",
-      categories: [{
-        name: "Web & App Development",
-        courses: [
-          { id: "java-fullstack", name: "Java Fullstack" },
-          { id: "python-fullstack", name: "Python Fullstack" },
-          { id: "mern-stack", name: "MERN Stack" },
-          { id: "cloud-application", name: "Cloud Application Development" }
-        ]
-      }]
+      id: "IT",
+      name: "Programming & IT",
+      categories: coursesData.courseProviders.find(p => p.id === "IT")?.categories || []
     }
   ];
 
@@ -271,126 +284,44 @@ const Header = () => {
                   <Link to="/mediniedutech/">Home</Link>
                 </div>
                 {/* Courses */}
-                <Popover>
+                <Popover open={mainPopoverOpen} onOpenChange={setMainPopoverOpen}>
                   <PopoverTrigger className="flex items-center font-semibold hover:text-amber-600 cursor-pointer group">
                     Courses
-                    <ChevronDown className="ml-1 group-hover:rotate-180 transition-transform" size={16} />
+                    <ChevronDown className={`ml-1 transition-transform ${mainPopoverOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} size={16} />
                   </PopoverTrigger>
-                  <PopoverContent className="w-[800px] p-0">
-                    <div className="flex">
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">AutoDesk</h4>
-                        {courseCategories[0].categories.flatMap(category => 
-                          category.courses.map((course) => (
-                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
-                              <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                                {course.name}
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Bentley Systems</h4>
-                        {courseCategories[1].categories.flatMap(category => 
-                          category.courses.map((course) => (
-                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
-                              <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                                {course.name}
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Dassault</h4>
-                        <Link to={`/mediniedutech/courses/solidworks`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            SolidWorks
-                          </div>
-                        </Link>
-                        <div className="text-sm py-2 font-medium text-gray-700 dark:text-gray-300 mt-3 mb-1">Trimble</div>
-                        <Link to={`/mediniedutech/courses/sketchup`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            SketchUp
-                          </div>
-                        </Link>
-                        <div className="text-sm py-2 font-medium text-gray-700 dark:text-gray-300 mt-3 mb-1">Chaos</div>
-                        <Link to={`/mediniedutech/courses/vray`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            V-Ray
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/enscape`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Enscape
-                          </div>
-                        </Link>
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Others</h4>
-                        <Link to={`/mediniedutech/courses/lumion`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Lumion
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/rhino`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Rhino
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/grasshopper`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Grasshopper
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/photoshop`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Photoshop
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/illustrator`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Illustrator
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/etabs`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            ETABS
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/ms-project`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            MS Project
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/qgis`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            QGIS
-                          </div>
-                        </Link>
-                        <Link to={`/mediniedutech/courses/adobe-animate`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Adobe Animate
-                          </div>
-                        </Link>
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Programming</h4>
-                        {courseCategories[4].categories.flatMap(category => 
-                          category.courses.map((course) => (
-                            <Link to={`/mediniedutech/courses/${course.id}`} key={course.id}>
-                              <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                                {course.name}
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </ScrollArea>
+                  <PopoverContent className="w-64 p-0" sideOffset={5}>
+                    <div className="py-1">
+                      {courseCategories.map((provider, index) => (
+                        <Popover 
+                          key={provider.id}
+                          open={openPopovers[provider.id]}
+                          onOpenChange={(open) => setOpenPopovers(prev => ({
+                            ...prev,
+                            [provider.id]: open
+                          }))}
+                        >
+                          <PopoverTrigger asChild>
+                            <div className="flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+                              <span>{provider.name}</span>
+                              <ChevronRight className="h-4 w-4 text-gray-500" />
+                            </div>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-64 p-0 ml-1" side="right" align="start">
+                            <div className="py-2 max-h-[60vh] overflow-y-auto">
+                              {provider.categories.flatMap(category => category.courses).map((course) => (
+                                <Link 
+                                  to={`/mediniedutech/courses/${course.id}`} 
+                                  key={course.id}
+                                  className="block px-4 py-2 text-sm hover:bg-amber-50 hover:text-amber-600"
+                                  onClick={() => handleCourseClick(provider.id)}
+                                >
+                                  {course.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </PopoverContent>
+                        </Popover>
+                      ))}
                     </div>
                   </PopoverContent>
                 </Popover>

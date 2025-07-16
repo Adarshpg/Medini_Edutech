@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 
-const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:5001');
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const socket = io(API_BASE_URL);
 
 const csvBtnStyle = {background:'#2563eb',color:'#fff',border:'none',borderRadius:8,padding:'8px 18px',fontWeight:600,cursor:'pointer',fontSize:15,boxShadow:'0 1px 4px #0001'};
 
@@ -32,12 +33,12 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     // Fetch internship stats
-    axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/internships`)
+    axios.get(`${API_BASE_URL}/api/internships`)
       .then(res => setStudents(res.data && Array.isArray(res.data.data) ? res.data.data : []))
       .catch(() => setStudents([]));
 
     // First, let's see what data we have for students
-    axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/internships`)
+    axios.get(`${API_BASE_URL}/api/internships`)
       .then(res => {
         console.log('All students data:', res.data);
         const allStudents = Array.isArray(res.data?.data) ? res.data.data : [];
@@ -56,7 +57,7 @@ const StudentDashboard = () => {
       });
 
     // Keep the original stats API call but with better error handling
-    axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/internships/stats`)
+    axios.get(`${API_BASE_URL}/api/internships/stats`)
       .then(res => {
         console.log('Stats API Response:', res.data);
         if (!res.data) {

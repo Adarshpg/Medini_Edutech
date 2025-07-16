@@ -35,27 +35,6 @@ app.options('*', cors(corsOptions));
 
 // Middleware
 app.use(express.json({ limit: '10kb' }));
-
-// Serve static files from the React app
-const frontendBuildPath = path.join(__dirname, '../../dist');
-app.use(express.static(frontendBuildPath, {
-  index: 'index.html'
-}));
-
-// Redirect root to home page
-app.get('/', (req, res) => {
-  res.redirect('/home');
-});
-
-// Handle direct access to /home
-app.get('/home', (req, res) => {
-  res.sendFile(path.join(frontendBuildPath, 'index.html'));
-});
-
-// Handle client-side routing, return all requests to React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendBuildPath, 'index.html'));
-});
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Security headers
@@ -66,7 +45,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Import and mount routers
+// API Routes - Must come before static file serving
 const authRoutes = require('./routes/authRoutes');
 const internshipRoutes = require('./routes/internshipRoutes');
 const studentRoutes = require('./routes/studentRoutes');
@@ -74,6 +53,25 @@ const studentRoutes = require('./routes/studentRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/internships', internshipRoutes);
 app.use('/api/students', studentRoutes);
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Server is running',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Serve static files from the React app (must come after API routes)
+const frontendBuildPath = path.join(__dirname, '../../dist');
+app.use(express.static(frontendBuildPath));
+
+// Handle client-side routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
+});
 
 // MongoDB connection
 const connectDB = async () => {
