@@ -58,7 +58,7 @@ const Header = () => {
     },
     {
       id: "OTHER",
-      name: "Other Software",
+      name: "Others",
       categories: coursesData.courseProviders.find(p => p.id === "OTHER")?.categories || []
     },
     {

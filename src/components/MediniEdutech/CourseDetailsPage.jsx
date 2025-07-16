@@ -345,7 +345,12 @@ export default function CourseDetailsPage() {
                   </div>
                 )}
 
-                <Button className="w-full mt-6">Enroll Now</Button>
+                <Button 
+                  className="w-full mt-6"
+                  onClick={() => window.open('https://register.medinitechnologies.in/', '_blank')}
+                >
+                  Enroll Now
+                </Button>
               </CardContent>
             </Card>
           </div>
