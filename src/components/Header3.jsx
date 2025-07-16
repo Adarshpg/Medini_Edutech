@@ -162,11 +162,7 @@ const Header = () => {
               src={logo}
               alt="Medini"
               className="h-14 mr-2"
-            />
-            
-
-
-            
+            />  
           </NavLink>
 
           {/* Desktop Navigation */}

@@ -6,17 +6,17 @@ import FeedbackSection from "./FeedbackSection"
 
 const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
 const autocad = "/IMAGES/AutoCAD.jpg"
-const civil3d = "/IMAGES/tool-inc-AkpJnHXu6Hg-unsplash.jpg"
+const civil3d = "/IMAGES/tool-inc-ApKnJHXu6Hg-unsplash.jpg"
 const solidworks = "/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
 const microstation = "/IMAGES/getty-images-ItieuN1ec0k-unsplash.jpg"
 const itImage = "/IMAGES/thisisengineering-AvGIBmvdcac-unsplash.jpg"
 const infraworks = "/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg"
 
-
 function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovering, setIsHovering] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
+  const [visibleCards, setVisibleCards] = useState(4)
   const [showITPopup, setShowITPopup] = useState(false)
   const [showAECPopup, setShowAECPopup] = useState(false)
   const [showProductDesignPopup, setShowProductDesignPopup] = useState(false)
@@ -67,44 +67,42 @@ function HeroSection() {
       link: "/courses/it"
     }
   ]
-  
-  // Calculate header height on mount and window resize
+
+  // Handle responsive number of visible cards
   useEffect(() => {
-    const calculateHeaderHeight = () => {
-      const header = document.querySelector("header")
-      if (header) {
-        setHeaderHeight(header.offsetHeight)
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCards(1)
+      } else if (window.innerWidth < 1024) {
+        setVisibleCards(2);
+      } else if (window.innerWidth < 1280) {
+        setVisibleCards(3);
+      } else {
+        setVisibleCards(4);
       }
-    }
+    };
 
-    // Initial calculation
-    calculateHeaderHeight()
+    // Set initial value
+    handleResize();
 
-    // Recalculate on resize
-    window.addEventListener("resize", calculateHeaderHeight)
+    // Add event listener
+    window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener("resize", calculateHeaderHeight)
-    }
-  }, [])
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const slideLeft = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
-    } else {
-      // Loop back to the end
-      setCurrentIndex(cards.length - 4)
-    }
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? Math.max(0, cards.length - visibleCards) : prevIndex - 1
+    );
+  };
 
   const slideRight = () => {
-    if (currentIndex < cards.length - 4) {
-      setCurrentIndex(currentIndex + 1)
-    } else {
-      // Loop back to the beginning
-      setCurrentIndex(0)
-    }
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex >= cards.length - visibleCards ? 0 : prevIndex + 1
+    );
+  };
 
   useEffect(() => {
     let interval
@@ -112,18 +110,16 @@ function HeroSection() {
     if (!isHovering) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) =>
-          prevIndex >= cards.length - 4 ? 0 : prevIndex + 1
+          prevIndex >= cards.length - visibleCards ? 0 : prevIndex + 1
         )
       }, 5000) // Change every 5 seconds for smoother experience
     }
 
     return () => clearInterval(interval)
-  }, [cards.length, isHovering])
-
-  const visibleCards = 4 // Number of cards visible at once
+  }, [isHovering, cards.length, visibleCards])
 
   return (
-    <>
+    <div className="relative">
       {/* Hero Section */}
       <section className="relative overflow-hidden h-screen flex items-center" ref={heroRef}>
         {/* Background with overlay */}
@@ -238,7 +234,7 @@ function HeroSection() {
 
             {/* Progress indicator */}
             <div className="flex justify-center gap-2 mb-8">
-              {Array.from({ length: cards.length - visibleCards + 1 }).map((_, i) => (
+              {Array.from({ length: Math.max(1, cards.length - visibleCards + 1) }).map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentIndex(i)}
@@ -252,17 +248,22 @@ function HeroSection() {
 
             {/* Cards Slider */}
             <div 
-              className="overflow-hidden" 
-              ref={sliderRef}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
+              className="flex transition-all duration-700 ease-in-out"
+              style={{ 
+                transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
+                width: `${(cards.length / visibleCards) * 100}%`
+              }}
             >
-              <div
-                className="flex transition-all duration-700 ease-in-out"
-                style={{ transform: `translateX(-${currentIndex * 25}%)` }}
-              >
-                {cards.map((card) => (
-                  <div key={card.id} className="min-w-[25%] px-3">
+              {cards.map((card) => (
+                <div 
+                  key={card.id}
+                  className={`px-3 ${
+                    visibleCards === 1 ? 'min-w-full' :
+                    visibleCards === 2 ? 'min-w-[50%]' :
+                    visibleCards === 3 ? 'min-w-[33.333%]' : 'min-w-[25%]'
+                  }`}
+                >
+                  <div>
                     {card.name === 'IT' ? (
                       <div 
                         className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full cursor-pointer"
@@ -360,8 +361,8 @@ function HeroSection() {
                       </Link>
                     )}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
             
             {/* View all courses button */}
@@ -386,7 +387,7 @@ function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setShowITPopup(false)}
+            onClick={(e) => e.stopPropagation()}
           >
             <motion.div 
               className="bg-white rounded-lg shadow-2xl max-w-md w-full overflow-hidden"
@@ -654,8 +655,8 @@ function HeroSection() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
-  )
+    </div>
+  );
 }
 
 export default HeroSection
