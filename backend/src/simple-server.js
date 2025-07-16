@@ -64,28 +64,62 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Serve static files from the React app (must come after API routes)
-const frontendBuildPath = path.join(__dirname, '../../dist');
-app.use(express.static(frontendBuildPath));
-
-// Handle client-side routing, return all requests to React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendBuildPath, 'index.html'));
-});
+// Serve static files in production
+if (process.env.NODE_ENV === 'production') {
+  // Path to the React app build directory
+  const frontendBuildPath = path.join(__dirname, '../../dist');
+  
+  // Check if the build directory exists
+  if (require('fs').existsSync(frontendBuildPath)) {
+    console.log('Serving static files from:', frontendBuildPath);
+    app.use(express.static(frontendBuildPath));
+    
+    // Handle client-side routing
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(frontendBuildPath, 'index.html'));
+    });
+  } else {
+    console.warn('Frontend build directory not found. Running in API-only mode.');
+    
+    // Basic route for the root path
+    app.get('/', (req, res) => {
+      res.status(200).json({
+        status: 'success',
+        message: 'Medini Edutech API is running',
+        documentation: 'https://github.com/yourusername/medini-edutech#api-documentation',
+        environment: process.env.NODE_ENV || 'development'
+      });
+    });
+  }
+}
 
 // MongoDB connection
 const connectDB = async () => {
   try {
     console.log('Connecting to MongoDB...');
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
-      serverSelectionTimeoutMS: 5000,
+    const mongoUri = process.env.MONGO_URI.replace(/\/+$/, ''); // Remove trailing slashes
+    console.log('MongoDB URI:', mongoUri);
+    
+    const conn = await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 10000, // Increased timeout
       socketTimeoutMS: 45000,
+      maxPoolSize: 10,
+      retryWrites: true,
+      w: 'majority'
     });
+    
     console.log(`MongoDB Connected: ${conn.connection.host}`);
     return conn;
   } catch (err) {
-    console.error('MongoDB Connection Error:', err.message);
-    throw err; // Re-throw to be caught by the caller
+    console.error('MongoDB Connection Error:', err);
+    if (err.name === 'MongooseServerSelectionError') {
+      console.error('Could not connect to MongoDB server. Please check your network connection and credentials.');
+    } else if (err.name === 'MongooseError' && err.message.includes('bad auth')) {
+      console.error('Authentication failed. Please check your MongoDB credentials.');
+    }
+    process.exit(1); // Exit with failure
   }
 };
 
