@@ -115,22 +115,6 @@ export function Contact() {
               value={formData.phone}
               onChange={handleChange}
             />
-            <Select 
-              value={formData.service} 
-              onValueChange={handleServiceChange}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select a Service" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="consulting">Strategic Consulting</SelectItem>
-                <SelectItem value="development">Custom Software Development</SelectItem>
-                <SelectItem value="cloud">Cloud Solutions</SelectItem>
-                <SelectItem value="data">Data & Analytics</SelectItem>
-                <SelectItem value="security">Cybersecurity</SelectItem>
-                <SelectItem value="ai">AI & Machine Learning</SelectItem>
-              </SelectContent>
-            </Select>
             <Textarea 
               id="message" 
               placeholder="Tell us about your project or inquiry..." 

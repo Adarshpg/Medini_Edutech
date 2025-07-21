@@ -71,7 +71,7 @@ export function ContactPage() {
   ];
 
   const stats = [
-    { icon: Users, number: "500+", label: "Happy Students" },
+    { icon: Users, number: "2000+", label: "Happy Students" },
     { icon: Award, number: "50+", label: "Expert Instructors" },
     { icon: MessageSquare, number: "24/7", label: "Support Available" }
   ];
@@ -244,28 +244,6 @@ export function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
-                      Service of Interest
-                    </label>
-                    <Select 
-                      value={formData.service} 
-                      onValueChange={handleServiceChange}
-                    >
-                      <SelectTrigger className="h-12 bg-background border-input focus:border-customBlue focus:ring-customBlue/20 rounded-xl">
-                        <SelectValue placeholder="Select a course/service" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-popover border-border">
-                        <SelectItem value="bim">BIM Construction</SelectItem>
-                        <SelectItem value="techvritti">TechVritti</SelectItem>
-                        <SelectItem value="mechsetu">Mechsetu</SelectItem>
-                        <SelectItem value="eduphygital">EDUPHYGITAL</SelectItem>
-                        <SelectItem value="digidhvani">DigiDhvani</SelectItem>
-                        <SelectItem value="builddspace">BuilddSpace</SelectItem>
-                        <SelectItem value="consulting">General Consulting</SelectItem>
-                      </SelectContent>
-                    </Select>
                   </div>
                 </div>
 

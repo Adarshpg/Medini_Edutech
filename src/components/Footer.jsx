@@ -18,16 +18,6 @@ function Footer() {
     },
   ];
 
-  // Popular courses data
-  const popularCourses = [
-    { name: "AutoCAD Fundamentals", path: "/courses/AUTODESK-autocad" },
-    { name: "Revit Structure Fundamentals", path: "/courses/AUTODESK-revit-structure" },
-    { name: "Civil 3D Essentials", path: "/courses/AUTODESK-civil-3d" },
-    { name: "Maya for Architectural Visualization", path: "/courses/AUTODESK-maya" },
-    { name: "BIM for Construction Management", path: "/courses/BIM_CONSTRUCTION-bim-construction" },
-    { name: "SolidWorks 3D Design", path: "/courses/DASSAULT-solidworks" }
-  ];
-
   // Quick links data
   const quickLinks = [
     { label: 'About Us', path: '/about' },
@@ -39,7 +29,7 @@ function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           
           {/* Logo and Company Info Section */}
           <div className="lg:col-span-1 space-y-6">
@@ -57,25 +47,6 @@ function Footer() {
               Empowering minds through innovative educational technology solutions. 
               Building the future of learning with cutting-edge courses and platforms.
             </p>
-          </div>
-
-          {/* Popular Courses Section */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Popular Courses
-            </h3>
-            <ul className="space-y-3">
-              {popularCourses.map((course, index) => (
-                <li key={index}>
-                  <Link 
-                    to={course.path} 
-                    className="text-gray-600 dark:text-gray-400 hover:text-customBlue dark:hover:text-blue-400 transition-colors duration-200 text-sm font-medium"
-                  >
-                    {course.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Quick Links Section */}
@@ -133,7 +104,7 @@ function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              © {new Date().getFullYear()} Medini Technologies. All rights reserved.
+              {new Date().getFullYear()} Medini Technologies. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link to="/privacy" className="text-gray-600 dark:text-gray-400 hover:text-customBlue transition-colors duration-200">
