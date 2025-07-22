@@ -21,8 +21,6 @@ function Footer() {
   // Quick links data
   const quickLinks = [
     { label: 'About Us', path: '/about' },
-    { label: 'All Courses', path: '/courses' },
-    { label: 'Blog', path: '/blog' },
     { label: 'Contact', path: '/contact' },
   ];
 

@@ -311,7 +311,7 @@ export function ContactPage() {
                 { number: "98%", label: "Success Rate" },
                 { number: "15+", label: "Years Experience" },
                 { number: "10+", label: "Industry Partners" },
-                { number: "500+", label: "Graduates Placed" }
+                { number: "2000+", label: "Graduates Placed" }
               ].map((item, index) => (
                 <motion.div
                   key={index}
