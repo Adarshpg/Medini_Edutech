@@ -1,40 +1,43 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BookOpen, Clock, Award, ChevronRight } from "lucide-react";
-const images = import.meta.glob("/src/assets/IMAGES/*.jpg", { eager: true });
 
 const CourseCard = ({ course }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   // Destructure with fallback values
   const {
-    title = "Advanced Design Masterclass",
-    
+    title = "Course Title",
     duration = "8 Weeks",
-    difficulty = "Advanced",
-    coverImage = "/placeholder.svg?height=200&width=300",
+    difficulty = "Intermediate",
+    coverImage = "/images/placeholder.jpg",
     id = ""
   } = course || {};
 
-  const courseImage = images[`/src/assets/IMAGES/${coverImage}`]?.default || "/placeholder.svg";
-
   const mainColor = "rgb(25,65,75)";
+
+  // Handle image loading errors
+  const handleImageError = (e) => {
+    console.error('Error loading image:', e.target.src);
+    setImageError(true);
+  };
 
   return (
     <div 
-      className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300"
+      className="overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 h-full flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Course Image with Subtle Zoom */}
       <div className="relative h-48 overflow-hidden">
-        <img
-          src={courseImage}
+        <img 
+          src={imageError ? '/images/placeholder.jpg' : coverImage} 
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500"
-          style={{
-            transform: isHovered ? "scale(1.05)" : "scale(1)"
-          }}
+          onError={handleImageError}
+          className={`w-full h-full object-cover transition-transform duration-700 ${
+            isHovered ? 'scale-110' : 'scale-100'
+          }`}
         />
         
         {/* Difficulty Badge */}
@@ -47,9 +50,9 @@ const CourseCard = ({ course }) => {
       </div>
 
       {/* Course Content */}
-      <div className="p-5">
+      <div className="p-5 flex-1 flex flex-col">
         {/* Title */}
-        <h3 className="text-lg font-semibold dark:text-white mb-4">
+        <h3 className="text-lg font-semibold dark:text-white mb-2 line-clamp-2 h-14">
           {title}
         </h3>
 
@@ -62,17 +65,20 @@ const CourseCard = ({ course }) => {
             <BookOpen className="w-4 h-4 mr-1" style={{ color: mainColor }} />
             <span>12 Modules</span>
           </div>
+          <div className="flex items-center">
+            <Clock className="w-4 h-4 mr-1" style={{ color: mainColor }} />
+            <span>{duration}</span>
+          </div>
         </div>
 
-        {/* CTA Button */}
-        <Link to={`/courses/${id}`} className="block">
-          <button 
-            className="w-full flex items-center justify-center py-2.5 rounded text-white text-sm font-medium transition-colors duration-300 hover:opacity-90"
-            style={{ backgroundColor: mainColor }}
-          >
-            View Course Details
-            <ChevronRight className="w-4 h-4 ml-1" />
-          </button>
+        {/* View Details Button */}
+        <Link
+          to={`/courses/${id}`}
+          className="mt-auto inline-flex items-center text-sm font-medium"
+          style={{ color: mainColor }}
+        >
+          Learn More
+          <ChevronRight className="w-4 h-4 ml-1" />
         </Link>
       </div>
     </div>

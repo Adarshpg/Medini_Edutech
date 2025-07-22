@@ -11,7 +11,7 @@
               "id": "fusion",
               "title": "Fusion 360 Essentials",
               "name": "Fusion 360",
-              "icon": "🔄",
+              "icon": "",
               "description": "Cloud-based 3D CAD/CAM software for product design and manufacturing, combining industrial and mechanical design with simulation and collaboration tools.",
               "duration": "40 Hours",
               "difficulty": "Beginner to Intermediate",
@@ -139,7 +139,7 @@
                 "Familiarity with CAD or 3D modeling concepts",
                 "No prior BIM experience required"
               ],
-              "coverImage": "bim-architecture.jpg"
+              "coverImage": "/IMAGES/BIM_for_Architecture.jpg"
             }
           ]
         },

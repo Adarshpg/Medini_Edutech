@@ -11,6 +11,12 @@ const solidworks = "/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
 const microstation = "/IMAGES/getty-images-ItieuN1ec0k-unsplash.jpg"
 const itImage = "/IMAGES/thisisengineering-AvGIBmvdcac-unsplash.jpg"
 const infraworks = "/IMAGES/getty-images-KD_fT_T4D24-unsplash.jpg"
+const bimArchitecture = "/IMAGES/BIM_for_Architecture.jpg"
+const bimConstruction = "/IMAGES/BIM_for_Construction.png"
+const bimInfrastructure = "/IMAGES/BIM_for_Infrastructure.png"
+const productDesignImg = "/IMAGES/Product Design and Manufacturing.png"
+const aecIndustryImg = "/IMAGES/AEC Industry.png"
+const itIndustryImg = "/IMAGES/IT.png"
 
 function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -26,42 +32,42 @@ function HeroSection() {
   const cards = [
     {
       id: 1,
-      image: `${autocad}?height=200&width=300`,
+      image: bimConstruction,
       name: "BIM for Construction",
       description: "Master construction project management with BIM",
       link: "/courses/bim-construction"
     },
     {
       id: 2,
-      image: `${civil3d}?height=200&width=300`,
+      image: bimInfrastructure,
       name: "BIM for Infrastructure",
       description: "Advanced infrastructure design and management",
       link: "/courses/bim-infrastructure"
     },
     {
       id: 3,
-      image: `${solidworks}?height=200&width=300`,
+      image: "/IMAGES/BIM_for_ Architecture.jpg",
       name: "BIM for Architecture",
       description: "Architectural design and documentation with BIM",
       link: "/courses/revit-architecture"
     },
     {
       id: 4,
-      image: `${microstation}?height=200&width=300`,
+      image: productDesignImg,
       name: "Product Design and Manufacturing",
       description: "Industrial design and manufacturing solutions",
       link: "/courses/fusion-360"
     },
     {
       id: 5,
-      image: `${infraworks}?height=200&width=300`,
+      image: aecIndustryImg,
       name: "AEC",
       description: "Architecture, Engineering & Construction design solutions",
       link: "/courses/revit-architecture"
     },
     {
       id: 6,
-      image: `${itImage}?height=200&width=300`,
+      image: itIndustryImg,
       name: 'IT',
       description: "Software development courses including Java, Python, MERN Stack, and Cloud technologies",
       link: "/courses/it"
