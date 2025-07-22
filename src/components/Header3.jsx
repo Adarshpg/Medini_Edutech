@@ -33,7 +33,6 @@ const Header = () => {
     }))
   }
 
-  
   // Map all course providers to the menu structure
   const courseCategories = [
     {
@@ -102,7 +101,6 @@ const Header = () => {
     }
   }, [lastScrollY])
 
-
   const isCourse = location.pathname.includes("/courses/");
   
   // Function to determine which course provider logo to show based on the URL
@@ -147,15 +145,15 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col ">
+    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col">
       {/* Navbar */}
-      <motion.nav
+<motion.nav
         className="bg-customBlue text-white"
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="container mx-auto flex items-center justify-between p-4 px-4">
+        <div className="container mx-auto flex items-center justify-between p-4">
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
             <img
@@ -171,92 +169,91 @@ const Header = () => {
               <div className="hidden md:flex items-center gap-4">
                 <ThemeToggle />
                 <a
-      href="#"
-      className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
-      onClick={handleClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
-      <span className="relative z-10 flex items-center">
-        Get Started
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
-        >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </span>
-    </a>
+                  href="#"
+                  className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
+                  onClick={handleClick}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
+                  <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
+                  <span className="relative z-10 flex items-center">
+                    Get Started
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </a>
               </div>
-              
             </div>
           </div>
+          </div>
 
-          {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-              <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"}`}
-                ></div>
-                <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
-                ></div>
-                <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "-rotate-45" : "translate-y-1.5"}`}
-                ></div>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-              </SheetHeader>
-              <div className="space-y-4 mt-4">
-                <ThemeToggle />
-                <Button variant="outline" className="w-full">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/">Home</Link>
-                  </SheetTrigger>
+          {/* Mobile Navigation - Always visible on mobile */}
+          <div className="md:hidden flex items-center">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="relative w-10 h-10 p-0 m-0 hover:bg-white/10 focus:ring-2 focus:ring-white/20"
+                  aria-label="Toggle menu"
+                >
+                  <div className="relative w-6 h-5">
+                    <span 
+                      className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 top-1/2 -translate-y-1/2' : 'top-0'}`}
+                    ></span>
+                    <span 
+                      className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'top-1/2 -translate-y-1/2'}`}
+                    ></span>
+                    <span 
+                      className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 top-1/2 -translate-y-1/2' : 'bottom-0'}`}
+                    ></span>
+                  </div>
                 </Button>
-                
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/courses">Courses</Link>
-                  </SheetTrigger>
-                </Button>
-                
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/about">About</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/blog">Blog</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/mediniedutech/contact">Contact</Link>
-                  </SheetTrigger>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                <SheetHeader className="mb-6">
+                  <SheetTitle className="text-2xl font-bold">Menu</SheetTitle>
+                </SheetHeader>
+                <div className="space-y-3">
+                  <div className="px-4 py-2">
+                    <ThemeToggle />
+                  </div>
+                  {[
+                    { to: "/mediniedutech/", label: "Home" },
+                    { to: "/mediniedutech/courses", label: "Courses" },
+                    { to: "/mediniedutech/about", label: "About" },
+                    { to: "/mediniedutech/contact", label: "Contact" },
+                    { to: "/mediniedutech/internship", label: "Internship Courses" }
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
       </motion.nav>
 
-      {/* Links */}
+      {/* Links Section */}
       <AnimatePresence>
         {showLinks && (
           <motion.div
@@ -267,15 +264,11 @@ const Header = () => {
             transition={{
               type: "spring",
               stiffness: 300,
-              damping: 30,
-              duration: 0.3,
+              damping: 30
             }}
           >
             <div className="container mx-auto overflow-x-auto hide-scrollbar">
-
-              {/* medini school navbar */}
-            
-                <div className="flex items-center gap-6 py-3 px-4 min-w-max">
+              <div className="flex items-center gap-6 py-3 px-4 min-w-max">
                 <div className="nav-item">
                   <Link to="/mediniedutech/">Home</Link>
                 </div>
@@ -322,12 +315,8 @@ const Header = () => {
                   </PopoverContent>
                 </Popover>
                 
-                {/* <div className="nav-item">
-                  <Link to="/awards">Awards</Link>
-                </div> */}
-
                 <div className="nav-item">
-                  <Link to="/mediniedutech/blog">Blog</Link>
+                  <Link to="/mediniedutech/internship">Internship Courses</Link>  
                 </div>
 
                 <div className="nav-item">
@@ -336,14 +325,7 @@ const Header = () => {
                 <div className="nav-item">
                   <Link to="/mediniedutech/contact">Contact</Link>
                 </div>
-                <div className="nav-item">
-                  <Link to="/mediniedutech/internship" className="font-semibold hover:text-amber-600">
-                    Internship Courses
-                  </Link>
-                </div>
               </div>
-              
-
             </div>
           </motion.div>
         )}
@@ -356,4 +338,3 @@ const Header = () => {
 }
 
 export default Header
-

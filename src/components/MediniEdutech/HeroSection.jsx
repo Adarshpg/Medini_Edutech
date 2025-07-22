@@ -136,7 +136,7 @@ function HeroSection() {
             backgroundSize: "cover",
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-75"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>
         
         {/* Gradient overlay */}
