@@ -144,29 +144,40 @@ const Header = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  // Add CSS to prevent horizontal scrolling
+  useEffect(() => {
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
+    
+    return () => {
+      document.body.style.overflowX = '';
+      document.documentElement.style.overflowX = '';
+    };
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+    <div className="fixed top-0 left-0 right-0 z-50 w-screen overflow-x-hidden">
       {/* Navbar */}
-<motion.nav
-        className="bg-customBlue text-white"
+      <motion.nav
+        className="bg-customBlue text-white w-full"
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="container mx-auto flex items-center justify-between p-4">
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center">
-            <img
-              src={logo}
-              alt="Medini"
-              className="h-14 mr-2"
-            />  
-          </NavLink>
+        <div className="w-full px-4">
+          <div className="w-full flex items-center justify-between py-4">
+            {/* Logo */}
+            <NavLink to="/" className="flex items-center">
+              <img
+                src={logo}
+                alt="Medini"
+                className="h-12 md:h-14"
+              />  
+            </NavLink>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-4">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-4">
+              <div className="flex items-center gap-4">
                 <ThemeToggle />
                 <a
                   href="#"
@@ -197,60 +208,60 @@ const Header = () => {
                 </a>
               </div>
             </div>
-          </div>
-          </div>
 
-          {/* Mobile Navigation - Always visible on mobile */}
-          <div className="md:hidden flex items-center">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="relative w-10 h-10 p-0 m-0 hover:bg-white/10 focus:ring-2 focus:ring-white/20"
-                  aria-label="Toggle menu"
-                >
-                  <div className="relative w-6 h-5">
-                    <span 
-                      className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 top-1/2 -translate-y-1/2' : 'top-0'}`}
-                    ></span>
-                    <span 
-                      className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'top-1/2 -translate-y-1/2'}`}
-                    ></span>
-                    <span 
-                      className={`absolute left-0 w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 top-1/2 -translate-y-1/2' : 'bottom-0'}`}
-                    ></span>
+            {/* Mobile Navigation Button */}
+            <div className="md:hidden z-50 fixed right-4 top-4">
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="relative w-12 h-12 p-0 m-0 hover:bg-white/20 focus:ring-2 focus:ring-white/30 z-50"
+                    aria-label="Toggle menu"
+                  >
+                    <div className="relative w-8 h-6 flex flex-col justify-between items-center">
+                      <span 
+                        className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}
+                      ></span>
+                      <span 
+                        className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}
+                      ></span>
+                      <span 
+                        className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}
+                      ></span>
+                    </div>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                  <SheetHeader className="mb-6">
+                    <SheetTitle className="text-2xl font-bold">Menu</SheetTitle>
+                  </SheetHeader>
+                  <div className="space-y-3">
+                    <div className="px-4 py-2">
+                      <ThemeToggle />
+                    </div>
+                    {[
+                      { to: "/mediniedutech/", label: "Home" },
+                      { to: "/mediniedutech/courses", label: "Courses" },
+                      { to: "/mediniedutech/about", label: "About" },
+                      { to: "/mediniedutech/contact", label: "Contact" },
+                      { to: "/mediniedutech/internship", label: "Internship Courses" }
+                    ].map((item) => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
                   </div>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-                <SheetHeader className="mb-6">
-                  <SheetTitle className="text-2xl font-bold">Menu</SheetTitle>
-                </SheetHeader>
-                <div className="space-y-3">
-                  <div className="px-4 py-2">
-                    <ThemeToggle />
-                  </div>
-                  {[
-                    { to: "/mediniedutech/", label: "Home" },
-                    { to: "/mediniedutech/courses", label: "Courses" },
-                    { to: "/mediniedutech/about", label: "About" },
-                    { to: "/mediniedutech/contact", label: "Contact" },
-                    { to: "/mediniedutech/internship", label: "Internship Courses" }
-                  ].map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
+        </div>
       </motion.nav>
 
       {/* Links Section */}
@@ -333,7 +344,7 @@ const Header = () => {
 
       {/* Spacer to push content below the header */}
       <div className={`h-${showLinks ? "28" : "16"} transition-all duration-300`}></div>
-    </header>
+    </div>
   )
 }
 

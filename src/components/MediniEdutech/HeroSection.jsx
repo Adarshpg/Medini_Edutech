@@ -464,13 +464,13 @@ function HeroSection() {
                 </button>
               </div>
               
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Autodesk Section */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Autodesk
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {[
                       { name: 'AutoCAD', path: '/courses/autocad' },
                       { name: 'AutoCAD Electrical', path: '/courses/autocad-electrical' },
@@ -484,11 +484,11 @@ function HeroSection() {
                       <Link 
                         key={`autodesk-${index}`} 
                         to={option.path}
-                        className="block p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-blue-700 font-medium"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-blue-700 font-medium text-sm sm:text-base"
                         onClick={() => setShowAECPopup(false)}
                       >
-                        {option.name}
-                        <span className="float-right">&rarr;</span>
+                        <span className="truncate pr-2">{option.name}</span>
+                        <span className="flex-shrink-0">&rarr;</span>
                       </Link>
                     ))}
                   </div>
@@ -496,10 +496,10 @@ function HeroSection() {
                 
                 {/* Bentley Systems Section */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Bentley Systems
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {[
                       { name: 'OpenRoads Designer', path: '/courses/openroads-designer' },
                       { name: 'OpenFlows WaterGEMS', path: '/courses/openflows-watergems' },
@@ -510,11 +510,11 @@ function HeroSection() {
                       <Link 
                         key={`bentley-${index}`} 
                         to={option.path}
-                        className="block p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors text-green-700 font-medium"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-colors text-green-700 font-medium text-sm sm:text-base"
                         onClick={() => setShowAECPopup(false)}
                       >
-                        {option.name}
-                        <span className="float-right">&rarr;</span>
+                        <span className="truncate pr-2">{option.name}</span>
+                        <span className="flex-shrink-0">&rarr;</span>
                       </Link>
                     ))}
                   </div>
@@ -522,10 +522,10 @@ function HeroSection() {
                 
                 {/* Others Section */}
                 <div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Others
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {[
                       { name: 'SketchUp', path: '/courses/sketchup' },
                       { name: 'Lumion', path: '/courses/lumion' },
@@ -543,11 +543,11 @@ function HeroSection() {
                       <Link 
                         key={`others-${index}`} 
                         to={option.path}
-                        className="block p-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors text-purple-700 font-medium"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors text-purple-700 font-medium text-sm sm:text-base"
                         onClick={() => setShowAECPopup(false)}
                       >
-                        {option.name}
-                        <span className="float-right">&rarr;</span>
+                        <span className="truncate pr-2">{option.name}</span>
+                        <span className="flex-shrink-0">&rarr;</span>
                       </Link>
                     ))}
                   </div>
@@ -585,13 +585,13 @@ function HeroSection() {
                 </button>
               </div>
               
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Autodesk Section */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Autodesk
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {[
                       { name: 'Fusion 360', path: '/courses/fusion' },
                       { name: 'AutoCAD (Mechanical)', path: '/courses/autocad' },
@@ -601,11 +601,11 @@ function HeroSection() {
                       <Link 
                         key={`autodesk-pdm-${index}`} 
                         to={option.path}
-                        className="block p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-blue-700 font-medium"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-blue-700 font-medium text-sm sm:text-base"
                         onClick={() => setShowProductDesignPopup(false)}
                       >
-                        {option.name}
-                        <span className="float-right">&rarr;</span>
+                        <span className="truncate pr-2">{option.name}</span>
+                        <span className="flex-shrink-0">&rarr;</span>
                       </Link>
                     ))}
                   </div>
@@ -613,21 +613,21 @@ function HeroSection() {
                 
                 {/* Dassault Section */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Dassault
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {[
                       { name: 'SolidWorks', path: '/courses/solidworks' }
                     ].map((option, index) => (
                       <Link 
                         key={`dassault-${index}`} 
                         to={option.path}
-                        className="block p-3 bg-red-50 hover:bg-red-100 rounded-lg transition-colors text-red-700 font-medium"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-red-50 hover:bg-red-100 rounded-lg transition-colors text-red-700 font-medium text-sm sm:text-base"
                         onClick={() => setShowProductDesignPopup(false)}
                       >
-                        {option.name}
-                        <span className="float-right">&rarr;</span>
+                        <span className="truncate pr-2">{option.name}</span>
+                        <span className="flex-shrink-0">&rarr;</span>
                       </Link>
                     ))}
                   </div>
@@ -635,10 +635,10 @@ function HeroSection() {
                 
                 {/* Others Section */}
                 <div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-4">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">
                     Others
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-3">
                     {[
                       { name: 'CREO – PTC', path: '/courses/creo-ptc' },
                       { name: 'ANSYS', path: '/courses/ansys' },
@@ -647,11 +647,11 @@ function HeroSection() {
                       <Link 
                         key={`others-pdm-${index}`} 
                         to={option.path}
-                        className="block p-3 bg-yellow-50 hover:bg-yellow-100 rounded-lg transition-colors text-yellow-700 font-medium"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-yellow-50 hover:bg-yellow-100 rounded-lg transition-colors text-yellow-700 font-medium text-sm sm:text-base"
                         onClick={() => setShowProductDesignPopup(false)}
                       >
-                        {option.name}
-                        <span className="float-right">&rarr;</span>
+                        <span className="truncate pr-2">{option.name}</span>
+                        <span className="flex-shrink-0">&rarr;</span>
                       </Link>
                     ))}
                   </div>
