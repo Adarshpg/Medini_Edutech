@@ -1,4 +1,4 @@
-import gif from "@/assets/loop_glow.gif"
+const connectingImage = new URL('../../../../public/images/connecting.png', import.meta.url).href
 
 export function AboutHero() {
   return (
@@ -43,18 +43,17 @@ export function AboutHero() {
             </div>
           </div>
           
-          {/* GIF with enhanced styling */}
-          <div className="order-1 lg:order-2 relative">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-customBlue to-blue-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-2">
-                <img 
-                  src={gif} 
-                  alt="Medini Technologies Innovation" 
-                  className="w-full h-96 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+          {/* Image */}
+          <div className="relative order-1 lg:order-2">
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 bg-white/5 backdrop-blur-sm">
+              <img 
+                src={connectingImage} 
+                alt="Connecting technology and education"
+                className="w-full h-auto object-cover"
+              />
             </div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-customBlue/20 rounded-full filter blur-2xl -z-10"></div>
+            <div className="absolute -top-6 -right-6 w-40 h-40 bg-blue-500/10 rounded-full filter blur-2xl -z-10"></div>
           </div>
         </div>
       </div>

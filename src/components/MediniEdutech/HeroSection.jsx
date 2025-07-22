@@ -219,57 +219,13 @@ function HeroSection() {
               <h3 className="text-xl md:text-2xl font-semibold dark:text-white">
                 Courses by <span className="dark:text-white font-bold">Medini</span>
               </h3>
-
-              <div className="flex space-x-3">
-                <button
-                  onClick={slideLeft}
-                  className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 shadow-md"
-                  aria-label="Previous courses"
-                >
-                  <ChevronLeft className="w-6 h-6 dark:text-white" />
-                </button>
-                <button
-                  onClick={slideRight}
-                  className="p-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300 shadow-md"
-                  aria-label="Next courses"
-                >
-                  <ChevronRight className="w-6 h-6 dark:text-white" />
-                </button>
-              </div>
             </div>
 
-            {/* Progress indicator */}
-            <div className="flex justify-center gap-2 mb-8">
-              {Array.from({ length: Math.max(1, cards.length - visibleCards + 1) }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`h-2 rounded-full transition-all ${
-                    i === currentIndex ? "w-8 bg-white" : "w-2 bg-white/40"
-                  }`}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Cards Slider */}
-            <div 
-              className="flex transition-all duration-700 ease-in-out"
-              style={{ 
-                transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
-                width: `${(cards.length / visibleCards) * 100}%`
-              }}
-            >
-              {cards.map((card) => (
-                <div 
-                  key={card.id}
-                  className={`px-3 ${
-                    visibleCards === 1 ? 'min-w-full' :
-                    visibleCards === 2 ? 'min-w-[50%]' :
-                    visibleCards === 3 ? 'min-w-[33.333%]' : 'min-w-[25%]'
-                  }`}
-                >
-                  <div>
+            {/* Desktop View - Grid */}
+            <div className="hidden md:block">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+                {cards.map((card) => (
+                  <div key={card.id} className="w-full">
                     {card.name === 'IT' ? (
                       <div 
                         className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full cursor-pointer"
@@ -367,6 +323,106 @@ function HeroSection() {
                       </Link>
                     )}
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile View - Stacked */}
+            <div className="md:hidden space-y-6">
+              {cards.map((card) => (
+                <div key={card.id} className="w-full">
+                  {card.name === 'IT' ? (
+                    <div 
+                      className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl h-full cursor-pointer"
+                      onClick={() => setShowITPopup(true)}
+                    >
+                      <div className="relative">
+                        <img 
+                          src={card.image || "/placeholder.svg"} 
+                          alt={card.name} 
+                          className="w-full h-48 object-cover" 
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="font-semibold text-black text-xl mb-2">{card.name}</h3>
+                        <p className="text-gray-600 text-sm">{card.description}</p>
+                        <div className="mt-4 flex items-center text-sm font-medium text-blue-600">
+                          View Options
+                          <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  ) : card.name === 'AEC' ? (
+                    <div 
+                      className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl h-full cursor-pointer"
+                      onClick={() => setShowAECPopup(true)}
+                    >
+                      <div className="relative">
+                        <img 
+                          src={card.image || "/placeholder.svg"} 
+                          alt={card.name} 
+                          className="w-full h-48 object-cover" 
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="font-semibold text-black text-xl mb-2">{card.name}</h3>
+                        <p className="text-gray-600 text-sm">{card.description}</p>
+                        <div className="mt-4 flex items-center text-sm font-medium text-blue-600">
+                          View Options
+                          <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  ) : card.name === 'Product Design and Manufacturing' ? (
+                    <div 
+                      className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl h-full cursor-pointer"
+                      onClick={() => setShowProductDesignPopup(true)}
+                    >
+                      <div className="relative">
+                        <img 
+                          src={card.image || "/placeholder.svg"} 
+                          alt={card.name} 
+                          className="w-full h-48 object-cover" 
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="font-semibold text-black text-xl mb-2">{card.name}</h3>
+                        <p className="text-gray-600 text-sm">{card.description}</p>
+                        <div className="mt-4 flex items-center text-sm font-medium text-blue-600">
+                          View Options
+                          <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Link to={card.link ? (card.link.startsWith('/') ? card.link : `/${card.link}`) : '#'}>
+                      <div className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl h-full">
+                        <div className="relative">
+                          <img 
+                            src={card.image || "/placeholder.svg"} 
+                            alt={card.name} 
+                            className="w-full h-48 object-cover" 
+                          />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="font-semibold text-black text-xl mb-2">{card.name}</h3>
+                          <p className="text-gray-600 text-sm">{card.description}</p>
+                          <div className="mt-4 flex items-center text-sm font-medium text-blue-600">
+                            Learn more
+                            <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
@@ -376,7 +432,7 @@ function HeroSection() {
               <Link to="/courses" className="inline-flex items-center px-6 py-3 border border-white/30 rounded-md text-white hover:bg-white/10 transition duration-300">
                 View All Courses
                 <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7V3" />
                 </svg>
               </Link>
             </div>
