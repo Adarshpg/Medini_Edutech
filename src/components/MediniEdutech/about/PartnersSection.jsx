@@ -31,12 +31,8 @@ export function PartnersSection() {
                     <div className="inline-flex items-center rounded-full bg-customBlue/10 border border-customBlue/20 px-6 py-2 text-sm font-semibold text-customBlue backdrop-blur-sm mb-6">
                         Technology Partners
                     </div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                        Our{" "}
-                        <span className="text-customBlue bg-gradient-to-r from-customBlue to-blue-600 bg-clip-text text-transparent">
-                            Technology
-                        </span>{" "}
-                        Partners
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-customBlue mb-6 leading-tight">
+                        Our Technology Partners
                     </h2>
                     <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                         Collaborating with industry leaders to deliver innovative solutions and transform digital experiences for our clients worldwide.

@@ -19,16 +19,24 @@ export function AboutHero() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
-              Innovating{" "}
-              <span className="text-customBlue bg-gradient-to-r from-customBlue to-blue-600 bg-clip-text text-transparent">
-                Technology
-              </span>{" "}
-              Solutions Since 2008
+              Innovating Technology Solutions Since 2008
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
-              Medini Technologies has been a trusted partner for businesses seeking to leverage technology for growth. For over a decade, we have continued to innovate and deliver exceptional solutions, driven by a commitment to our client's long-term success.
-            </p>
+            <div className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl space-y-4 text-justify">
+              <p className="font-bold text-customBlue dark:text-blue-400">
+                At Medini Edutech, we don't just train—we transform.
+              </p>
+              
+              <p>
+                Our cutting-edge, industry-driven training and certifications don't just prepare you for today's jobs—they future-proof your career.
+              </p>
+              
+              <p>With a decade of expertise, we go beyond skills—we build unstoppable professionals who innovate, lead, and dominate in an ever-evolving world where confidence meets capability. Your future starts here powered by knowledge engineered for success.</p>
+              
+              <p className="font-bold text-customBlue dark:text-blue-400">
+                At Medini, your ambition meets world-class capability. Where learning doesn't just transform careers—it transforms Bharat's destiny.
+              </p>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button className="group inline-flex items-center justify-center rounded-lg bg-customBlue px-8 py-4 text-white font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
@@ -36,9 +44,6 @@ export function AboutHero() {
                 <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
-              <button className="inline-flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-8 py-4 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300">
-                Contact Us
               </button>
             </div>
           </div>
