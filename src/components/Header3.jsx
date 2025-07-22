@@ -242,19 +242,42 @@ const Header = () => {
                     </div>
                     {[
                       { to: "/mediniedutech/", label: "Home" },
-                      { to: "/mediniedutech/courses", label: "Courses" },
+                      { 
+                        label: "Courses",
+                        onClick: () => {
+                          setIsMobileMenuOpen(false);
+                          if (window.location.pathname === '/mediniedutech/') {
+                            const coursesSection = document.getElementById('explore-courses');
+                            if (coursesSection) {
+                              coursesSection.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          } else {
+                            window.location.href = '/mediniedutech/#explore-courses';
+                          }
+                        }
+                      },
                       { to: "/mediniedutech/about", label: "About" },
                       { to: "/mediniedutech/contact", label: "Contact" },
                       { to: "/mediniedutech/internship", label: "Internship" }
-                    ].map((item) => (
-                      <Link
-                        key={item.to}
-                        to={item.to}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                      >
-                        {item.label}
-                      </Link>
+                    ].map((item, index) => (
+                      item.to ? (
+                        <Link
+                          key={item.to}
+                          to={item.to}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block px-4 py-3 text-lg font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <button
+                          key={`btn-${index}`}
+                          onClick={item.onClick}
+                          className="w-full text-left px-4 py-3 text-lg font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                        >
+                          {item.label}
+                        </button>
+                      )
                     ))}
                   </div>
                 </SheetContent>
