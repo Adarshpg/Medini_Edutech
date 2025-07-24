@@ -221,11 +221,12 @@ function HeroSection() {
               </h3>
             </div>
 
-            {/* Desktop View - Grid */}
-            <div className="hidden md:block">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+            {/* Cards Section - Horizontal on Desktop, Vertical on Mobile */}
+            <div className="relative">
+              <div className="md:flex md:space-x-6 md:overflow-x-auto md:pb-4 md:-mx-4 md:px-4 space-y-6 md:space-y-0 scrollbar-hide md:flex-row-reverse">
+                <div className="md:flex md:space-x-6">
                 {cards.map((card) => (
-                  <div key={card.id} className="w-full">
+                  <div key={card.id} className="w-full md:w-80 md:flex-shrink-0">
                     {card.name === 'IT' ? (
                       <div 
                         className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full cursor-pointer"
@@ -235,7 +236,7 @@ function HeroSection() {
                           <img 
                             src={card.image || "/placeholder.svg"} 
                             alt={card.name} 
-                            className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110" 
+                            className="w-full h-40 object-cover transition-transform duration-700 hover:scale-110" 
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
@@ -259,7 +260,7 @@ function HeroSection() {
                           <img 
                             src={card.image || "/placeholder.svg"} 
                             alt={card.name} 
-                            className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110" 
+                            className="w-full h-40 object-cover transition-transform duration-700 hover:scale-110" 
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
@@ -283,7 +284,7 @@ function HeroSection() {
                           <img 
                             src={card.image || "/placeholder.svg"} 
                             alt={card.name} 
-                            className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110" 
+                            className="w-full h-40 object-cover transition-transform duration-700 hover:scale-110" 
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
@@ -305,7 +306,7 @@ function HeroSection() {
                             <img 
                               src={card.image || "/placeholder.svg"} 
                               alt={card.name} 
-                              className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110" 
+                              className="w-full h-40 object-cover transition-transform duration-700 hover:scale-110" 
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                           </div>
@@ -324,11 +325,12 @@ function HeroSection() {
                     )}
                   </div>
                 ))}
+                </div>
               </div>
             </div>
 
-            {/* Mobile View - Stacked */}
-            <div className="md:hidden space-y-6">
+            {/* Mobile View - Now using the same cards but with different layout */}
+            <div className="md:hidden space-y-6 hidden">
               {cards.map((card) => (
                 <div key={card.id} className="w-full">
                   {card.name === 'IT' ? (

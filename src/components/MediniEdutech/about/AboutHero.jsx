@@ -22,21 +22,18 @@ export function AboutHero() {
               Innovating Technology Solutions Since 2008
             </h1>
             
-            <div className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl space-y-4 text-justify">
-              <p className="font-bold text-customBlue dark:text-blue-400">
-                At Medini Edutech, we don't just train—we transform.
-              </p>
-              
-              <p>
-                Our cutting-edge, industry-driven training and certifications don't just prepare you for today's jobs—they future-proof your career.
-              </p>
-              
-              <p>With a decade of expertise, we go beyond skills—we build unstoppable professionals who innovate, lead, and dominate in an ever-evolving world where confidence meets capability. Your future starts here powered by knowledge engineered for success.</p>
-              
-              <p className="font-bold text-customBlue dark:text-blue-400">
-                At Medini, your ambition meets world-class capability. Where learning doesn't just transform careers—it transforms Bharat's destiny.
-              </p>
-            </div>
+           <div className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl text-justify">
+          <p>
+              <span className="font-bold text-customBlue dark:text-blue-400">
+               At Medini Edutech, we don't just train—we transform.
+              </span>{' '}
+              Our cutting-edge, industry-driven training and certifications don't just prepare you for today's jobs—they future-proof your career. With a decade of expertise, we go beyond skills—we build unstoppable professionals who innovate, lead, and dominate in an ever-evolving world where confidence meets capability. Your future starts here powered by knowledge engineered for success.{' '}
+              <span className="font-bold text-customBlue dark:text-blue-400">
+               At Medini, your ambition meets world-class capability. Where learning doesn't just transform careers—it transforms Bharat's destiny.
+              </span>
+          </p>
+          </div>
+
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button className="group inline-flex items-center justify-center rounded-lg bg-customBlue px-8 py-4 text-white font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">

@@ -131,7 +131,7 @@ const InternshipPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
       <div 
-        className="relative text-white pt-24 pb-16 bg-cover bg-center"
+        className="relative text-white pt-32 pb-24 bg-cover bg-center min-h-[100vh] flex items-center"
         style={{
           backgroundImage: 'url(/IMAGES/ilya-sonin-IsX2ZkbSk1Y-unsplash.jpg)',
           backgroundSize: 'cover',
@@ -142,12 +142,12 @@ const InternshipPage = () => {
       >
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="w-full relative z-10">
+          <div className="w-full">
+            <div className="relative z-10 max-w-3xl">
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg text-left">
                 Internship cum Final Year Project Program
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-white/90 font-medium drop-shadow-lg text-left max-w-3xl">
+              <p className="text-xl md:text-2xl mb-8 text-white/90 font-medium drop-shadow-lg text-left max-w-2xl">
                 Bridge the gap between academia and industry with hands-on experience
               </p>
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -156,12 +156,6 @@ const InternshipPage = () => {
                   className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-md font-medium text-lg transition-colors duration-200 text-center sm:text-left"
                 >
                   Register Now
-                </a>
-                <a 
-                  href="#programs" 
-                  className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-md font-medium text-lg transition-colors duration-200 text-center sm:text-left"
-                >
-                  View Programs
                 </a>
               </div>
             </div>
@@ -177,11 +171,11 @@ const InternshipPage = () => {
             <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-7xl mx-auto">
             {/* IT Program Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
               <div className="bg-blue-600 h-2"></div>
-              <div className="p-6">
+              <div className="p-6 flex-1 flex flex-col">
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Code className="h-8 w-8 text-blue-600" />
                 </div>
@@ -207,7 +201,7 @@ const InternshipPage = () => {
             {/* Civil Program Card */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
               <div className="bg-green-600 h-2"></div>
-              <div className="p-6">
+              <div className="p-6 flex-1 flex flex-col">
                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Building2 className="h-8 w-8 text-green-600" />
                 </div>
@@ -231,9 +225,9 @@ const InternshipPage = () => {
             </div>
 
             {/* Mechanical Program Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
               <div className="bg-amber-600 h-2"></div>
-              <div className="p-6">
+              <div className="p-6 flex-1 flex flex-col">
                 <div className="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Settings className="h-8 w-8 text-amber-600" />
                 </div>
