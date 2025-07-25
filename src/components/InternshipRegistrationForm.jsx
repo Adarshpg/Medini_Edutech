@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { registerForInternship } from '../services/api';
 
 const InternshipRegistrationForm = () => {
@@ -16,6 +16,12 @@ const InternshipRegistrationForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [validationErrors, setValidationErrors] = useState({});
+  const [registeredEmails] = useState([
+    'example@example.com',
+    'test@test.com',
+    // Add more test emails if needed
+  ]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,10 +31,47 @@ const InternshipRegistrationForm = () => {
     }));
   };
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return 'Invalid email format';
+    }
+    if (registeredEmails.includes(email)) {
+      return 'This email is already registered';
+    }
+    return '';
+  };
+
+  const validatePhone = (phone) => {
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+      return 'Phone number must be 10 digits';
+    }
+    return '';
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    const emailError = validateEmail(formData.email);
+    const phoneError = validatePhone(formData.phone);
+    
+    if (emailError) errors.email = emailError;
+    if (phoneError) errors.phone = phoneError;
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
+    setValidationErrors({});
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -97,9 +140,21 @@ const InternshipRegistrationForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            onBlur={() => {
+              const emailError = validateEmail(formData.email);
+              setValidationErrors(prev => ({
+                ...prev,
+                email: emailError
+              }));
+            }}
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
+            className={`mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 border p-2 text-black bg-white ${
+              validationErrors.email ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'
+            }`}
           />
+          {validationErrors.email && (
+            <p className="mt-1 text-sm text-red-600">{validationErrors.email}</p>
+          )}
         </div>
 
         <div>
@@ -111,10 +166,28 @@ const InternshipRegistrationForm = () => {
             id="phone"
             name="phone"
             value={formData.phone}
-            onChange={handleChange}
+            onChange={(e) => {
+              // Only allow numbers
+              const value = e.target.value.replace(/\D/g, '');
+              handleChange({ target: { name: 'phone', value } });
+            }}
+            onBlur={() => {
+              const phoneError = validatePhone(formData.phone);
+              setValidationErrors(prev => ({
+                ...prev,
+                phone: phoneError
+              }));
+            }}
+            maxLength="10"
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 text-black bg-white"
+            className={`mt-1 block w-full rounded-md shadow-sm focus:ring-blue-500 border p-2 text-black bg-white ${
+              validationErrors.phone ? 'border-red-500' : 'border-gray-300 focus:border-blue-500'
+            }`}
+            placeholder="1234567890"
           />
+          {validationErrors.phone && (
+            <p className="mt-1 text-sm text-red-600">{validationErrors.phone}</p>
+          )}
         </div>
 
         <div>

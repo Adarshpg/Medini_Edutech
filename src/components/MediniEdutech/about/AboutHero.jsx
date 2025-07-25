@@ -36,12 +36,17 @@ export function AboutHero() {
 
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="group inline-flex items-center justify-center rounded-lg bg-customBlue px-8 py-4 text-white font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <a 
+                href="https://medinitechnologies.in/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center rounded-lg bg-customBlue px-8 py-4 text-white font-medium hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
                 Learn More
                 <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
           
