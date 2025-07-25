@@ -324,7 +324,7 @@ const Header = () => {
                           }))}
                         >
                           <PopoverTrigger asChild>
-                            <div className="flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer">
+                            <div className="flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer">
                               <span>{provider.name}</span>
                               <ChevronRight className="h-4 w-4 text-gray-500" />
                             </div>
@@ -335,7 +335,7 @@ const Header = () => {
                                 <Link 
                                   to={`/mediniedutech/courses/${course.id}`} 
                                   key={course.id}
-                                  className="block px-4 py-2 text-sm hover:bg-amber-50 hover:text-amber-600"
+                                  className="block px-4 py-2 text-sm hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-white"
                                   onClick={() => handleCourseClick(provider.id)}
                                 >
                                   {course.name}
