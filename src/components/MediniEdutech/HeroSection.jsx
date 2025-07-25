@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Link } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useInView } from "framer-motion"
 import FeedbackSection from "./FeedbackSection"
 
 const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
@@ -73,6 +73,23 @@ function HeroSection() {
       link: "/courses/it"
     }
   ]
+
+  // Animation variants for the cards
+  const cardContainerRef = useRef(null);
+  const isInView = useInView(cardContainerRef, { once: true, amount: 0.1 });
+
+  const cardVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1, // Stagger the animation for each card
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    })
+  };
 
   // Handle responsive number of visible cards
   useEffect(() => {
@@ -171,10 +188,7 @@ function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex gap-4"
               >
-                <Link to="/courses" className="px-8 py-3 bg-white text-gray-900 font-semibold rounded-md hover:bg-gray-100 transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                  Explore Now
-                </Link>
-                <Link href="/contact" className="px-8 py-3 bg-transparent border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300">
+                <Link to="/mediniedutech/contact" className="px-8 py-3 bg-transparent border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300">
                   Contact us
                 </Link>
               </motion.div>
@@ -199,7 +213,7 @@ function HeroSection() {
       </section>
 
       {/* Explore Courses Section */}
-      <section id="explore-courses" className="py-16">
+      <section id="explore-courses" className="py-16" ref={cardContainerRef}>
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">Explore Our Courses</h2>
@@ -225,8 +239,15 @@ function HeroSection() {
             <div className="relative">
               <div className="md:flex md:space-x-6 md:overflow-x-auto md:pb-4 md:-mx-4 md:px-4 space-y-6 md:space-y-0 scrollbar-hide md:flex-row-reverse">
                 <div className="md:flex md:space-x-6">
-                {cards.map((card) => (
-                  <div key={card.id} className="w-full md:w-80 md:flex-shrink-0">
+                {cards.map((card, index) => (
+                  <motion.div 
+                    key={card.id} 
+                    className="w-full md:w-80 md:flex-shrink-0"
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    custom={index}
+                    variants={cardVariants}
+                  >
                     {card.name === 'IT' ? (
                       <div 
                         className="bg-white rounded-lg overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full cursor-pointer"
@@ -323,7 +344,7 @@ function HeroSection() {
                         </div>
                       </Link>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
                 </div>
               </div>
