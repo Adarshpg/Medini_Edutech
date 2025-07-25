@@ -52,7 +52,7 @@ const Header = () => {
     },
     {
       id: "BIM_CONSTRUCTION",
-      name: "BIM & Construction",
+      name: "BIM",
       categories: coursesData.courseProviders.find(p => p.id === "BIM_CONSTRUCTION")?.categories || []
     },
     {

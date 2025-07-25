@@ -691,37 +691,43 @@
         "logo": "@/assets/Logos/BIM-Construction-Logo.png",
         "categories": [
           {
-            "name": "BIM Management",
+            "name": "BIM Architecture",
             "courses": [
               {
-                "id": "bim-infrastructure",
-                "title": "BIM for Infrastructure Projects",
-                "name": "BIM for Infrastructure",
-                "icon": "🌉",
-                "description": "Introduces BIM methodologies for roads, bridges, and utilities, including 4D scheduling and clash detection.",
-                "duration": "8 weeks",
+                "id": "bim-architecture",
+                "title": "BIM for Architectural Design",
+                "name": "BIM Architecture",
+                "icon": "🏛️",
+                "description": "Comprehensive training in BIM workflows for architectural design, focusing on creating intelligent 3D models for better design visualization and coordination.",
+                "duration": "10 weeks",
                 "difficulty": "Intermediate",
-                "price": 1199,
-                "instructor": "Howard Chang",
-                "targetAudience": "Civil (CIV)",
+                "price": 1299,
+                "instructor": "Sarah Johnson",
+                "targetAudience": "Architects, Designers (ARCH)",
                 "curriculum": [
-                  "BIM Standards Implementation",
-                  "Information Exchange Workflows",
-                  "4D Scheduling Integration",
-                  "Clash Detection Strategies",
-                  "BIM Execution Planning"
+                  "Introduction to BIM in Architecture",
+                  "3D Modeling for Architectural Design",
+                  "Parametric Design and Documentation",
+                  "Energy Analysis and Performance",
+                  "Collaboration and Coordination"
                 ],
                 "learningOutcomes": [
-                  "Implement BIM for infrastructure projects",
-                  "Coordinate multidisciplinary designs",
-                  "Develop BIM execution plans"
+                  "Create intelligent 3D architectural models",
+                  "Generate construction documents from BIM models",
+                  "Perform energy analysis and simulations",
+                  "Coordinate with other disciplines"
                 ],
                 "prerequisites": [
-                  "Civil engineering background",
-                  "Basic 3D modeling experience"
+                  "Basic architectural knowledge",
+                  "Familiarity with CAD concepts"
                 ],
-                "coverImage": "bim-infrastructure.jpg"
-              },
+                "coverImage": "bim-architecture.jpg"
+              }
+            ]
+          },
+          {
+            "name": "BIM Construction",
+            "courses": [
               {
                 "id": "bim-construction",
                 "title": "BIM for Construction Management",
@@ -750,6 +756,41 @@
                   "Basic BIM knowledge"
                 ],
                 "coverImage": "bim-construction.jpg"
+              }
+            ]
+          },
+          {
+            "name": "BIM Infrastructure",
+            "courses": [
+              {
+                "id": "bim-infrastructure",
+                "title": "BIM for Infrastructure Projects",
+                "name": "BIM Infrastructure",
+                "icon": "🌉",
+                "description": "Comprehensive training in BIM methodologies for infrastructure projects including roads, bridges, and utilities, with focus on 4D scheduling and clash detection.",
+                "duration": "12 weeks",
+                "difficulty": "Intermediate",
+                "price": 1399,
+                "instructor": "Howard Chang",
+                "targetAudience": "Civil Engineers, Infrastructure Specialists (CIV)",
+                "curriculum": [
+                  "BIM Standards for Infrastructure",
+                  "3D Modeling for Civil Infrastructure",
+                  "4D Scheduling and Phasing",
+                  "Clash Detection and Resolution",
+                  "BIM for Infrastructure Lifecycle"
+                ],
+                "learningOutcomes": [
+                  "Implement BIM for large-scale infrastructure projects",
+                  "Create and manage 3D infrastructure models",
+                  "Coordinate multidisciplinary infrastructure designs",
+                  "Develop and implement BIM execution plans"
+                ],
+                "prerequisites": [
+                  "Civil engineering background",
+                  "Basic 3D modeling experience"
+                ],
+                "coverImage": "bim-infrastructure.jpg"
               }
             ]
           }
