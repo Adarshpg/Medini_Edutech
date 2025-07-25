@@ -92,7 +92,7 @@ const InternshipRegistrationForm = () => {
       });
     } catch (err) {
       console.error('Form submission error:', err);
-      setError(err.message || 'Something went wrong. Please try again.');
+      setError('Email Already Registered' || 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
