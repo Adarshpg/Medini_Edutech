@@ -37,7 +37,7 @@ const Header = () => {
   const courseCategories = [
     {
       id: "AUTODESK",
-      name: "AutoDesk",
+      name: "Autodesk",
       categories: coursesData.courseProviders.find(p => p.id === "AUTODESK")?.categories || []
     },
     {
