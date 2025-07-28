@@ -61,6 +61,11 @@ const Header = () => {
       categories: coursesData.courseProviders.find(p => p.id === "OTHER")?.categories || []
     },
     {
+      id: "DIPLOMA",
+      name: "Diploma",
+      categories: coursesData.courseProviders.find(p => p.id === "DIPLOMA")?.categories || []
+    },
+    {
       id: "IT",
       name: "Programming & IT",
       categories: coursesData.courseProviders.find(p => p.id === "IT")?.categories || []
