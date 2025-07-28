@@ -108,7 +108,7 @@
             ]
           },
           {
-            "name": "BIM Architecture",
+            "name": "BIM for Architecture",
             "courses": [
               {
                 "id": "revit-architecture",
@@ -691,12 +691,12 @@
         "logo": "@/assets/Logos/BIM-Construction-Logo.png",
         "categories": [
           {
-            "name": "BIM Architecture",
+            "name": "BIM for Architecture",
             "courses": [
               {
                 "id": "bim-architecture",
                 "title": "BIM for Architectural Design",
-                "name": "BIM Architecture",
+                "name": "BIM for Architecture",
                 "icon": "🏛️",
                 "description": "Comprehensive training in BIM workflows for architectural design, focusing on creating intelligent 3D models for better design visualization and coordination.",
                 "duration": "10 weeks",
@@ -726,7 +726,7 @@
             ]
           },
           {
-            "name": "BIM Construction",
+            "name": "BIM for Construction",
             "courses": [
               {
                 "id": "bim-construction",
@@ -760,12 +760,12 @@
             ]
           },
           {
-            "name": "BIM Infrastructure",
+            "name": "BIM for Infrastructure",
             "courses": [
               {
                 "id": "bim-infrastructure",
                 "title": "BIM for Infrastructure Projects",
-                "name": "BIM Infrastructure",
+                "name": "BIM for Infrastructure",
                 "icon": "🌉",
                 "description": "Comprehensive training in BIM methodologies for infrastructure projects including roads, bridges, and utilities, with focus on 4D scheduling and clash detection.",
                 "duration": "12 weeks",
