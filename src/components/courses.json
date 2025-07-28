@@ -1235,6 +1235,87 @@
         ]
       },
       {
+        "id": "DIPLOMA",
+        "logo": "@/assets/Logos/diploma-logo.png",
+        "categories": [
+          {
+            "name": "Diploma Programs",
+            "courses": [
+              {
+                "id": "diploma-cad",
+                "title": "Diploma in CAD & BIM",
+                "name": "Interior and Exterior Design",
+                "icon": "",
+                "description": "Comprehensive diploma program covering Computer-Aided Design (CAD) and Building Information Modeling (BIM) for architectural and engineering applications.",
+                "duration": "6 Months",
+                "difficulty": "Beginner to Advanced",
+                "price": 2499,
+                "instructor": "Expert Faculty",
+                "targetAudience": "Aspiring Designers, Engineers, Architects",
+                "curriculum": [
+                  "Introduction to CAD & BIM",
+                  "2D Drafting and 3D Modeling",
+                  "Architectural Design Principles",
+                  "Structural Design Basics",
+                  "MEP Coordination",
+                  "Project Documentation",
+                  "Industry Best Practices"
+                ],
+                "learningOutcomes": [
+                  "Proficiency in CAD software",
+                  "BIM modeling skills",
+                  "Architectural and structural design understanding",
+                  "Project documentation and presentation"
+                ],
+                "prerequisites": [
+                  "Basic computer literacy",
+                  "Interest in design and architecture"
+                ],
+                "coverImage": "diploma-cad-bim.jpg"
+              },
+              {
+                "id": "diploma-3d-design",
+                "title": "Diploma in 3D Design & Visualization",
+                "name": "3D Design & Visualization",
+                "icon": "🎨",
+                "description": "Comprehensive program covering 3D modeling, texturing, lighting, and rendering techniques for creating photorealistic visualizations and animations for architecture, product design, and media industries.",
+                "duration": "6 Months",
+                "difficulty": "Beginner to Advanced",
+                "price": 2499,
+                "instructor": "Expert 3D Artists & Designers",
+                "targetAudience": "Aspiring 3D Artists, Architects, Product Designers, Game Developers, Visual Effects Artists",
+                "curriculum": [
+                  "Introduction to 3D Space and Modeling Fundamentals",
+                  "Advanced 3D Modeling Techniques (Hard Surface & Organic)",
+                  "UV Mapping and Texture Creation",
+                  "Material Creation and Shader Development",
+                  "Photorealistic Lighting and Rendering",
+                  "3D Animation Principles and Techniques",
+                  "Particle Systems and Dynamics",
+                  "Compositing and Post-Processing",
+                  "Portfolio Development and Industry Standards"
+                ],
+                "learningOutcomes": [
+                  "Master industry-standard 3D modeling software",
+                  "Create realistic materials and textures",
+                  "Implement advanced lighting and rendering techniques",
+                  "Develop animation skills for product visualization",
+                  "Produce professional-grade 3D visualizations",
+                  "Optimize 3D assets for various platforms"
+                ],
+                "prerequisites": [
+                  "Basic computer literacy",
+                  "Creative mindset and attention to detail",
+                  "Basic understanding of design principles",
+                  "No prior 3D experience required"
+                ],
+                "coverImage": "3d-design-visualization.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "IT",
         "logo": "@/assets/Logos/IT-Logo.png",
         "categories": [
@@ -1245,7 +1326,7 @@
                 "id": "java-fullstack",
                 "title": "Java Full Stack Development",
                 "name": "Java Full Stack",
-                "icon": "☕",
+                "icon": "",
                 "description": "Comprehensive training in Java, Spring Boot, REST APIs, frontend frameworks, and database integration for full stack web development.",
                 "duration": "12 Weeks",
                 "difficulty": "Intermediate",
@@ -1277,7 +1358,7 @@
                 "id": "python-fullstack",
                 "title": "Python Full Stack Development",
                 "name": "Python Full Stack",
-                "icon": "🐍",
+                "icon": "",
                 "description": "Learn Python, Django, REST APIs, modern frontend frameworks, and database management for full stack web development.",
                 "duration": "12 Weeks",
                 "difficulty": "Intermediate",
