@@ -55,7 +55,12 @@ export function ContactPage() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Our Location",
+      title: "Our Location - Vijayanagar",
+      content: "No. 2943/E, 3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040",
+    },
+    {
+      icon: MapPin,
+      title: "Our Location - Vijayanagar",
       content: "No. 2943/E, 3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040",
     },
     {
