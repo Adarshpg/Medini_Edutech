@@ -10,7 +10,7 @@
               {
                 "id": "fusion",
                 "title": "Fusion 360 Essentials",
-                "name": "Fusion",
+                "name": "Fusion 360",
                 "icon": "🔄",
                 "description": "Cloud-based 3D CAD/CAM software for product design and manufacturing, combining industrial and mechanical design with simulation and collaboration tools.",
                 "duration": "40 Hours",
@@ -108,7 +108,7 @@
             ]
           },
           {
-            "name": "BIM for Architecture",
+            "name": "BIM Architecture",
             "courses": [
               {
                 "id": "revit-architecture",
@@ -427,11 +427,42 @@
         "logo": "@/assets/Logos/Bentley-Training-Partner-Logo.jpg",
         "categories": [
           {
-            "name": "Engineering Software",
+            "name": "Bentley Engineering Suite",
             "courses": [
               {
+                "id": "microstation",
+                "title": "MicroStation Fundamentals",
+                "name": "MicroStation",
+                "icon": "📐",
+                "description": "Powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
+                "duration": "30 Hours",
+                "difficulty": "Beginner to Intermediate",
+                "price": 899,
+                "instructor": "John Davis",
+                "targetAudience": "Civil Engineers, Architects, Designers (CIV/ARCH/DES)",
+                "curriculum": [
+                  "Introduction to MicroStation Interface",
+                  "Basic 2D Drafting and Drawing Techniques",
+                  "Advanced 2D Drawing Tools",
+                  "Working with Layers and Levels",
+                  "Managing Design Files and CAD Standards",
+                  "Workspace Customization",
+                  "Printing and Plotting Drawings"
+                ],
+                "learningOutcomes": [
+                  "2D and 3D drawings for Buildings and Infrastructure",
+                  "Designing and documenting of Roads and Bridges",
+                  "Creation of geospatially enabled drawings"
+                ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "No prior CAD experience required"
+                ],
+                "coverImage": "microstation.jpg"
+              },
+              {
                 "id": "openroads-designer",
-                "title": "Microstation Fundamentals",
+                "title": "OpenRoads Designer Fundamentals",
                 "name": "OpenRoads Designer",
                 "icon": "📐",
                 "description": "Civil infrastructure design software for roadways, offering 3D modeling, terrain modeling, drainage, and corridor modeling in a single platform.",
@@ -656,7 +687,7 @@
               {
                 "id": "fusion-360",
                 "title": "Fusion 360 Product Design",
-                "name": "Fusion",
+                "name": "Fusion 360",
                 "icon": "📱",
                 "description": "Cloud-based CAD tools integrating parametric modeling, generative design, and CNC programming for product development.",
                 "duration": "8 weeks",
@@ -691,12 +722,12 @@
         "logo": "@/assets/Logos/BIM-Construction-Logo.png",
         "categories": [
           {
-            "name": "BIM for Architecture",
+            "name": "BIM Architecture",
             "courses": [
               {
                 "id": "bim-architecture",
                 "title": "BIM for Architectural Design",
-                "name": "BIM for  Architecture",
+                "name": "BIM Architecture",
                 "icon": "🏛️",
                 "description": "Comprehensive training in BIM workflows for architectural design, focusing on creating intelligent 3D models for better design visualization and coordination.",
                 "duration": "10 weeks",
@@ -760,12 +791,12 @@
             ]
           },
           {
-            "name": "BIM for Infrastructure",
+            "name": "BIM Infrastructure",
             "courses": [
               {
                 "id": "bim-infrastructure",
                 "title": "BIM for Infrastructure Projects",
-                "name": "BIM for Infrastructure",
+                "name": "BIM Infrastructure",
                 "icon": "🌉",
                 "description": "Comprehensive training in BIM methodologies for infrastructure projects including roads, bridges, and utilities, with focus on 4D scheduling and clash detection.",
                 "duration": "12 weeks",
