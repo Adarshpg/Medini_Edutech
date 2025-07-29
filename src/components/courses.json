@@ -10,11 +10,12 @@
               {
                 "id": "fusion",
                 "title": "Fusion 360 Essentials",
-                "name": "Fusion ",
+                "name": "Fusion",
                 "icon": "🔄",
                 "description": "Cloud-based 3D CAD/CAM software for product design and manufacturing, combining industrial and mechanical design with simulation and collaboration tools.",
                 "duration": "40 Hours",
                 "difficulty": "Beginner to Intermediate",
+                "price": 899,
                 "instructor": "Jason Miller",
                 "targetAudience": "Product Designers, Engineers, Makers (PROD/MECH)",
                 "curriculum": [
@@ -47,7 +48,8 @@
                 "icon": "📐",
                 "description": "Industry-standard 2D drafting and 3D modeling software used for architectural, engineering, and construction design documentation. Learn precision drawing, layout planning, and presentation tools for effective design communication.",
                 "duration": "40 Hours",
-                "difficulty": "Beginner",               
+                "difficulty": "Beginner",
+                "price": 799,
                 "instructor": "Michael Chen",
                 "targetAudience": "Mechanical, Architectural, Civil, Electrical (M/A/C/E)",
                 "curriculum": [
@@ -81,6 +83,7 @@
                 "description": "Autodesk’s specialized toolset for electrical control designers. It builds upon AutoCAD's core drafting tools with features tailored to electrical design, helping automate control system design, schematic creation, panel layout, and  drawings.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 999,
                 "instructor": "Jessica Williams",
                 "targetAudience": "Electrical (ELECT)",
                 "curriculum": [
@@ -105,7 +108,7 @@
             ]
           },
           {
-            "name": "BIM for Architecture",
+            "name": "BIM Architecture",
             "courses": [
               {
                 "id": "revit-architecture",
@@ -115,6 +118,7 @@
                 "description": "Building Information Modeling (BIM) software for architects to design, visualize, and document buildings. Enables accurate 3D modeling, construction documentation, and coordination across disciplines.",
                 "duration": "40 Hours",
                 "difficulty": "Intermediate",
+                "price": 1299,
                 "instructor": "Emily Rodriguez",
                 "targetAudience": "Civil (CIV)",
                 "curriculum": [
@@ -156,6 +160,7 @@
                 "description": "BIM solution for mechanical, electrical, and plumbing (MEP) engineers. Supports 3D modeling and system analysis for HVAC, piping, fire protection, and electrical systems.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 1199,
                 "instructor": "Sarah Johnson",
                 "targetAudience": "Mechanical/Electrical (MECH/ELEC)",
                 "curriculum": [
@@ -194,6 +199,7 @@
                 "description": "BIM solution for structural engineers to design, analyze, and document structural systems with accuracy. Supports concrete, steel, and composite structure workflows with parametric modeling.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 1199,
                 "instructor": "David Thompson",
                 "targetAudience": "Civil (CIV)",
                 "curriculum": [
@@ -271,6 +277,7 @@
                 "description": "3ds Max is a professional 3D modeling, animation, and rendering software used for creating 3D visualizations, animations, and models in architecture, games, and film industries. This course covers essential techniques for modeling, lighting, rendering, and animation to bring your creative projects to life.",
                 "duration": "60 Hours",
                 "difficulty": "Advanced",
+                "price": 1499,
                 "instructor": "Nathan Park",
                 "targetAudience": "Architectural/Civil (ARCH/CIV)",
                 "curriculum": [
@@ -346,6 +353,7 @@
                 "description": "powerful BIM tool used for the design and planning of infrastructure projects. This course will teach you how to create 3D models of real-world environments and integrate design concepts into a unified model for analysis, visualization, and project collaboration.",
                 "duration": "20 Hours",
                 "difficulty": "Intermediate",
+                "price": 1099,
                 "instructor": "Sophia Chen",
                 "targetAudience": "Civil Engineers, Urban Planners (CIV/PLAN)",
                 "curriculum": [
@@ -385,6 +393,7 @@
                 "description": "A comprehensive 3D animation software widely used in gaming, film, and motion graphics. This course covers essential skills in 3D modeling, texturing, lighting, rendering, and animation to help you bring your digital creations to life.",
                 "duration": "40 Hours",
                 "difficulty": "Advanced",
+                "price": 1599,
                 "instructor": "Daniel Kim",
                 "targetAudience": "Architectural Visualizers, 3D Artists (ARCH/VIZ)",
                 "curriculum": [
@@ -428,6 +437,7 @@
                 "description": "Civil infrastructure design software for roadways, offering 3D modeling, terrain modeling, drainage, and corridor modeling in a single platform.",
                 "duration": "40-50 Hours",
                 "difficulty": "Beginner",
+                "price": 699,
                 "instructor": "Jennifer Lopez",
                 "targetAudience": "Civil/Architectural (CIV/ARCH)",
                 "curriculum": [
@@ -459,6 +469,7 @@
                 "description": "Water distribution modeling software that helps engineers plan, design, and optimize water systems with advanced hydraulic modeling capabilities.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 1199,
                 "instructor": "Sarah Thompson",
                 "targetAudience": "Water Engineers, Civil Engineers (CIV/ENV)",
                 "curriculum": [
@@ -491,6 +502,7 @@
                 "description": "Advanced software for planning, design, and analysis of sanitary and combined sewer systems, using hydraulic and hydrologic modeling tools.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 1199,
                 "instructor": "Michael Rivera",
                 "targetAudience": "Wastewater Engineers, Civil Engineers (CIV/ENV)",
                 "curriculum": [
@@ -517,36 +529,6 @@
               }
             ]
           },
-            {
-                "id": "microstation",
-                "title": "MicroStation Fundamentals",
-                "name": "MicroStation",
-                "icon": "📐",
-                "description": "powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
-                "duration": "30 Hours",
-                "difficulty": "Beginner to Intermediate",
-                "instructor": "John Davis",
-                "targetAudience": "Civil Engineers, Architects, Designers (CIV/ARCH/DES)",
-                "curriculum": [
-                  "Introduction to MicroStation Interface",
-                  "Basic 2D Drafting and Drawing Techniques",
-                  "Advanced 2D Drawing Tools",
-                  "Working with Layers and Levels",
-                  "Managing Design Files and CAD Standards",
-                  "Workspace Customization",
-                  "Printing and Plotting Drawings"
-                ],
-                "learningOutcomes": [
-                  "2D and 3D drawings for Buildings and Infrastructure",
-                  "Designing and documenting of Roads and Bridges",
-                  "Creation of geospatially enabled drawings"
-             ],
-                "prerequisites": [
-                  "Basic computer skills",
-                  "No prior CAD experience required"
-          ],
-                "coverImage": "microstation.jpg"
-           },
           {
             "name": "Structural Analysis",
             "courses": [
@@ -558,6 +540,7 @@
                 "description": "Structural analysis and design software for buildings, bridges, and towers. Enables accurate modeling, analysis under load conditions, and design as per global codes.",
                 "duration": "40 Hours",
                 "difficulty": "Advanced",
+                "price": 1599,
                 "instructor": "Dr. Richard Brown",
                 "targetAudience": "Civil (CIV)",
                 "curriculum": [
@@ -582,7 +565,38 @@
                   "Understanding of finite element analysis"
                 ],
                 "coverImage": "staad-pro.jpg"
-              }
+              },
+              {
+                "id": "microstation",
+                "title": "MicroStation Fundamentals",
+                "name": "MicroStation",
+                "icon": "📐",
+                "description": "powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
+                "duration": "30 Hours",
+                "difficulty": "Beginner to Intermediate",
+                "price": 899,
+                "instructor": "John Davis",
+                "targetAudience": "Civil Engineers, Architects, Designers (CIV/ARCH/DES)",
+                "curriculum": [
+                  "Introduction to MicroStation Interface",
+                  "Basic 2D Drafting and Drawing Techniques",
+                  "Advanced 2D Drawing Tools",
+                  "Working with Layers and Levels",
+                  "Managing Design Files and CAD Standards",
+                  "Workspace Customization",
+                  "Printing and Plotting Drawings"
+                ],
+                "learningOutcomes": [
+                  "2D and 3D drawings for Buildings and Infrastructure",
+                  "Designing and documenting of Roads and Bridges",
+                  "Creation of geospatially enabled drawings"
+             ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "No prior CAD experience required"
+          ],
+                "coverImage": "microstation.jpg"
+           }
             ]
           }
         ]
@@ -602,6 +616,7 @@
                 "description": "3D CAD software for mechanical design and product development. Offers powerful modeling, simulation, and documentation tools for engineers and designers.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 1399,
                 "instructor": "Alex Wong",
                 "targetAudience": "Mechanical (MECH)",
                 "curriculum": [
@@ -641,11 +656,12 @@
               {
                 "id": "fusion-360",
                 "title": "Fusion 360 Product Design",
-                "name": "Fusion 360",
+                "name": "Fusion",
                 "icon": "📱",
                 "description": "Cloud-based CAD tools integrating parametric modeling, generative design, and CNC programming for product development.",
                 "duration": "8 weeks",
                 "difficulty": "Intermediate",
+                "price": 1099,
                 "instructor": "Thomas Wilson",
                 "targetAudience": "Mechanical (MECH)",
                 "curriculum": [
@@ -675,16 +691,17 @@
         "logo": "@/assets/Logos/BIM-Construction-Logo.png",
         "categories": [
           {
-            "name": "BIM for Architecture",
+            "name": "BIM Architecture",
             "courses": [
               {
                 "id": "bim-architecture",
                 "title": "BIM for Architectural Design",
-                "name": "BIM for Architecture",
+                "name": "BIM Architecture",
                 "icon": "🏛️",
                 "description": "Comprehensive training in BIM workflows for architectural design, focusing on creating intelligent 3D models for better design visualization and coordination.",
                 "duration": "10 weeks",
                 "difficulty": "Intermediate",
+                "price": 1299,
                 "instructor": "Sarah Johnson",
                 "targetAudience": "Architects, Designers (ARCH)",
                 "curriculum": [
@@ -709,7 +726,7 @@
             ]
           },
           {
-            "name": "BIM for Construction",
+            "name": "BIM Construction",
             "courses": [
               {
                 "id": "bim-construction",
@@ -719,6 +736,7 @@
                 "description": "Covers collaborative construction management, BIM standards, and on-site workflow optimization.",
                 "duration": "7 weeks",
                 "difficulty": "Intermediate",
+                "price": 1099,
                 "instructor": "Lisa Martinez",
                 "targetAudience": "Civil (CIV)",
                 "curriculum": [
@@ -742,16 +760,17 @@
             ]
           },
           {
-            "name": "BIM for Infrastructure",
+            "name": "BIM Infrastructure",
             "courses": [
               {
                 "id": "bim-infrastructure",
                 "title": "BIM for Infrastructure Projects",
-                "name": "BIM for Infrastructure",
+                "name": "BIM Infrastructure",
                 "icon": "🌉",
                 "description": "Comprehensive training in BIM methodologies for infrastructure projects including roads, bridges, and utilities, with focus on 4D scheduling and clash detection.",
                 "duration": "12 weeks",
                 "difficulty": "Intermediate",
+                "price": 1399,
                 "instructor": "Howard Chang",
                 "targetAudience": "Civil Engineers, Infrastructure Specialists (CIV)",
                 "curriculum": [
@@ -792,6 +811,7 @@
                 "description": "Intuitive 3D modeling software used for architectural and interior design visualization. Ideal for conceptual models, landscape, and furniture design.",
                 "duration": "30 Hours",
                 "difficulty": "Beginner",
+                "price": 699,
                 "instructor": "Michelle Patel",
                 "targetAudience": "Architectural/Civil (ARCH/CIV)",
                 "curriculum": [
@@ -825,6 +845,7 @@
                 "description": "V-Ray is a high-quality rendering engine used in architecture, product design, and animation for creating photorealistic visualizations. This course focuses on integrating V-Ray with  SketchUp for lighting, materials, rendering techniques, and post-production.",
                 "duration": "15 Hours",
                 "difficulty": "Intermediate",
+                "price": 899,
                 "instructor": "Elena Rodriguez",
                 "targetAudience": "Architects, 3D Artists, Designers (ARCH/VIZ)",
                 "curriculum": [
@@ -856,6 +877,7 @@
                 "description": "Architectural visualization software for creating high-quality renders, animations, and walkthroughs. Known for its intuitive interface and real-time rendering capabilities.",
                 "duration": "20 Hours",
                 "difficulty": "Beginner to Intermediate",
+                "price": 799,
                 "instructor": "Christopher Lee",
                 "targetAudience": "Architects, Designers, Visualizers (ARCH/VIZ)",
                 "curriculum": [
@@ -889,6 +911,7 @@
                 "description": "Real-time visualization and rendering plugin for Revit, SketchUp, Rhino, and ArchiCAD. Helps architects and designers create immersive walkthroughs and photo-realistic outputs.",
                 "duration": "15-20 Hours",
                 "difficulty": "Beginner",
+                "price": 699,
                 "instructor": "Andrew Wilson",
                 "targetAudience": "Architects, Designers, BIM Specialists (ARCH/BIM)",
                 "curriculum": [
@@ -920,6 +943,7 @@
                 "description": "Project management software used in construction and engineering to plan, schedule, and control large-scale projects with complex resource and cost tracking.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 1099,
                 "instructor": "Robert Johnson",
                 "targetAudience": "Project Managers, Construction Professionals (PM/CONST)",
                 "curriculum": [
@@ -953,6 +977,7 @@
                 "description": "Rhino is a versatile 3D modeling software, especially used in architecture and industrial design for its precision and NURBS modeling capabilities. Grasshopper, its visual programming plugin, enables parametric design and algorithmic modeling.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 999,
                 "instructor": "Olivia Martinez",
                 "targetAudience": "Architects, Industrial Designers, Artists (ARCH/DES)",
                 "curriculum": [
@@ -984,6 +1009,7 @@
                 "description": "Visual programming language for Rhino that enables parametric and algorithmic design, allowing for complex form generation and design exploration.",
                 "duration": "9 weeks",
                 "difficulty": "Advanced",
+                "price": 1299,
                 "instructor": "David Park",
                 "targetAudience": "Architects, Computational Designers (ARCH/COMP)",
                 "curriculum": [
@@ -1012,6 +1038,7 @@
                 "description": "Industry-standard image editing software for post-processing architectural renderings, creating presentation boards, and enhancing visualizations.",
                 "duration": "15 Hours",
                 "difficulty": "Beginner to Intermediate",
+                "price": 799,
                 "instructor": "Sophia Garcia",
                 "targetAudience": "Architects, Visualizers, Designers (ARCH/VIZ)",
                 "curriculum": [
@@ -1044,6 +1071,7 @@
                 "description": "Vector graphics software for creating logos, illustrations, and typography. Industry standard for digital drawing and design.",
                 "duration": "30 Hours",
                 "difficulty": "Beginner to Intermediate",
+                "price": 749,
                 "instructor": "Marcus Wright",
                 "targetAudience": "Architects, Engineers, Designers (ARCH/ENG)",
                 "curriculum": [
@@ -1075,6 +1103,7 @@
                 "description": "Structural analysis and design software used for buildings, offering integrated modeling, analysis, and design of concrete and steel structures.",
                 "duration": "40 Hours",
                 "difficulty": "Advanced",
+                "price": 1499,
                 "instructor": "Dr. James Chen",
                 "targetAudience": "Structural Engineers, Civil Engineers (STRUCT/CIV)",
                 "curriculum": [
@@ -1108,6 +1137,7 @@
                 "description": "Project management tool for scheduling, task tracking, and resource planning. Widely used for planning and controlling projects across industries.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 899,
                 "instructor": "Laura Smith",
                 "targetAudience": "Project Managers, Construction Professionals (PM/CONST)",
                 "curriculum": [
@@ -1141,6 +1171,7 @@
                 "description": "Open-source GIS platform for spatial analysis, mapping, and geospatial data visualization. Supports raster, vector, and database-driven data management.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 799,
                 "instructor": "Emily Carter",
                 "targetAudience": "GIS Analysts, Urban Planners, Environmental Scientists (GIS/PLAN/ENV)",
                 "curriculum": [
@@ -1174,6 +1205,7 @@
                 "description": "2D animation software for creating interactive animations for web, games, and television. Supports vector animation, character rigging, and HTML5 Canvas output.",
                 "duration": "30 Hours",
                 "difficulty": "Intermediate",
+                "price": 799,
                 "instructor": "Sophia Lee",
                 "targetAudience": "Animators, Web Designers, Multimedia Artists (ANIM/WEB)",
                 "curriculum": [
@@ -1203,85 +1235,6 @@
         ]
       },
       {
-        "id": "DIPLOMA",
-        "logo": "@/assets/Logos/diploma-logo.png",
-        "categories": [
-          {
-            "name": "Diploma Programs",
-            "courses": [
-              {
-                "id": "diploma-cad",
-                "title": "Diploma in CAD & BIM",
-                "name": "Interior and Exterior Design",
-                "icon": "",
-                "description": "Comprehensive diploma program covering Computer-Aided Design (CAD) and Building Information Modeling (BIM) for architectural and engineering applications.",
-                "duration": "6 Months",
-                "difficulty": "Beginner to Advanced",
-                "instructor": "Expert Faculty",
-                "targetAudience": "Aspiring Designers, Engineers, Architects",
-                "curriculum": [
-                  "Introduction to CAD & BIM",
-                  "2D Drafting and 3D Modeling",
-                  "Architectural Design Principles",
-                  "Structural Design Basics",
-                  "MEP Coordination",
-                  "Project Documentation",
-                  "Industry Best Practices"
-                ],
-                "learningOutcomes": [
-                  "Proficiency in CAD software",
-                  "BIM modeling skills",
-                  "Architectural and structural design understanding",
-                  "Project documentation and presentation"
-                ],
-                "prerequisites": [
-                  "Basic computer literacy",
-                  "Interest in design and architecture"
-                ],
-                "coverImage": "diploma-cad-bim.jpg"
-              },
-              {
-                "id": "diploma-3d-design",
-                "title": "Diploma in 3D Design & Visualization",
-                "name": "3D Design & Visualization",
-                "icon": "🎨",
-                "description": "Comprehensive program covering 3D modeling, texturing, lighting, and rendering techniques for creating photorealistic visualizations and animations for architecture, product design, and media industries.",
-                "duration": "6 Months",
-                "difficulty": "Beginner to Advanced",
-                "instructor": "Expert 3D Artists & Designers",
-                "targetAudience": "Aspiring 3D Artists, Architects, Product Designers, Game Developers, Visual Effects Artists",
-                "curriculum": [
-                  "Introduction to 3D Space and Modeling Fundamentals",
-                  "Advanced 3D Modeling Techniques (Hard Surface & Organic)",
-                  "UV Mapping and Texture Creation",
-                  "Material Creation and Shader Development",
-                  "Photorealistic Lighting and Rendering",
-                  "3D Animation Principles and Techniques",
-                  "Particle Systems and Dynamics",
-                  "Compositing and Post-Processing",
-                  "Portfolio Development and Industry Standards"
-                ],
-                "learningOutcomes": [
-                  "Master industry-standard 3D modeling software",
-                  "Create realistic materials and textures",
-                  "Implement advanced lighting and rendering techniques",
-                  "Develop animation skills for product visualization",
-                  "Produce professional-grade 3D visualizations",
-                  "Optimize 3D assets for various platforms"
-                ],
-                "prerequisites": [
-                  "Basic computer literacy",
-                  "Creative mindset and attention to detail",
-                  "Basic understanding of design principles",
-                  "No prior 3D experience required"
-                ],
-                "coverImage": "3d-design-visualization.jpg"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "id": "IT",
         "logo": "@/assets/Logos/IT-Logo.png",
         "categories": [
@@ -1292,7 +1245,7 @@
                 "id": "java-fullstack",
                 "title": "Java Full Stack Development",
                 "name": "Java Full Stack",
-                "icon": "",
+                "icon": "☕",
                 "description": "Comprehensive training in Java, Spring Boot, REST APIs, frontend frameworks, and database integration for full stack web development.",
                 "duration": "12 Weeks",
                 "difficulty": "Intermediate",
@@ -1324,10 +1277,11 @@
                 "id": "python-fullstack",
                 "title": "Python Full Stack Development",
                 "name": "Python Full Stack",
-                "icon": "",
+                "icon": "🐍",
                 "description": "Learn Python, Django, REST APIs, modern frontend frameworks, and database management for full stack web development.",
                 "duration": "12 Weeks",
                 "difficulty": "Intermediate",
+                "price": 1599,
                 "instructor": "Rahul Menon",
                 "targetAudience": "Aspiring Full Stack Developers, CS/IT Students",
                 "curriculum": [
@@ -1359,6 +1313,7 @@
                 "description": "Master MongoDB, Express.js, React, and Node.js to build modern, scalable full stack JavaScript applications.",
                 "duration": "12 Weeks",
                 "difficulty": "Intermediate",
+                "price": 1599,
                 "instructor": "Anjali Gupta",
                 "targetAudience": "Aspiring Full Stack Developers, CS/IT Students",
                 "curriculum": [
@@ -1390,6 +1345,7 @@
                 "description": "Learn to design, develop, and deploy applications on leading cloud platforms (AWS, Azure, GCP) using modern DevOps practices.",
                 "duration": "10 Weeks",
                 "difficulty": "Intermediate",
+                "price": 1799,
                 "instructor": "Vikram Rao",
                 "targetAudience": "Developers, IT Professionals, Cloud Enthusiasts",
                 "curriculum": [
@@ -1432,6 +1388,7 @@
                 "description": "Comprehensive 3D CAD software for designing products, assemblies, and technical drawings with powerful simulation capabilities.",
                 "duration": "40 Hours",
                 "difficulty": "Beginner to Intermediate",
+                "price": 999,
                 "instructor": "Michael Johnson",
                 "targetAudience": "Product Designers, Engineers, Industrial Designers",
                 "curriculum": [
@@ -1465,6 +1422,7 @@
                 "description": "Intuitive 3D modeling software for architecture, interior design, landscape architecture, and engineering with powerful visualization tools.",
                 "duration": "30 Hours",
                 "difficulty": "Beginner to Intermediate",
+                "price": 899,
                 "instructor": "Sarah Williams",
                 "targetAudience": "Architects, Interior Designers, Landscape Architects, Engineers",
                 "curriculum": [
