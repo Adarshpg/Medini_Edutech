@@ -7,32 +7,32 @@ const DynamicTypingHeadline = () => {
       subtitle: "Support With the Right Technology"
     },
     {
-        title: "MEDINI EDUTECH",
-        subtitle: "FORGING THE FUTURE"
+        title: "FORGING THE FUTURE",
+        subtitle: "MEDINI EDUTECH"
     },
     {
-      title: "BIM CONSTRUCT",
-      subtitle: "From Planning to Handover"
+      title: "FROM PLANNING TO HANDOVER",
+      subtitle: "BIM CONSTRUCT"
     },
     {
-      title: "EDUPHYGITAL",
-      subtitle: "Restructuring the Dreams"
+      title: "WHERE EDUCATION MEETS DIGITAL EXCELLENCE",
+      subtitle: "EDUPHYGITAL"
     },
     {
-      title: "BUILDDSPACE",
-      subtitle: "Startup Support Ecosystem"
+      title: "STARTUP SUPPORT ECOSYSTEM",
+      subtitle: "BUILDDSPACE"
     },
     {
-        title: "TECHVRITTI",
-        subtitle: "Right Product to Right Customer"
+        title: "NURTURING TALENT. BUILDING SOFTWARE. POWERING FUTURES.",
+        subtitle: "TECHVRUDDHI"
     },
-    {
-      title: "MECHSETU",
-      subtitle: "From Design to Manufacturing"
-    },
-    {
+     {
       title: "DIGIDHVANI",
       subtitle: "Digital Marketing Solutions"
+    },
+    {
+      title: "ENGINEERING POSSIBILITIES THROUGH 3D PRINTING",
+      subtitle: "MECHSETU"
     }
   ];
 
