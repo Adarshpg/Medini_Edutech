@@ -36,6 +36,11 @@ const Header = () => {
   // Map all course providers to the menu structure
   const courseCategories = [
     {
+      id: "BIM_CONSTRUCTION",
+      name: "BIM",
+      categories: coursesData.courseProviders.find(p => p.id === "BIM_CONSTRUCTION")?.categories || []
+    },
+    {
       id: "AUTODESK",
       name: "Autodesk",
       categories: coursesData.courseProviders.find(p => p.id === "AUTODESK")?.categories || []
@@ -49,11 +54,6 @@ const Header = () => {
       id: "DASSAULT",
       name: "Dassault",
       categories: coursesData.courseProviders.find(p => p.id === "DASSAULT")?.categories || []
-    },
-    {
-      id: "BIM_CONSTRUCTION",
-      name: "BIM",
-      categories: coursesData.courseProviders.find(p => p.id === "BIM_CONSTRUCTION")?.categories || []
     },
     {
       id: "OTHER",
