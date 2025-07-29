@@ -10,7 +10,7 @@
               {
                 "id": "fusion",
                 "title": "Fusion 360 Essentials",
-                "name": "Fusion 360",
+                "name": "Fusion",
                 "icon": "🔄",
                 "description": "Cloud-based 3D CAD/CAM software for product design and manufacturing, combining industrial and mechanical design with simulation and collaboration tools.",
                 "duration": "40 Hours",
@@ -19,7 +19,7 @@
                 "instructor": "Jason Miller",
                 "targetAudience": "Product Designers, Engineers, Makers (PROD/MECH)",
                 "curriculum": [
-                   "Introduction to Fusion 360 & Cloud Workflow",
+                   "Introduction to Fusion  & Cloud Workflow",
                    "Sketching and Parametric Modeling",
                    "Solid & Surface Modeling",
                    "Assemblies and Joints",
@@ -656,7 +656,7 @@
               {
                 "id": "fusion-360",
                 "title": "Fusion 360 Product Design",
-                "name": "Fusion 360",
+                "name": "Fusion",
                 "icon": "📱",
                 "description": "Cloud-based CAD tools integrating parametric modeling, generative design, and CNC programming for product development.",
                 "duration": "8 weeks",
@@ -691,12 +691,12 @@
         "logo": "@/assets/Logos/BIM-Construction-Logo.png",
         "categories": [
           {
-            "name": "BIM Architecture",
+            "name": "BIM for Architecture",
             "courses": [
               {
                 "id": "bim-architecture",
                 "title": "BIM for Architectural Design",
-                "name": "BIM Architecture",
+                "name": "BIM for Architecture",
                 "icon": "🏛️",
                 "description": "Comprehensive training in BIM workflows for architectural design, focusing on creating intelligent 3D models for better design visualization and coordination.",
                 "duration": "10 weeks",
@@ -765,7 +765,7 @@
               {
                 "id": "bim-infrastructure",
                 "title": "BIM for Infrastructure Projects",
-                "name": "BIM Infrastructure",
+                "name": "BIM for Infrastructure",
                 "icon": "🌉",
                 "description": "Comprehensive training in BIM methodologies for infrastructure projects including roads, bridges, and utilities, with focus on 4D scheduling and clash detection.",
                 "duration": "12 weeks",
@@ -1374,6 +1374,95 @@
         ]
       },
       {
+        "id": "DIPLOMA",
+        "logo": "@/assets/Logos/diploma-logo.png",
+        "categories": [
+          {
+            "name": "Diploma Programs",
+            "courses": [
+              {
+                "id": "diploma-interior-exterior",
+                "title": "Diploma in Interior & Exterior Design",
+                "name": "Interior & Exterior Design",
+                "icon": "🏠",
+                "description": "Comprehensive diploma program covering the principles and practices of interior and exterior design. Learn space planning, material selection, color theory, lighting design, and 3D visualization to create functional and aesthetically pleasing spaces.",
+                "duration": "6 Months",
+                "difficulty": "Beginner to Intermediate",
+                "price": 2999,
+                "instructor": "Sarah Johnson",
+                "targetAudience": "Aspiring Interior Designers, Architects, Home Stagers (ALL)",
+                "curriculum": [
+                  "Fundamentals of Interior & Exterior Design",
+                  "Space Planning and Layout Design",
+                  "Materials and Finishes Selection",
+                  "Color Theory and Application",
+                  "Lighting Design Principles",
+                  "Furniture and Fixture Selection",
+                  "Sustainable Design Practices",
+                  "Client Presentation and Portfolio Development"
+                ],
+                "learningOutcomes": [
+                  "Create professional interior and exterior design concepts",
+                  "Develop space planning and layout skills",
+                  "Understand material properties and applications",
+                  "Master color theory and lighting design",
+                  "Produce professional client presentations"
+                ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "Interest in design and creativity"
+                ],
+                "coverImage": "interior-design-diploma.jpg"
+              },
+              {
+                "id": "diploma-3d-visualization",
+                "title": "Diploma in 3D Design & Visualization",
+                "name": "3D Design & Visualization",
+                "icon": "🎨",
+                "description": "Comprehensive training in 3D modeling, texturing, lighting, and rendering techniques. Master industry-standard software to create photorealistic visualizations for architecture, product design, and entertainment industries.",
+                "duration": "6 Months",
+                "difficulty": "Beginner to Advanced",
+                "price": 3499,
+                "instructor": "Michael Chen",
+                "targetAudience": "3D Artists, Architects, Designers, Visualizers (ALL)",
+                "curriculum": [
+                  "Introduction to 3D Modeling",
+                  "Advanced Modeling Techniques",
+                  "Materials and Texturing",
+                  "Lighting and Rendering",
+                  "Animation Basics",
+                  "Post-Production and Compositing",
+                  "Portfolio Development",
+                  "Industry Best Practices"
+                ],
+                "learningOutcomes": [
+                  "Create high-quality 3D models and environments",
+                  "Apply realistic materials and textures",
+                  "Master lighting and rendering techniques",
+                  "Produce professional visualizations",
+                  "Develop a strong portfolio"
+                ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "Creative mindset and attention to detail"
+                ],
+                "coverImage": "3d-visualization-diploma.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "OTHER",
+        "logo": "@/assets/Logos/Trimble-Logo.png",
+        "categories": [
+          {
+            "name": "Other",
+            "courses": []
+          }
+        ]
+      },
+      {
         "id": "DASSAULT",
         "logo": "@/assets/Logos/dassault-logo.png",
         "categories": [
@@ -1384,7 +1473,7 @@
                 "id": "solidworks",
                 "title": "SolidWorks Essentials",
                 "name": "SolidWorks",
-                "icon": "🔧",
+                "icon": "",
                 "description": "Comprehensive 3D CAD software for designing products, assemblies, and technical drawings with powerful simulation capabilities.",
                 "duration": "40 Hours",
                 "difficulty": "Beginner to Intermediate",
@@ -1418,7 +1507,7 @@
                 "id": "sketchup",
                 "title": "SketchUp Pro Fundamentals",
                 "name": "SketchUp",
-                "icon": "🏠",
+                "icon": "",
                 "description": "Intuitive 3D modeling software for architecture, interior design, landscape architecture, and engineering with powerful visualization tools.",
                 "duration": "30 Hours",
                 "difficulty": "Beginner to Intermediate",
@@ -1454,4 +1543,3 @@
       }
     ]
   }
-  
