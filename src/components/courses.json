@@ -426,76 +426,6 @@
         "id": "BENTLEY",
         "logo": "@/assets/Logos/Bentley-Training-Partner-Logo.jpg",
         "categories": [
-             {
-                "id": "microstation",
-                "title": "MicroStation Fundamentals",
-                "name": "MicroStation",
-                "icon": "📐",
-                "description": "powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
-                "duration": "30 Hours",
-                "difficulty": "Beginner to Intermediate",
-                "price": 899,
-                "instructor": "John Davis",
-                "targetAudience": "Civil Engineers, Architects, Designers (CIV/ARCH/DES)",
-                "curriculum": [
-                  "Introduction to MicroStation Interface",
-                  "Basic 2D Drafting and Drawing Techniques",
-                  "Advanced 2D Drawing Tools",
-                  "Working with Layers and Levels",
-                  "Managing Design Files and CAD Standards",
-                  "Workspace Customization",
-                  "Printing and Plotting Drawings"
-                ],
-                "learningOutcomes": [
-                  "2D and 3D drawings for Buildings and Infrastructure",
-                  "Designing and documenting of Roads and Bridges",
-                  "Creation of geospatially enabled drawings"
-             ],
-                "prerequisites": [
-                  "Basic computer skills",
-                  "No prior CAD experience required"
-          ],
-                "coverImage": "microstation.jpg"
-           },
-            {
-            "name": "Structural Analysis",
-            "courses": [
-              {
-                "id": "staad-pro",
-                "title": "STAAD Pro Advanced Analysis",
-                "name": "STAAD Pro",
-                "icon": "🏗️",
-                "description": "Structural analysis and design software for buildings, bridges, and towers. Enables accurate modeling, analysis under load conditions, and design as per global codes.",
-                "duration": "40 Hours",
-                "difficulty": "Advanced",
-                "price": 1599,
-                "instructor": "Dr. Richard Brown",
-                "targetAudience": "Civil (CIV)",
-                "curriculum": [
-                   "Introduction to STAAD Interface",
-                   "Node, Beam, and Structure Modeling",
-                   "Load Definitions and Combinations",
-                   "Structural Analysis and Interpretation",
-                   "RCC and Steel Design",
-                   "Earthquake and Wind Load Applications",
-                   "Report Generation and Exporting"
-                ],
-                "learningOutcomes": [
-                  "Creating geometry for 2D & 3D structures",
-                  "Defining various loads (dead, live, wind, seismic)",
-                  "Performing analysis and reviewing results",
-                  "Designing RCC and steel members as per IS codes",
-                  "Foundation Detailing using STAAD Foundation",
-                  "Generating detailed reports and structural drawings"
-                ],
-                "prerequisites": [
-                  "Structural engineering background",
-                  "Understanding of finite element analysis"
-                ],
-                "coverImage": "staad-pro.jpg"
-              }
-            ]
-          },
           {
             "name": "Engineering Software",
             "courses": [
@@ -599,6 +529,37 @@
               }
             ]
           },
+            {
+                "id": "microstation",
+                "title": "MicroStation Fundamentals",
+                "name": "MicroStation",
+                "icon": "📐",
+                "description": "powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
+                "duration": "30 Hours",
+                "difficulty": "Beginner to Intermediate",
+                "price": 899,
+                "instructor": "John Davis",
+                "targetAudience": "Civil Engineers, Architects, Designers (CIV/ARCH/DES)",
+                "curriculum": [
+                  "Introduction to MicroStation Interface",
+                  "Basic 2D Drafting and Drawing Techniques",
+                  "Advanced 2D Drawing Tools",
+                  "Working with Layers and Levels",
+                  "Managing Design Files and CAD Standards",
+                  "Workspace Customization",
+                  "Printing and Plotting Drawings"
+                ],
+                "learningOutcomes": [
+                  "2D and 3D drawings for Buildings and Infrastructure",
+                  "Designing and documenting of Roads and Bridges",
+                  "Creation of geospatially enabled drawings"
+             ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "No prior CAD experience required"
+          ],
+                "coverImage": "microstation.jpg"
+           },
           {
             "name": "Structural Analysis",
             "courses": [
