@@ -2,9 +2,11 @@
   "courseProviders": [
     {
       "id": "AUTODESK",
+      "name": "Autodesk",
       "logo": "@/assets/Logos/autodesk-learning-partner-logo-rgb-black.png",
       "categories": [
         {
+          "id": "design-drafting",
           "name": "Design & Drafting",
           "courses": [
             {
@@ -17,14 +19,14 @@
               "difficulty": "Beginner to Intermediate",
               "targetAudience": "Product Designers, Engineers, Makers (PROD/MECH)",
               "curriculum": [
-                 "Introduction to Fusion 360 & Cloud Workflow",
-                 "Sketching and Parametric Modeling",
-                 "Solid & Surface Modeling",
-                 "Assemblies and Joints",
-                 "Simulation Basics",
-                 "CAM and Manufacturing Setup",
-                 "Rendering and Animation Tools",
-                 "Team Collaboration & File Management"
+                "Introduction to Fusion 360 & Cloud Workflow",
+                "Sketching and Parametric Modeling",
+                "Solid & Surface Modeling",
+                "Assemblies and Joints",
+                "Simulation Basics",
+                "CAM and Manufacturing Setup",
+                "Rendering and Animation Tools",
+                "Team Collaboration & File Management"
               ],
               "learningOutcomes": [
                 "3D part and assembly modeling",
@@ -47,7 +49,6 @@
               "description": "Industry-standard 2D drafting and 3D modeling software used for architectural, engineering, and construction design documentation. Learn precision drawing, layout planning, and presentation tools for effective design communication.",
               "duration": "40 Hours",
               "difficulty": "Beginner",
-              "price": 799,
               "targetAudience": "Mechanical, Architectural, Civil, Electrical (M/A/C/E)",
               "curriculum": [
                 "Introduction to AutoCAD Interface",
@@ -64,7 +65,7 @@
                 "Using layers, blocks, annotations, and dimensioning",
                 "Creating templates and working with layouts",
                 "Plotting and printing drawings to scale",
-                "ntroduction to basic 3D modeling"
+                "Introduction to basic 3D modeling"
               ],
               "prerequisites": [
                 "Basic computer skills",
@@ -77,10 +78,9 @@
               "title": "AutoCAD Electrical Design",
               "name": "AutoCAD Electrical",
               "icon": "",
-              "description": "Autodesk’s specialized toolset for electrical control designers. It builds upon AutoCAD's core drafting tools with features tailored to electrical design, helping automate control system design, schematic creation, panel layout, and  drawings.",
+              "description": "Autodesk's specialized toolset for electrical control designers. It builds upon AutoCAD's core drafting tools with features tailored to electrical design, helping automate control system design, schematic creation, panel layout, and drawings.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 999,
               "targetAudience": "Electrical (ELECT)",
               "curriculum": [
                 "AutoCAD Electrical Interface",
@@ -104,6 +104,7 @@
           ]
         },
         {
+          "id": "bim-architecture",
           "name": "BIM Architecture",
           "courses": [
             {
@@ -112,9 +113,8 @@
               "name": "BIM Architecture",
               "icon": "",
               "description": "Master the integration of Building Information Modeling (BIM) in architectural design. This course focuses on creating intelligent 3D models that serve as comprehensive digital representations of physical and functional characteristics of buildings, enabling better design decisions, improved collaboration, and more efficient project delivery.",
-              "duration": "10 weeks",
+              "duration": "80 Hours",
               "difficulty": "Intermediate to Advanced",
-              "price": 1599,
               "targetAudience": "Architects, Architectural Designers, BIM Modelers (ARCH)",
               "curriculum": [
                 "BIM Fundamentals and Workflows in Architecture",
@@ -144,6 +144,7 @@
           ]
         },
         {
+          "id": "bim-infrastructure",
           "name": "BIM Infrastructure",
           "courses": [
             {
@@ -152,9 +153,8 @@
               "name": "BIM Infrastructure",
               "icon": "",
               "description": "Civil engineering design software for roads, land development, and infrastructure projects. Combines CAD drafting with intelligent 3D design and documentation tools.",
-              "duration": "40-50 Hours",
+              "duration": "50 Hours",
               "difficulty": "Advanced",
-              "price": 1799,
               "targetAudience": "Civil Engineers, Infrastructure Designers, BIM Specialists (CIV/INFRA)",
               "curriculum": [
                 "Introduction to Civil 3D Interface",
@@ -184,6 +184,7 @@
           ]
         },
         {
+          "id": "bim-construction",
           "name": "BIM Construction",
           "courses": [
             {
@@ -192,9 +193,8 @@
               "name": "BIM Construction",
               "icon": "",
               "description": "Leverage BIM technology to revolutionize construction management and execution. This course focuses on 4D construction sequencing, 5D cost management, and field coordination using BIM, enabling more efficient project delivery, reduced errors, and better collaboration between all stakeholders in the construction process.",
-              "duration": "8 weeks",
+              "duration": "60 Hours",
               "difficulty": "Intermediate",
-              "price": 1699,
               "targetAudience": "Construction Managers, Site Engineers, BIM Coordinators (CONST)",
               "curriculum": [
                 "BIM in Construction: Processes and Benefits",
@@ -224,6 +224,7 @@
           ]
         },
         {
+          "id": "bim-engineering",
           "name": "BIM Engineering",
           "courses": [
             {
@@ -234,17 +235,16 @@
               "description": "BIM solution for mechanical, electrical, and plumbing (MEP) engineers. Supports 3D modeling and system analysis for HVAC, piping, fire protection, and electrical systems.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 1199,
               "targetAudience": "Mechanical/Electrical (MECH/ELEC)",
               "curriculum": [
-                 "MEP Systems Overview & Interface",
-                 "Mechanical (HVAC) System Modeling",
-                 "Electrical Systems (Lighting, Power, Circuits)",
-                 "Plumbing & Fire Protection Layouts",
-                 "Duct/Pipe Sizing",
-                 "Coordination with Architectural/Structural Models",
-                 "Schedules, Legends, and Detailing",
-                 "Project Setup and Collaboration"
+                "MEP Systems Overview & Interface",
+                "Mechanical (HVAC) System Modeling",
+                "Electrical Systems (Lighting, Power, Circuits)",
+                "Plumbing & Fire Protection Layouts",
+                "Duct/Pipe Sizing",
+                "Coordination with Architectural/Structural Models",
+                "Schedules, Legends, and Detailing",
+                "Project Setup and Collaboration"
               ],
               "learningOutcomes": [
                 "Designing HVAC, electrical, and plumbing systems in 3D",
@@ -262,6 +262,7 @@
           ]
         },
         {
+          "id": "structural-bim",
           "name": "Structural BIM",
           "courses": [
             {
@@ -272,7 +273,6 @@
               "description": "BIM solution for structural engineers to design, analyze, and document structural systems with accuracy. Supports concrete, steel, and composite structure workflows with parametric modeling.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 1199,
               "targetAudience": "Civil (CIV)",
               "curriculum": [
                 "Introduction to BIM & Revit Interface",
@@ -283,13 +283,13 @@
                 "Exporting to Analysis Tools"
               ],
               "learningOutcomes": [
-                 "Modeling structural elements: beams, columns, slabs, walls, and foundations",
-                 "Adding reinforcement details to concrete elements",
-                 "Working with structural steel connections and trusses",
-                 "Creating and modifying structural families",
-                 "Coordinating with architectural and MEP models",
-                 "Generating structural drawings, details, and schedules",
-                 "Exporting models to structural analysis software like STAAD.Pro"
+                "Modeling structural elements: beams, columns, slabs, walls, and foundations",
+                "Adding reinforcement details to concrete elements",
+                "Working with structural steel connections and trusses",
+                "Creating and modifying structural families",
+                "Coordinating with architectural and MEP models",
+                "Generating structural drawings, details, and schedules",
+                "Exporting models to structural analysis software like STAAD.Pro"
               ],
               "prerequisites": [
                 "Basic Revit knowledge",
@@ -300,6 +300,7 @@
           ]
         },
         {
+          "id": "civil-infrastructure",
           "name": "Civil Infrastructure",
           "courses": [
             {
@@ -308,9 +309,8 @@
               "name": "Civil 3D",
               "icon": "",
               "description": "Civil engineering design software for roads, land development, and infrastructure projects. Combines CAD drafting with intelligent 3D design and documentation tools.",
-              "duration": "40-50 Hours",
+              "duration": "50 Hours",
               "difficulty": "Advanced",
-              "price": 1399,
               "targetAudience": "Civil (CIV)",
               "curriculum": [
                 "Civil 3D User Interface & Template Setup",
@@ -338,6 +338,7 @@
           ]
         },
         {
+          "id": "visualization",
           "name": "Visualization",
           "courses": [
             {
@@ -348,7 +349,6 @@
               "description": "3ds Max is a professional 3D modeling, animation, and rendering software used for creating 3D visualizations, animations, and models in architecture, games, and film industries. This course covers essential techniques for modeling, lighting, rendering, and animation to bring your creative projects to life.",
               "duration": "60 Hours",
               "difficulty": "Advanced",
-              "price": 1499,
               "targetAudience": "Architectural/Civil (ARCH/CIV)",
               "curriculum": [
                 "Introduction to 3ds Max Interface",
@@ -376,6 +376,7 @@
           ]
         },
         {
+          "id": "project-coordination",
           "name": "Project Coordination",
           "courses": [
             {
@@ -386,16 +387,15 @@
               "description": "Project review software for coordination, 4D simulation, and clash detection in BIM workflows. Enhances collaboration across architecture, engineering, and construction.",
               "duration": "20 Hours",
               "difficulty": "Intermediate",
-              "price": 999,
               "targetAudience": "Civil (CIV)",
               "curriculum": [
-                 "Navisworks Interface and File Aggregation",
-                 "Working with NWD, NWF, and NWC Files",
-                 "3D Navigation and Model Review Tools",
-                 "Clash Detection and Resolution",
-                 "Timeliner (4D Simulation with Project Schedules)",
-                 "Quantification Tools",
-                 "Walkthroughs"
+                "Navisworks Interface and File Aggregation",
+                "Working with NWD, NWF, and NWC Files",
+                "3D Navigation and Model Review Tools",
+                "Clash Detection and Resolution",
+                "Timeliner (4D Simulation with Project Schedules)",
+                "Quantification Tools",
+                "Walkthroughs"
               ],
               "learningOutcomes": [
                 "Aggregating models from Revit, Civil 3D, etc.",
@@ -412,6 +412,7 @@
           ]
         },
         {
+          "id": "infrawork",
           "name": "Infrawork",
           "courses": [
             {
@@ -419,10 +420,9 @@
               "title": "InfraWorks Fundamentals",
               "name": "InfraWorks",
               "icon": "",
-              "description": "powerful BIM tool used for the design and planning of infrastructure projects. This course will teach you how to create 3D models of real-world environments and integrate design concepts into a unified model for analysis, visualization, and project collaboration.",
+              "description": "Powerful BIM tool used for the design and planning of infrastructure projects. This course will teach you how to create 3D models of real-world environments and integrate design concepts into a unified model for analysis, visualization, and project collaboration.",
               "duration": "20 Hours",
               "difficulty": "Intermediate",
-              "price": 1099,
               "targetAudience": "Civil Engineers, Urban Planners (CIV/PLAN)",
               "curriculum": [
                 "Introduction to InfraWorks Interface",
@@ -435,12 +435,12 @@
                 "Exporting Models and Reports"
               ],
               "learningOutcomes": [
-                  "Conceptual designs for roadways, sites, rail, water, and other infrastructure projects",
-                  "Contextual Modeling",
-                  "Analysis and Simulation",
-                  "Traffic Simulation",
-                  "Site Planning",
-                  "Drainage Design"
+                "Conceptual designs for roadways, sites, rail, water, and other infrastructure projects",
+                "Contextual Modeling",
+                "Analysis and Simulation",
+                "Traffic Simulation",
+                "Site Planning",
+                "Drainage Design"
               ],
               "prerequisites": [
                 "Civil engineering background",
@@ -451,6 +451,7 @@
           ]
         },
         {
+          "id": "maya",
           "name": "Maya",
           "courses": [
             {
@@ -461,7 +462,6 @@
               "description": "A comprehensive 3D animation software widely used in gaming, film, and motion graphics. This course covers essential skills in 3D modeling, texturing, lighting, rendering, and animation to help you bring your digital creations to life.",
               "duration": "40 Hours",
               "difficulty": "Advanced",
-              "price": 1599,
               "targetAudience": "Architectural Visualizers, 3D Artists (ARCH/VIZ)",
               "curriculum": [
                 "Introduction to Maya Interface and Tools",
@@ -491,9 +491,11 @@
     },
     {
       "id": "BENTLEY",
+      "name": "Bentley",
       "logo": "@/assets/Logos/Bentley-Training-Partner-Logo.jpg",
       "categories": [
         {
+          "id": "engineering-software",
           "name": "Engineering Software",
           "courses": [
             {
@@ -502,9 +504,8 @@
               "name": "OpenRoads Designer",
               "icon": "",
               "description": "Civil infrastructure design software for roadways, offering 3D modeling, terrain modeling, drainage, and corridor modeling in a single platform.",
-              "duration": "40-50 Hours",
+              "duration": "50 Hours",
               "difficulty": "Beginner",
-              "price": 699,
               "targetAudience": "Civil/Architectural (CIV/ARCH)",
               "curriculum": [
                 "User Interface & Project Setup",
@@ -535,7 +536,6 @@
               "description": "Water distribution modeling software that helps engineers plan, design, and optimize water systems with advanced hydraulic modeling capabilities.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 1199,
               "targetAudience": "Water Engineers, Civil Engineers (CIV/ENV)",
               "curriculum": [
                 "Introduction to Hydraulic Modeling",
@@ -567,7 +567,6 @@
               "description": "Advanced software for planning, design, and analysis of sanitary and combined sewer systems, using hydraulic and hydrologic modeling tools.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 1199,
               "targetAudience": "Wastewater Engineers, Civil Engineers (CIV/ENV)",
               "curriculum": [
                 "Overview of Sewer Systems and Modeling",
@@ -594,6 +593,7 @@
           ]
         },
         {
+          "id": "structural-analysis",
           "name": "Structural Analysis",
           "courses": [
             {
@@ -604,16 +604,15 @@
               "description": "Structural analysis and design software for buildings, bridges, and towers. Enables accurate modeling, analysis under load conditions, and design as per global codes.",
               "duration": "40 Hours",
               "difficulty": "Advanced",
-              "price": 1599,
               "targetAudience": "Civil (CIV)",
               "curriculum": [
-                 "Introduction to STAAD Interface",
-                 "Node, Beam, and Structure Modeling",
-                 "Load Definitions and Combinations",
-                 "Structural Analysis and Interpretation",
-                 "RCC and Steel Design",
-                 "Earthquake and Wind Load Applications",
-                 "Report Generation and Exporting"
+                "Introduction to STAAD Interface",
+                "Node, Beam, and Structure Modeling",
+                "Load Definitions and Combinations",
+                "Structural Analysis and Interpretation",
+                "RCC and Steel Design",
+                "Earthquake and Wind Load Applications",
+                "Report Generation and Exporting"
               ],
               "learningOutcomes": [
                 "Creating geometry for 2D & 3D structures",
@@ -634,10 +633,9 @@
               "title": "MicroStation Fundamentals",
               "name": "MicroStation",
               "icon": "",
-              "description": "powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
+              "description": "Powerful CAD software used for design, drafting, and modeling in architecture, engineering, and construction. This course will guide you through the essentials of 2D and 3D design, enabling you to create and manage designs for infrastructure projects.",
               "duration": "30 Hours",
               "difficulty": "Beginner to Intermediate",
-              "price": 899,
               "targetAudience": "Civil Engineers, Architects, Designers (CIV/ARCH/DES)",
               "curriculum": [
                 "Introduction to MicroStation Interface",
@@ -652,22 +650,24 @@
                 "2D and 3D drawings for Buildings and Infrastructure",
                 "Designing and documenting of Roads and Bridges",
                 "Creation of geospatially enabled drawings"
-           ],
+              ],
               "prerequisites": [
                 "Basic computer skills",
                 "No prior CAD experience required"
-        ],
+              ],
               "coverImage": "microstation.jpg"
-         }
+            }
           ]
         }
       ]
     },
     {
       "id": "DASSAULT",
+      "name": "Dassault Systèmes",
       "logo": "@/assets/Logos/Dassault-Systemes-Logo.png",
       "categories": [
         {
+          "id": "3d-design",
           "name": "3D Design",
           "courses": [
             {
@@ -678,7 +678,6 @@
               "description": "3D CAD software for mechanical design and product development. Offers powerful modeling, simulation, and documentation tools for engineers and designers.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 1399,
               "targetAudience": "Mechanical (MECH)",
               "curriculum": [
                 "Introduction to SolidWorks Interface",
@@ -702,6 +701,38 @@
                 "Familiarity with 3D concepts"
               ],
               "coverImage": "solidworks.jpg"
+            },
+            {
+              "id": "sketchup",
+              "title": "SketchUp Pro Fundamentals",
+              "name": "SketchUp",
+              "icon": "",
+              "description": "Intuitive 3D modeling software for architecture, interior design, landscape architecture, and engineering with powerful visualization tools.",
+              "duration": "30 Hours",
+              "difficulty": "Beginner to Intermediate",
+              "targetAudience": "Architects, Interior Designers, Landscape Architects, Engineers",
+              "curriculum": [
+                "SketchUp Interface and Navigation",
+                "Basic Drawing and Modeling Tools",
+                "Creating and Modifying 3D Geometry",
+                "Working with Components and Groups",
+                "Materials, Textures, and Styles",
+                "Layout and Documentation",
+                "Extensions and Plugins",
+                "Rendering and Presentation"
+              ],
+              "learningOutcomes": [
+                "Create 3D architectural and interior models",
+                "Apply materials and textures for realistic visualization",
+                "Generate 2D documentation from 3D models",
+                "Create presentation-quality renderings",
+                "Utilize extensions to enhance workflow"
+              ],
+              "prerequisites": [
+                "Basic computer skills",
+                "Understanding of spatial concepts"
+              ],
+              "coverImage": "sketchup.jpg"
             }
           ]
         }
@@ -709,9 +740,11 @@
     },
     {
       "id": "AUTODESK_FUSION",
+      "name": "Autodesk Fusion",
       "logo": "@/assets/Logos/autodesk-learning-partner-logo-rgb-black.png",
       "categories": [
         {
+          "id": "product-design",
           "name": "Product Design",
           "courses": [
             {
@@ -720,9 +753,8 @@
               "name": "Fusion 360",
               "icon": "",
               "description": "Cloud-based CAD tools integrating parametric modeling, generative design, and CNC programming for product development.",
-              "duration": "8 weeks",
+              "duration": "60 Hours",
               "difficulty": "Intermediate",
-              "price": 1099,
               "targetAudience": "Mechanical (MECH)",
               "curriculum": [
                 "Parametric Modeling",
@@ -748,9 +780,11 @@
     },
     {
       "id": "BIM_CONSTRUCTION",
+      "name": "BIM Construction",
       "logo": "@/assets/Logos/BIM-Construction-Logo.png",
       "categories": [
         {
+          "id": "bim-management",
           "name": "BIM Management",
           "courses": [
             {
@@ -759,9 +793,8 @@
               "name": "BIM for Infrastructure",
               "icon": "",
               "description": "Introduces BIM methodologies for roads, bridges, and utilities, including 4D scheduling and clash detection.",
-              "duration": "8 weeks",
+              "duration": "60 Hours",
               "difficulty": "Intermediate",
-              "price": 1199,
               "targetAudience": "Civil (CIV)",
               "curriculum": [
                 "BIM Standards Implementation",
@@ -787,9 +820,8 @@
               "name": "BIM Construction",
               "icon": "",
               "description": "The main objectives of BIM in construction are to improve project performance, enhance collaboration, and create more efficient and cost-effective processes. This course covers advanced BIM methodologies specifically tailored for construction management, including 4D scheduling, 5D cost estimation, and field coordination. Learn how to leverage BIM for clash detection, quantity takeoffs, and construction sequencing to optimize project delivery.",
-              "duration": "8 weeks",
+              "duration": "60 Hours",
               "difficulty": "Intermediate to Advanced",
-              "price": 1299,
               "targetAudience": "Construction Managers, Civil Engineers, BIM Modelers (CIV/CONST)",
               "curriculum": [
                 "Introduction to BIM in Construction Management",
@@ -822,10 +854,12 @@
     },
     {
       "id": "OTHER",
+      "name": "Other Software",
       "logo": "@/assets/Logos/Trimble-Logo.png",
       "categories": [
         {
-          "name": "Other",
+          "id": "other-software",
+          "name": "Other Software",
           "courses": [
             {
               "id": "sketchup",
@@ -835,7 +869,6 @@
               "description": "Intuitive 3D modeling software used for architectural and interior design visualization. Ideal for conceptual models, landscape, and furniture design.",
               "duration": "30 Hours",
               "difficulty": "Beginner",
-              "price": 699,
               "targetAudience": "Architectural/Civil (ARCH/CIV)",
               "curriculum": [
                 "SketchUp Interface and Tools",
@@ -861,14 +894,13 @@
               "coverImage": "sketchup.jpg"
             },
             {
-              "id": "V-Ray",
+              "id": "v-ray",
               "title": "V-Ray for Architectural Rendering",
               "name": "V-Ray",
               "icon": "",
-              "description": "V-Ray is a high-quality rendering engine used in architecture, product design, and animation for creating photorealistic visualizations. This course focuses on integrating V-Ray with  SketchUp for lighting, materials, rendering techniques, and post-production.",
+              "description": "V-Ray is a high-quality rendering engine used in architecture, product design, and animation for creating photorealistic visualizations. This course focuses on integrating V-Ray with SketchUp for lighting, materials, rendering techniques, and post-production.",
               "duration": "15 Hours",
               "difficulty": "Intermediate",
-              "price": 899,
               "targetAudience": "Architects, 3D Artists, Designers (ARCH/VIZ)",
               "curriculum": [
                 "Introduction to V-Ray Interface",
@@ -899,17 +931,16 @@
               "description": "Architectural visualization software for creating high-quality renders, animations, and walkthroughs. Known for its intuitive interface and real-time rendering capabilities.",
               "duration": "20 Hours",
               "difficulty": "Beginner to Intermediate",
-              "price": 799,
               "targetAudience": "Architects, Designers, Visualizers (ARCH/VIZ)",
               "curriculum": [
-                 "Lumion Interface and Navigation",
-                 "Importing Models (from Revit, SketchUp, etc.)",
-                 "Applying Materials and Textures",
-                 "Lighting, Shadows, and Environmental Effects",
-                 "Camera Animation and Path Creation",
-                 "Scene Composition and Backgrounds",
-                 "Rendering Still Images and Videos",
-                 "Real-Time Presentation Tools"
+                "Lumion Interface and Navigation",
+                "Importing Models (from Revit, SketchUp, etc.)",
+                "Applying Materials and Textures",
+                "Lighting, Shadows, and Environmental Effects",
+                "Camera Animation and Path Creation",
+                "Scene Composition and Backgrounds",
+                "Rendering Still Images and Videos",
+                "Real-Time Presentation Tools"
               ],
               "learningOutcomes": [
                 "Importing 3D models from Revit/SketchUp",
@@ -930,9 +961,8 @@
               "name": "Enscape",
               "icon": "",
               "description": "Real-time visualization and rendering plugin for Revit, SketchUp, Rhino, and ArchiCAD. Helps architects and designers create immersive walkthroughs and photo-realistic outputs.",
-              "duration": "15-20 Hours",
+              "duration": "20 Hours",
               "difficulty": "Beginner",
-              "price": 699,
               "targetAudience": "Architects, Designers, BIM Specialists (ARCH/BIM)",
               "curriculum": [
                 "Enscape Interface and Integration (with Revit/SketchUp)",
@@ -963,7 +993,6 @@
               "description": "Project management software used in construction and engineering to plan, schedule, and control large-scale projects with complex resource and cost tracking.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 1099,
               "targetAudience": "Project Managers, Construction Professionals (PM/CONST)",
               "curriculum": [
                 "Primavera Interface and Navigation",
@@ -996,7 +1025,6 @@
               "description": "Rhino is a versatile 3D modeling software, especially used in architecture and industrial design for its precision and NURBS modeling capabilities. Grasshopper, its visual programming plugin, enables parametric design and algorithmic modeling.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 999,
               "targetAudience": "Architects, Industrial Designers, Artists (ARCH/DES)",
               "curriculum": [
                 "Rhino Interface and Modeling Basics",
@@ -1025,9 +1053,8 @@
               "name": "Grasshopper",
               "icon": "",
               "description": "Visual programming language for Rhino that enables parametric and algorithmic design, allowing for complex form generation and design exploration.",
-              "duration": "9 weeks",
+              "duration": "60 Hours",
               "difficulty": "Advanced",
-              "price": 1299,
               "targetAudience": "Architects, Computational Designers (ARCH/COMP)",
               "curriculum": [
                 "Grasshopper Interface and Logic",
@@ -1055,7 +1082,6 @@
               "description": "Industry-standard image editing software for post-processing architectural renderings, creating presentation boards, and enhancing visualizations.",
               "duration": "15 Hours",
               "difficulty": "Beginner to Intermediate",
-              "price": 799,
               "targetAudience": "Architects, Visualizers, Designers (ARCH/VIZ)",
               "curriculum": [
                 "Introduction to Photoshop",
@@ -1087,16 +1113,15 @@
               "description": "Vector graphics software for creating logos, illustrations, and typography. Industry standard for digital drawing and design.",
               "duration": "30 Hours",
               "difficulty": "Beginner to Intermediate",
-              "price": 749,
               "targetAudience": "Architects, Engineers, Designers (ARCH/ENG)",
               "curriculum": [
-                 "Illustrator Interface & Workspace",
-                 "Drawing Tools and Vector Shapes",
-                 "Working with Colors, Gradients & Patterns",
-                 "Typography and Text Effects",
-                 "Layers and Artboards",
-                 "Logo Design Techniques",
-                 "Exporting for Print and Digital"
+                "Illustrator Interface & Workspace",
+                "Drawing Tools and Vector Shapes",
+                "Working with Colors, Gradients & Patterns",
+                "Typography and Text Effects",
+                "Layers and Artboards",
+                "Logo Design Techniques",
+                "Exporting for Print and Digital"
               ],
               "learningOutcomes": [
                 "Creating vector shapes and typography",
@@ -1118,7 +1143,6 @@
               "description": "Structural analysis and design software used for buildings, offering integrated modeling, analysis, and design of concrete and steel structures.",
               "duration": "40 Hours",
               "difficulty": "Advanced",
-              "price": 1499,
               "targetAudience": "Structural Engineers, Civil Engineers (STRUCT/CIV)",
               "curriculum": [
                 "Introduction to ETABS and Modeling Basics",
@@ -1151,28 +1175,27 @@
               "description": "Project management tool for scheduling, task tracking, and resource planning. Widely used for planning and controlling projects across industries.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 899,
               "targetAudience": "Project Managers, Construction Professionals (PM/CONST)",
               "curriculum": [
-                  "MS Project Interface Overview",
-                  "Task Creation and Dependencies",
-                  "Creating Project Calendars",
-                  "Assigning Resources and Costs",
-                  "Tracking Progress and Variance",
-                  "Gantt Charts and Critical Path",
-                  "Project Baselines and Reporting",
-                  "Exporting and Sharing Plans"
-                  ],
+                "MS Project Interface Overview",
+                "Task Creation and Dependencies",
+                "Creating Project Calendars",
+                "Assigning Resources and Costs",
+                "Tracking Progress and Variance",
+                "Gantt Charts and Critical Path",
+                "Project Baselines and Reporting",
+                "Exporting and Sharing Plans"
+              ],
               "learningOutcomes": [
-                  "Creating tasks, dependencies, and milestones",
-                  "Gantt chart scheduling and calendar setup",
-                  "Resource assignment and cost tracking",
-                  "Monitoring progress and delays",
-                  "Creating reports and dashboards"
+                "Creating tasks, dependencies, and milestones",
+                "Gantt chart scheduling and calendar setup",
+                "Resource assignment and cost tracking",
+                "Monitoring progress and delays",
+                "Creating reports and dashboards"
               ],
               "prerequisites": [
-                  "Basic project management knowledge",
-                  "Familiarity with Microsoft Office tools"
+                "Basic project management knowledge",
+                "Familiarity with Microsoft Office tools"
               ],
               "coverImage": "ms-project.jpg"
             },
@@ -1184,7 +1207,6 @@
               "description": "Open-source GIS platform for spatial analysis, mapping, and geospatial data visualization. Supports raster, vector, and database-driven data management.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 799,
               "targetAudience": "GIS Analysts, Urban Planners, Environmental Scientists (GIS/PLAN/ENV)",
               "curriculum": [
                 "QGIS Interface and Layer Management",
@@ -1202,14 +1224,14 @@
                 "Geoprocessing tools (buffer, overlay, clip)",
                 "Attribute data management and queries",
                 "Creating map layouts and exporting PDFs"
-             ],
+              ],
               "prerequisites": [
-               "Basic computer skills",
-              "Understanding of geospatial concepts"
-             ],
+                "Basic computer skills",
+                "Understanding of geospatial concepts"
+              ],
               "coverImage": "qgis.jpg"
-          },
-          {
+            },
+            {
               "id": "adobe-animate",
               "title": "Adobe Animate for Interactive Design",
               "name": "Adobe Animate",
@@ -1217,7 +1239,6 @@
               "description": "2D animation software for creating interactive animations for web, games, and television. Supports vector animation, character rigging, and HTML5 Canvas output.",
               "duration": "30 Hours",
               "difficulty": "Intermediate",
-              "price": 799,
               "targetAudience": "Animators, Web Designers, Multimedia Artists (ANIM/WEB)",
               "curriculum": [
                 "Interface Overview and Drawing Tools",
@@ -1227,29 +1248,31 @@
                 "Adding Sound and Interactivity",
                 "Publishing for Web and Mobile",
                 "Exporting and Final Output"
-                ],
+              ],
               "learningOutcomes": [
                 "Creating frame-by-frame animations",
                 "Using motion and classic tweens",
                 "Designing animated characters and scenes",
                 "Adding audio and interactivity",
                 "Exporting animations for web or video"
-               ],
+              ],
               "prerequisites": [
                 "Basic design knowledge",
                 "Familiarity with Adobe tools"
-             ],
+              ],
               "coverImage": "adobe-animate.jpg"
-           }
+            }
           ]
         }
       ]
     },
     {
       "id": "IT",
+      "name": "IT Training",
       "logo": "@/assets/Logos/IT-Logo.png",
       "categories": [
         {
+          "id": "software-development",
           "name": "Software Development",
           "courses": [
             {
@@ -1258,9 +1281,8 @@
               "name": "Java Full Stack",
               "icon": "",
               "description": "Comprehensive training in Java, Spring Boot, REST APIs, frontend frameworks, and database integration for full stack web development.",
-              "duration": "12 Weeks",
+              "duration": "120 Hours",
               "difficulty": "Intermediate",
-              "price": 1599,
               "targetAudience": "Aspiring Full Stack Developers, CS/IT Students",
               "curriculum": [
                 "Core Java & OOP Concepts",
@@ -1289,9 +1311,8 @@
               "name": "Python Full Stack",
               "icon": "",
               "description": "Learn Python, Django, REST APIs, modern frontend frameworks, and database management for full stack web development.",
-              "duration": "12 Weeks",
+              "duration": "120 Hours",
               "difficulty": "Intermediate",
-              "price": 1599,
               "targetAudience": "Aspiring Full Stack Developers, CS/IT Students",
               "curriculum": [
                 "Python Programming Basics",
@@ -1320,9 +1341,9 @@
               "name": "MERN Stack",
               "icon": "",
               "description": "Master MongoDB, Express.js, React, and Node.js to build modern, scalable full stack JavaScript applications.",
-              "duration": "12 Weeks",
+              "duration": "120 Hours",
               "difficulty": "Intermediate",
-              "price": 1599,
+             
               "targetAudience": "Aspiring Full Stack Developers, CS/IT Students",
               "curriculum": [
                 "JavaScript & ES6+ Fundamentals",
@@ -1351,9 +1372,8 @@
               "name": "Cloud Application Development",
               "icon": "",
               "description": "Learn to design, develop, and deploy applications on leading cloud platforms (AWS, Azure, GCP) using modern DevOps practices.",
-              "duration": "10 Weeks",
+              "duration": "100 Hours",
               "difficulty": "Intermediate",
-              "price": 1799,
               "targetAudience": "Developers, IT Professionals, Cloud Enthusiasts",
               "curriculum": [
                 "Cloud Computing Fundamentals",
@@ -1375,83 +1395,6 @@
                 "Familiarity with web/app development"
               ],
               "coverImage": "cloud-app-dev.jpg"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "DASSAULT",
-      "logo": "@/assets/Logos/dassault-logo.png",
-      "categories": [
-        {
-          "name": "3D Design",
-          "courses": [
-            {
-              "id": "solidworks",
-              "title": "SolidWorks Essentials",
-              "name": "SolidWorks",
-              "icon": "",
-              "description": "Comprehensive 3D CAD software for designing products, assemblies, and technical drawings with powerful simulation capabilities.",
-              "duration": "40 Hours",
-              "difficulty": "Beginner to Intermediate",
-              "price": 999,
-              "targetAudience": "Product Designers, Engineers, Industrial Designers",
-              "curriculum": [
-                "Introduction to SolidWorks Interface",
-                "Part Modeling Fundamentals",
-                "Assembly Modeling",
-                "Creating Technical Drawings",
-                "Sheet Metal Design",
-                "Simulation Basics",
-                "Rendering and Visualization",
-                "Design Documentation"
-              ],
-              "learningOutcomes": [
-                "Create parametric 3D models of parts and assemblies",
-                "Generate detailed engineering drawings",
-                "Perform basic simulation and analysis",
-                "Create photorealistic renderings",
-                "Apply design for manufacturing principles"
-              ],
-              "prerequisites": [
-                "Basic computer skills",
-                "Understanding of mechanical design concepts"
-              ],
-              "coverImage": "solidworks.jpg"
-            },
-            {
-              "id": "sketchup",
-              "title": "SketchUp Pro Fundamentals",
-              "name": "SketchUp",
-              "icon": "",
-              "description": "Intuitive 3D modeling software for architecture, interior design, landscape architecture, and engineering with powerful visualization tools.",
-              "duration": "30 Hours",
-              "difficulty": "Beginner to Intermediate",
-              "price": 899,
-              "targetAudience": "Architects, Interior Designers, Landscape Architects, Engineers",
-              "curriculum": [
-                "SketchUp Interface and Navigation",
-                "Basic Drawing and Modeling Tools",
-                "Creating and Modifying 3D Geometry",
-                "Working with Components and Groups",
-                "Materials, Textures, and Styles",
-                "Layout and Documentation",
-                "Extensions and Plugins",
-                "Rendering and Presentation"
-              ],
-              "learningOutcomes": [
-                "Create 3D architectural and interior models",
-                "Apply materials and textures for realistic visualization",
-                "Generate 2D documentation from 3D models",
-                "Create presentation-quality renderings",
-                "Utilize extensions to enhance workflow"
-              ],
-              "prerequisites": [
-                "Basic computer skills",
-                "Understanding of spatial concepts"
-              ],
-              "coverImage": "sketchup.jpg"
             }
           ]
         }
