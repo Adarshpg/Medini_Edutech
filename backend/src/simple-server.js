@@ -24,7 +24,8 @@ const corsOptions = {
   origin: [
     'http://localhost:5177',
     'https://mediniedutech.com',
-    'https://medini-edutech-rho.vercel.app'
+    'https://medini-edutech-rho.vercel.app',
+    'https://medini-tech-phi.vercel.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
