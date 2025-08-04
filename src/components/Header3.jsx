@@ -262,8 +262,7 @@ const Header = () => {
                         }
                       },
                       { to: "/mediniedutech/about", label: "About" },
-                      { to: "/mediniedutech/contact", label: "Contact" },
-                      { to: "/mediniedutech/internship", label: "Internship" }
+                      { to: "/mediniedutech/contact", label: "Contact" }
                     ].map((item, index) => (
                       item.to ? (
                         <Link
@@ -354,10 +353,6 @@ const Header = () => {
                   </PopoverContent>
                 </Popover>
                 
-                <div className="nav-item">
-                  <Link to="/mediniedutech/internship">Internship</Link>  
-                </div>
-
                 <div className="nav-item">
                   <Link to="/mediniedutech/about">About</Link>
                 </div>
