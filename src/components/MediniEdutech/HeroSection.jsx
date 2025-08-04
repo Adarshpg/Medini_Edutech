@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import FeedbackSection from "./FeedbackSection"
 
-const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
+const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash copy.jpg"
 const autocad = "/IMAGES/AutoCAD.jpg"
 const civil3d = "/IMAGES/tool-inc-ApKnJHXu6Hg-unsplash.jpg"
 const solidworks = "/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
