@@ -19,7 +19,7 @@ export function AboutHero() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
-              Innovating Technology Solutions Since 2008
+              Innovating Technology 
             </h1>
             
            <div className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl text-justify">
