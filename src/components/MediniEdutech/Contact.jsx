@@ -69,7 +69,7 @@ export function Contact() {
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
               <MapPin className="h-6 w-6 text-primary" />
-              <span>No. 2943/E,3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040</span>
+              <span>XGCP+9J3, MRCR Layout, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040</span>
             </div>
             <div className="flex items-center space-x-4">
               <Phone className="h-6 w-6 text-primary" />
