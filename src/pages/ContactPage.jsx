@@ -56,12 +56,7 @@ export function ContactPage() {
     {
       icon: MapPin,
       title: "Our Location - Vijayanagar",
-      content: "No. 2943/E, 3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040",
-    },
-    {
-      icon: MapPin,
-      title: "Our Location - Vijayanagar",
-      content: "No. 2943/E, 3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040",
+      content: "XGCP+9J3, MRCR Layout, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040",
     },
     {
       icon: Phone,
