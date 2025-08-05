@@ -804,40 +804,6 @@
             "name": "Other",
             "courses": [
               {
-                "id": "sketchup",
-                "title": "SketchUp for Architectural Design",
-                "name": "SketchUp",
-                "icon": "🏠",
-                "description": "Intuitive 3D modeling software used for architectural and interior design visualization. Ideal for conceptual models, landscape, and furniture design.",
-                "duration": "30 Hours",
-                "difficulty": "Beginner",
-                "price": 699,
-                "instructor": "Michelle Patel",
-                "targetAudience": "Architectural/Civil (ARCH/CIV)",
-                "curriculum": [
-                  "SketchUp Interface and Tools",
-                  "Drawing & Editing 3D Geometry",
-                  "Groups, Components & Layers",
-                  "Modeling Buildings and Interiors",
-                  "Materials, Styles, and Shadows",
-                  "Scenes, Animation & Walkthroughs",
-                  "Layout for 2D Documentation",
-                  "Extensions and Plugins"
-                ],
-                "learningOutcomes": [
-                  "Creating and editing 3D models from scratch",
-                  "Working with groups, components, and layers",
-                  "Applying materials, styles, and lighting",
-                  "Creating scenes, walkthroughs, and animations",
-                  "Exporting models for rendering and documentation"
-                ],
-                "prerequisites": [
-                  "Basic computer skills",
-                  "No prior 3D experience required"
-                ],
-                "coverImage": "sketchup.jpg"
-              },
-              {
                 "id": "V-Ray",
                 "title": "V-Ray for Architectural Rendering",
                 "name": "V-Ray",
@@ -1235,6 +1201,130 @@
         ]
       },
       {
+        "id": "TRIMBLE",
+        "logo": "@/assets/Logos/Trimble-Logo.png",
+        "categories": [
+          {
+            "name": "3D Modeling & Design",
+            "courses": [
+              {
+                "id": "sketchup",
+                "title": "SketchUp for Architectural Design",
+                "name": "SketchUp",
+                "icon": "🏠",
+                "description": "Intuitive 3D modeling software used for architectural and interior design visualization. Ideal for conceptual models, landscape, and furniture design.",
+                "duration": "30 Hours",
+                "difficulty": "Beginner",
+                "price": 699,
+                "instructor": "Michelle Patel",
+                "targetAudience": "Architectural/Civil (ARCH/CIV)",
+                "curriculum": [
+                  "SketchUp Interface and Tools",
+                  "Drawing & Editing 3D Geometry",
+                  "Groups, Components & Layers",
+                  "Modeling Buildings and Interiors",
+                  "Materials, Styles, and Shadows",
+                  "Scenes, Animation & Walkthroughs",
+                  "Layout for 2D Documentation",
+                  "Extensions and Plugins"
+                ],
+                "learningOutcomes": [
+                  "Creating and editing 3D models from scratch",
+                  "Working with groups, components, and layers",
+                  "Applying materials, styles, and lighting",
+                  "Creating scenes, walkthroughs, and animations",
+                  "Exporting models for rendering and documentation"
+                ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "No prior 3D experience required"
+                ],
+                "coverImage": "sketchup.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DASSAULT",
+        "logo": "@/assets/Logos/dassault-logo.png",
+        "categories": [
+          {
+            "name": "3D Design",
+            "courses": [
+              {
+                "id": "solidworks",
+                "title": "SolidWorks Essentials",
+                "name": "SolidWorks",
+                "icon": "",
+                "description": "Comprehensive 3D CAD software for designing products, assemblies, and technical drawings with powerful simulation capabilities.",
+                "duration": "40 Hours",
+                "difficulty": "Beginner to Intermediate",
+                "price": 999,
+                "instructor": "Michael Johnson",
+                "targetAudience": "Product Designers, Engineers, Industrial Designers",
+                "curriculum": [
+                  "Introduction to SolidWorks Interface",
+                  "Part Modeling Fundamentals",
+                  "Assembly Modeling",
+                  "Creating Technical Drawings",
+                  "Sheet Metal Design",
+                  "Simulation Basics",
+                  "Rendering and Visualization",
+                  "Design Documentation"
+                ],
+                "learningOutcomes": [
+                  "Create parametric 3D models of parts and assemblies",
+                  "Generate detailed engineering drawings",
+                  "Perform basic simulation and analysis",
+                  "Create photorealistic renderings",
+                  "Apply design for manufacturing principles"
+                ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "Understanding of mechanical design concepts"
+                ],
+                "coverImage": "solidworks.jpg"
+              },
+              {
+                "id": "sketchup",
+                "title": "SketchUp Pro Fundamentals",
+                "name": "SketchUp",
+                "icon": "",
+                "description": "Intuitive 3D modeling software for architecture, interior design, landscape architecture, and engineering with powerful visualization tools.",
+                "duration": "30 Hours",
+                "difficulty": "Beginner to Intermediate",
+                "price": 899,
+                "instructor": "Sarah Williams",
+                "targetAudience": "Architects, Interior Designers, Landscape Architects, Engineers",
+                "curriculum": [
+                  "SketchUp Interface and Navigation",
+                  "Basic Drawing and Modeling Tools",
+                  "Creating and Modifying 3D Geometry",
+                  "Working with Components and Groups",
+                  "Materials, Textures, and Styles",
+                  "Layout and Documentation",
+                  "Extensions and Plugins",
+                  "Rendering and Presentation"
+                ],
+                "learningOutcomes": [
+                  "Create 3D architectural and interior models",
+                  "Apply materials and textures for realistic visualization",
+                  "Generate 2D documentation from 3D models",
+                  "Create presentation-quality renderings",
+                  "Utilize extensions to enhance workflow"
+                ],
+                "prerequisites": [
+                  "Basic computer skills",
+                  "Understanding of spatial concepts"
+                ],
+                "coverImage": "sketchup.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "IT",
         "logo": "@/assets/Logos/IT-Logo.png",
         "categories": [
@@ -1459,85 +1549,6 @@
           {
             "name": "Other",
             "courses": []
-          }
-        ]
-      },
-      {
-        "id": "DASSAULT",
-        "logo": "@/assets/Logos/dassault-logo.png",
-        "categories": [
-          {
-            "name": "3D Design",
-            "courses": [
-              {
-                "id": "solidworks",
-                "title": "SolidWorks Essentials",
-                "name": "SolidWorks",
-                "icon": "",
-                "description": "Comprehensive 3D CAD software for designing products, assemblies, and technical drawings with powerful simulation capabilities.",
-                "duration": "40 Hours",
-                "difficulty": "Beginner to Intermediate",
-                "price": 999,
-                "instructor": "Michael Johnson",
-                "targetAudience": "Product Designers, Engineers, Industrial Designers",
-                "curriculum": [
-                  "Introduction to SolidWorks Interface",
-                  "Part Modeling Fundamentals",
-                  "Assembly Modeling",
-                  "Creating Technical Drawings",
-                  "Sheet Metal Design",
-                  "Simulation Basics",
-                  "Rendering and Visualization",
-                  "Design Documentation"
-                ],
-                "learningOutcomes": [
-                  "Create parametric 3D models of parts and assemblies",
-                  "Generate detailed engineering drawings",
-                  "Perform basic simulation and analysis",
-                  "Create photorealistic renderings",
-                  "Apply design for manufacturing principles"
-                ],
-                "prerequisites": [
-                  "Basic computer skills",
-                  "Understanding of mechanical design concepts"
-                ],
-                "coverImage": "solidworks.jpg"
-              },
-              {
-                "id": "sketchup",
-                "title": "SketchUp Pro Fundamentals",
-                "name": "SketchUp",
-                "icon": "",
-                "description": "Intuitive 3D modeling software for architecture, interior design, landscape architecture, and engineering with powerful visualization tools.",
-                "duration": "30 Hours",
-                "difficulty": "Beginner to Intermediate",
-                "price": 899,
-                "instructor": "Sarah Williams",
-                "targetAudience": "Architects, Interior Designers, Landscape Architects, Engineers",
-                "curriculum": [
-                  "SketchUp Interface and Navigation",
-                  "Basic Drawing and Modeling Tools",
-                  "Creating and Modifying 3D Geometry",
-                  "Working with Components and Groups",
-                  "Materials, Textures, and Styles",
-                  "Layout and Documentation",
-                  "Extensions and Plugins",
-                  "Rendering and Presentation"
-                ],
-                "learningOutcomes": [
-                  "Create 3D architectural and interior models",
-                  "Apply materials and textures for realistic visualization",
-                  "Generate 2D documentation from 3D models",
-                  "Create presentation-quality renderings",
-                  "Utilize extensions to enhance workflow"
-                ],
-                "prerequisites": [
-                  "Basic computer skills",
-                  "Understanding of spatial concepts"
-                ],
-                "coverImage": "sketchup.jpg"
-              }
-            ]
           }
         ]
       }
