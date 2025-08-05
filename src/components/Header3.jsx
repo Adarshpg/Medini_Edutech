@@ -23,6 +23,8 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(false)
   const [mainPopoverOpen, setMainPopoverOpen] = useState(false)
   const [openPopovers, setOpenPopovers] = useState({})
+  const [hoveredProvider, setHoveredProvider] = useState(null);
+  const [popoverOpen, setPopoverOpen] = useState({});
 
   const handleCourseClick = (providerId) => {
     // Close both the main popover and the provider's submenu
@@ -165,11 +167,28 @@ const Header = () => {
     };
   }, []);
 
+  // Handle hover events
+  const handleMouseEnter = (providerId) => {
+    setHoveredProvider(providerId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredProvider(null);
+  };
+
+  // Toggle popover for mobile/tablet
+  const togglePopover = (providerId) => {
+    setPopoverOpen(prev => ({
+      ...prev,
+      [providerId]: !prev[providerId]
+    }));
+  };
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 w-screen overflow-x-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[100] w-screen overflow-x-hidden">
       {/* Navbar */}
       <motion.nav
-        className="bg-customBlue text-white w-full"
+        className="bg-customBlue text-white w-full relative z-[100]"
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -300,7 +319,7 @@ const Header = () => {
       <AnimatePresence>
         {showLinks && (
           <motion.div
-            className="hidden bg-[#406d6e] text-white shadow-md md:flex"
+            className="hidden bg-[#406d6e] text-white shadow-md md:flex relative z-[100]"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -50, opacity: 0 }}
@@ -321,38 +340,43 @@ const Header = () => {
                     Courses
                     <ChevronDown className={`ml-1 transition-transform ${mainPopoverOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} size={16} />
                   </PopoverTrigger>
-                  <PopoverContent className="w-64 p-0" sideOffset={5}>
+                  <PopoverContent className="w-64 p-0 z-[110]" sideOffset={5}>
                     <div className="py-1">
-                      {courseCategories.map((provider, index) => (
-                        <Popover 
+                      {courseCategories.map((provider) => (
+                        <div 
                           key={provider.id}
-                          open={openPopovers[provider.id]}
-                          onOpenChange={(open) => setOpenPopovers(prev => ({
-                            ...prev,
-                            [provider.id]: open
-                          }))}
+                          className="relative"
+                          onMouseEnter={() => handleMouseEnter(provider.id)}
+                          onMouseLeave={handleMouseLeave}
+                          onClick={() => togglePopover(provider.id)}
                         >
-                          <PopoverTrigger asChild>
-                            <div className="flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer">
-                              <span>{provider.name}</span>
-                              <ChevronRight className="h-4 w-4 text-gray-500" />
+                          <div className="flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer">
+                            <span>{provider.name}</span>
+                            <ChevronRight className="h-4 w-4 text-gray-500" />
+                          </div>
+                          
+                          {/* Show on hover for desktop, or when clicked on mobile */}
+                          {(hoveredProvider === provider.id || popoverOpen[provider.id]) && (
+                            <div 
+                              className="absolute left-full top-0 ml-1 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 z-[120]"
+                              onMouseEnter={() => handleMouseEnter(provider.id)}
+                              onMouseLeave={handleMouseLeave}
+                            >
+                              <div className="max-h-[60vh] overflow-y-auto">
+                                {provider.categories.flatMap(category => category.courses).map((course) => (
+                                  <Link 
+                                    to={`/mediniedutech/courses/${course.id}`} 
+                                    key={course.id}
+                                    className="block px-4 py-2 text-sm hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-white"
+                                    onClick={() => setMainPopoverOpen(false)}
+                                  >
+                                    {course.name}
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-64 p-0 ml-1" side="right" align="start">
-                            <div className="py-2 max-h-[60vh] overflow-y-auto">
-                              {provider.categories.flatMap(category => category.courses).map((course) => (
-                                <Link 
-                                  to={`/mediniedutech/courses/${course.id}`} 
-                                  key={course.id}
-                                  className="block px-4 py-2 text-sm hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-white"
-                                  onClick={() => handleCourseClick(provider.id)}
-                                >
-                                  {course.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </PopoverContent>
-                        </Popover>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </PopoverContent>
