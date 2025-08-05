@@ -3,8 +3,10 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Link } from "react-router-dom"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import FeedbackSection from "./FeedbackSection"
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
-const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash copy.jpg"
+const bg_image = "/IMAGES/getty-images-OB7KJ7WtHOs-unsplash.jpg"
 const autocad = "/IMAGES/AutoCAD.jpg"
 const civil3d = "/IMAGES/tool-inc-ApKnJHXu6Hg-unsplash.jpg"
 const solidworks = "/IMAGES/osman-talha-dikyar-PomM7aa5m18-unsplash.jpg"
@@ -28,6 +30,9 @@ function HeroSection() {
   const [showProductDesignPopup, setShowProductDesignPopup] = useState(false)
   const sliderRef = useRef(null)
   const heroRef = useRef(null)
+
+  // Add state for calendar value
+  const [date, setDate] = useState(new Date());
 
   const cards = [
     {
@@ -141,11 +146,59 @@ function HeroSection() {
     return () => clearInterval(interval)
   }, [isHovering, cards.length, visibleCards])
 
+  // Custom class names for the calendar with improved navigation
+  const calendarClassNames = {
+    root: 'bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] w-full max-w-xs transform transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]',
+    navigation: 'flex justify-between items-center mb-5 relative',
+    navigationLabel: 'text-white text-lg font-semibold text-center flex-grow',
+    monthView: 'text-white',
+    weekdays: 'flex justify-between text-white/70 text-xs font-medium mb-3',
+    weekdaysRow: 'flex justify-between',
+    weekday: 'w-8 h-8 flex items-center justify-center text-sm',
+    days: 'grid grid-cols-7 gap-1',
+    day: 'relative w-8 h-8 flex items-center justify-center rounded-full text-white/90 hover:bg-white/10 transition-all duration-200 text-sm font-medium',
+    daySelected: '!bg-gradient-to-br from-blue-500 to-blue-600 text-white !font-semibold shadow-md',
+    dayToday: '!border-2 !border-blue-400 font-semibold',
+    dayDisabled: 'text-white/20',
+    navigationPrevButton: 'absolute left-0 p-2 rounded-full hover:bg-white/10 transition-colors',
+    navigationNextButton: 'absolute right-0 p-2 rounded-full hover:bg-white/10 transition-colors',
+    tile: 'relative',
+  };
+
+  // Sample events data - replace with your actual events
+  const events = [
+    { date: '2025-08-10', title: 'Webinar: Design Thinking' },
+    { date: '2025-08-15', title: 'Workshop: 3D Modeling' },
+    { date: '2025-08-20', title: 'Course: Advanced CAD' },
+  ];
+
+  // Check if a date has an event
+  const hasEvent = (date) => {
+    return events.some(event => {
+      const eventDate = new Date(event.date);
+      return (
+        date.getDate() === eventDate.getDate() &&
+        date.getMonth() === eventDate.getMonth() &&
+        date.getFullYear() === eventDate.getFullYear()
+      );
+    });
+  };
+
+  // Get events for a specific date
+  const getEventsForDate = (date) => {
+    return events.filter(event => {
+      const eventDate = new Date(event.date);
+      return (
+        date.getDate() === eventDate.getDate() &&
+        date.getMonth() === eventDate.getMonth() &&
+        date.getFullYear() === eventDate.getFullYear()
+      );
+    });
+  };
+
   return (
     <div className="relative">
-      {/* Hero Section */}
       <section className="relative overflow-hidden h-screen flex items-center" ref={heroRef}>
-        {/* Background with overlay */}
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700"
           style={{
@@ -156,11 +209,10 @@ function HeroSection() {
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>
         
-        {/* Gradient overlay */}
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/20 via-black/30 to-black/30"></div>
         
         <div className="container relative z-10 px-4 mx-auto">
-          <div className="z-10 flex flex-col justify-center mx-auto">
+          <div className="z-10 flex flex-col lg:flex-row justify-between items-center mx-auto gap-12">
             {/* Hero Content */}
             <div className="max-w-3xl">
               <motion.h1 
@@ -193,6 +245,98 @@ function HeroSection() {
                 </Link>
               </motion.div>
             </div>
+            
+            {/* Calendar Component */}
+            <motion.div 
+              className="hidden lg:block"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3, type: 'spring', stiffness: 100 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="relative">
+                {/* Decorative elements */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl opacity-20 blur"></div>
+                <div className="relative bg-gradient-to-br from-white/5 to-white/[0.03] backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-2xl overflow-hidden">
+                  {/* Decorative accent */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16"></div>
+                  
+                  <h3 className="text-white text-xl font-semibold mb-4 text-center relative z-10">
+                    Upcoming Events
+                    <span className="block w-12 h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mt-2"></span>
+                  </h3>
+                  
+                  <Calendar
+                    onChange={setDate}
+                    value={date}
+                    className={calendarClassNames}
+                    tileContent={({ date, view }) => {
+                      if (view === 'month' && hasEvent(date)) {
+                        return (
+                          <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-blue-400"></div>
+                        );
+                      }
+                      return null;
+                    }}
+                    tileClassName={({ date: tileDate, view }) => {
+                      const isSelected = date.getDate() === tileDate.getDate() && 
+                                      date.getMonth() === tileDate.getMonth() && 
+                                      date.getFullYear() === tileDate.getFullYear();
+                      const isToday = new Date().toDateString() === tileDate.toDateString();
+                      
+                      let classes = [];
+                      if (isSelected) classes.push(calendarClassNames.daySelected);
+                      if (isToday && !isSelected) classes.push(calendarClassNames.dayToday);
+                      if (hasEvent(tileDate)) classes.push('font-medium');
+                      
+                      return classes.join(' ');
+                    }}
+                    formatShortWeekday={(locale, date) => ['S', 'M', 'T', 'W', 'T', 'F', 'S'][date.getDay()]}
+                    nextLabel={
+                      <div className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                        <ChevronRight className="w-4 h-4 text-white" />
+                      </div>
+                    }
+                    prevLabel={
+                      <div className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+                        <ChevronLeft className="w-4 h-4 text-white" />
+                      </div>
+                    }
+                    next2Label={null}
+                    prev2Label={null}
+                    formatMonthYear={(locale, date) => {
+                      return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+                    }}
+                  />
+                  
+                  {/* Upcoming events list */}
+                  <div className="mt-6">
+                    <h4 className="text-white/80 text-sm font-medium mb-3 flex items-center">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-2"></span>
+                      Today's Events
+                    </h4>
+                    <div className="space-y-2">
+                      {getEventsForDate(new Date()).length > 0 ? (
+                        getEventsForDate(new Date()).map((event, index) => (
+                          <div key={index} className="bg-white/5 rounded-lg p-3 text-sm text-white/90 backdrop-blur-sm border border-white/5 hover:bg-white/10 transition-colors">
+                            <div className="font-medium">{event.title}</div>
+                            <div className="text-xs text-white/60">10:00 AM - 11:30 AM</div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="text-white/50 text-sm italic">No events scheduled</p>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 text-center">
+                    <button className="text-sm text-blue-300 hover:text-white font-medium transition-colors">
+                      View All Events →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
         
