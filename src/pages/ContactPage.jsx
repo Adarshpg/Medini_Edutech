@@ -76,7 +76,7 @@ export function ContactPage() {
   ];
 
   const stats = [
-    { icon: Users, number: "2000+", label: "Happy Students" },
+    { icon: Users, number: "45000+", label: "Happy Students" },
     { icon: Award, number: "50+", label: "Expert Instructors" },
     { icon: MessageSquare, number: "24/7", label: "Support Available" }
   ];
@@ -316,7 +316,7 @@ export function ContactPage() {
                 { number: "98%", label: "Success Rate" },
                 { number: "15+", label: "Years Experience" },
                 { number: "10+", label: "Industry Partners" },
-                { number: "2000+", label: "Graduates Placed" }
+                { number: "45000+", label: "Graduates Placed" }
               ].map((item, index) => (
                 <motion.div
                   key={index}
