@@ -85,7 +85,7 @@ export function PartnersSection() {
                         <div className="text-gray-600 dark:text-gray-400 font-medium">Courses</div>
                     </div>
                     <div className="text-center group">
-                        <div className="text-3xl md:text-4xl font-bold text-customBlue mb-2 group-hover:scale-110 transition-transform duration-300">2000+</div>
+                        <div className="text-3xl md:text-4xl font-bold text-customBlue mb-2 group-hover:scale-110 transition-transform duration-300">45000+</div>
                         <div className="text-gray-600 dark:text-gray-400 font-medium">Happy Students</div>
                     </div>
                     <div className="text-center group">
