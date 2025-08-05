@@ -234,111 +234,204 @@ export default function CourseDetailsPage() {
   }
 
   return (
-    <section className="py-20">
-      <div className="container">
-        <Button variant="outline" className="my-8 cursor-pointer" onClick={handleGoBack}>
+    <section className="py-12 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+        <Button 
+          variant="ghost" 
+          className="mb-8 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" 
+          onClick={handleGoBack}
+        >
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Courses
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Course Information */}
-          <div className="lg:col-span-2">
-            <Card className="mb-8">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-4xl">{getIcon(course.id)}</span>
-                  <span className="bg-secondary px-3 py-1 rounded text-sm">{course.category}</span>
-                </div>
-                <CardTitle className="text-3xl mb-2">{course.name || course.title}</CardTitle>
-                <CardDescription className="text-lg">{course.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                  <div className="flex flex-col items-center p-3 bg-muted rounded-lg">
-                    <Clock className="h-5 w-5 mb-2 text-primary" />
-                    <span className="text-sm text-muted-foreground">Duration</span>
-                    <span className="font-medium">{course.duration}</span>
+          <div className="lg:col-span-2 space-y-8">
+            <Card className="overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div className="p-6 md:p-8">
+                <div className="flex flex-col space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                      {course.category}
+                    </span>
+                    <span className="text-4xl">{getIcon(course.id)}</span>
                   </div>
-                  <div className="flex flex-col items-center p-3 bg-muted rounded-lg">
-                    <GraduationCap className="h-5 w-5 mb-2 text-primary" />
-                    <span className="text-sm text-muted-foreground">Level</span>
-                    <span className="font-medium">{course.difficulty}</span>
-                  </div>
-
-                  <div className="flex flex-col items-center p-3 bg-muted rounded-lg">
-                    <Users className="h-5 w-5 mb-2 text-primary" />
-                    <span className="text-sm text-muted-foreground">Audience</span>
-                    <span className="font-medium text-center text-sm">{course.targetAudience}</span>
-                  </div>
+                  
+                  <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                    {course.name || course.title}
+                  </h1>
+                  
+                  <p className="text-lg text-gray-600 dark:text-gray-300">
+                    {course.description}
+                  </p>
                 </div>
 
-                {/* Curriculum Section */}
-                <div className="mt-8">
-                  <h3 className="text-xl font-bold mb-4">Curriculum</h3>
-                  {course.curriculum && course.curriculum.length > 0 ? (
-                    <ul className="space-y-3">
-                      {course.curriculum.map((item, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <div className="bg-primary/10 text-primary rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            {index + 1}
-                          </div>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>No curriculum information available.</p>
-                  )}
-                </div>
-
-                {/* Learning Outcomes */}
-                {course.learningOutcomes && course.learningOutcomes.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-xl font-bold mb-4">What You'll Learn</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {course.learningOutcomes.map((outcome, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <svg
-                            className="h-5 w-5 text-primary mt-0.5 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                          >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          <span>{outcome}</span>
-                        </li>
-                      ))}
-                    </ul>
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="p-2 rounded-full bg-blue-50 dark:bg-blue-900/30">
+                        <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Duration</p>
+                        <p className="font-medium text-gray-900 dark:text-white">{course.duration}</p>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </CardContent>
+
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="p-2 rounded-full bg-green-50 dark:bg-green-900/30">
+                        <Users className="h-5 w-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Audience</p>
+                        <p className="font-medium text-gray-900 dark:text-white">{course.targetAudience}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Card>
+
+            {/* Curriculum Section */}
+            {course.curriculum && course.curriculum.length > 0 && (
+              <Card className="border border-gray-200 dark:border-gray-700 shadow-sm">
+                <CardHeader className="bg-gray-50 dark:bg-gray-800/50 px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+                  <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Course Curriculum
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <ul className="space-y-3">
+                    {course.curriculum.map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-3 mt-0.5">
+                          <span className="text-blue-600 dark:text-blue-400 text-sm font-medium">{index + 1}</span>
+                        </div>
+                        <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Learning Outcomes */}
+            {course.learningOutcomes && course.learningOutcomes.length > 0 && (
+              <Card className="border border-gray-200 dark:border-gray-700 shadow-sm">
+                <CardHeader className="bg-gray-50 dark:bg-gray-800/50 px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+                  <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">
+                    What You'll Learn
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {course.learningOutcomes.map((outcome, index) => (
+                      <div key={index} className="flex items-start">
+                        <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-700 dark:text-gray-300">{outcome}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           {/* Sidebar */}
-          <div>
-            <Card>
-              <CardHeader>
-                <CardTitle>Course Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Provider</h4>
-                  <span>{course.provider}</span>
-                </div>
+          <div className="space-y-6">
+            {/* Course Image */}
+            <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+              {(() => {
+                // Map course categories to their respective images
+                const categoryImages = {
+                  // BIM Categories
+                  'bim': '/IMAGES/BIM_for_ Architecture.jpg',
+                  'bim architecture': '/IMAGES/BIM_for_ Architecture.jpg',
+                  'bim construction': '/IMAGES/BIM_for_Construction.png',
+                  'bim infrastructure': '/IMAGES/BIM_for_Infrastructure.png',
+                  'structural bim': '/IMAGES/Revit Architecture.jpg',
+                  'revit': '/IMAGES/Revit Architecture.jpg',
+                  
+                  // Design & Drafting
+                  'autocad': '/IMAGES/AutoCAD.jpg',
+                  'fusion': '/IMAGES/Product Design and Manufacturing.png',
+                  'inventor': '/IMAGES/Product Design and Manufacturing.png',
+                  '3ds max': '/IMAGES/3ds-max.jpg',
+                  'maya': '/IMAGES/3ds-max.jpg',
+                  'product design': '/IMAGES/Product Design and Manufacturing.png',
+                  
+                  // IT & Development
+                  'it': '/IMAGES/IT.png',
+                  'software': '/IMAGES/IT.png',
+                  'programming': '/IMAGES/IT.png',
+                  'cloud': '/IMAGES/cloud.jpg',
+                  'aws': '/IMAGES/cloud.jpg',
+                  'azure': '/IMAGES/cloud.jpg',
+                  
+                  // Default image - Using a professional education/technology image
+                  'default': '/IMAGES/techvritti-1.jpg'
+                };
 
+                // Find the best matching image for the current course
+                const getImageForCourse = () => {
+                  if (!course) return categoryImages['default'];
+                  
+                  const lowerCategory = String(course.category || '').toLowerCase();
+                  const lowerName = String(course.name || '').toLowerCase();
+                  
+                  // Check for exact matches first
+                  if (categoryImages[lowerCategory]) {
+                    return categoryImages[lowerCategory];
+                  }
+                  
+                  // Check for partial matches in category
+                  for (const [key, value] of Object.entries(categoryImages)) {
+                    if (lowerCategory.includes(key)) {
+                      return value;
+                    }
+                  }
+                  
+                  // Check for matches in course name
+                  for (const [key, value] of Object.entries(categoryImages)) {
+                    if (lowerName.includes(key)) {
+                      return value;
+                    }
+                  }
+                  
+                  return categoryImages['default'];
+                };
+
+                const imageSrc = getImageForCourse();
+                
+                return (
+                  <img 
+                    src={imageSrc}
+                    alt={`${course?.category || course?.name || 'Course'} Image`}
+                    className="w-full h-auto max-h-80 object-cover"
+                    onError={(e) => {
+                      e.target.src = categoryImages['default'];
+                    }}
+                  />
+                );
+              })()}
+            </div>
+
+            <Card className="border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Course Information</h3>
+                
                 {course.prerequisites && course.prerequisites.length > 0 && (
-                  <div>
-                    <h4 className="font-medium mb-2">Prerequisites</h4>
-                    <ul className="space-y-1">
+                  <div className="mb-6">
+                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Prerequisites</h4>
+                    <ul className="space-y-2">
                       {course.prerequisites.map((prereq, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <span className="text-primary">•</span>
-                          <span className="text-sm">{prereq}</span>
+                        <li key={index} className="flex items-start">
+                          <span className="text-blue-500 mr-2">•</span>
+                          <span className="text-gray-700 dark:text-gray-300">{prereq}</span>
                         </li>
                       ))}
                     </ul>
@@ -346,16 +439,16 @@ export default function CourseDetailsPage() {
                 )}
 
                 <Button 
-                  className="w-full mt-6"
+                  className="w-full py-6 text-base font-medium"
                   onClick={() => window.open('https://register.medinitechnologies.in/', '_blank')}
                 >
                   Enroll Now
                 </Button>
-              </CardContent>
+              </div>
             </Card>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
