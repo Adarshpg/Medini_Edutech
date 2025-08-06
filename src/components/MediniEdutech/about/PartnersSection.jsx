@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import autodesk from "@/assets/Logos/autodesk-learning-partner-logo-rgb-black.png"
-import bentley from "@/assets/Logos/Bentley-Training-Partner-Logo.png"
-import sketchUp from "@/assets/Logos/Sketchup_Colour.png"
+import bentley from "@/assets/Logos/Bentley-Training-Partner-Logo copy.png"
+import sketchUp from "@/assets/Logos/Sketchup_Colour copy.png"
 import chaos from "@/assets/Logos/Chaos_idHNVPKG7k_0.svg"
 import ptc from "@/assets/Logos/ptc_logo.jpeg"
 
