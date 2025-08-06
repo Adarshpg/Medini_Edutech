@@ -421,31 +421,16 @@ export default function CourseDetailsPage() {
             </div>
 
             <Card className="border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Course Information</h3>
-                
-                {course.prerequisites && course.prerequisites.length > 0 && (
-                  <div className="mb-6">
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Prerequisites</h4>
-                    <ul className="space-y-2">
-                      {course.prerequisites.map((prereq, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="text-blue-500 mr-2">•</span>
-                          <span className="text-gray-700 dark:text-gray-300">{prereq}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+  <div className="p-6">
+    <Button 
+      className="w-full py-6 text-base font-medium"
+      onClick={() => window.open('https://register.medinitechnologies.in/', '_blank')}
+    >
+      Enroll Now
+    </Button>
+  </div>
+</Card>
 
-                <Button 
-                  className="w-full py-6 text-base font-medium"
-                  onClick={() => window.open('https://register.medinitechnologies.in/', '_blank')}
-                >
-                  Enroll Now
-                </Button>
-              </div>
-            </Card>
           </div>
         </div>
       </div>
