@@ -142,15 +142,15 @@ function HeroSection() {
   }, [isHovering, cards.length, visibleCards])
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       {/* Hero Section */}
-      <section className="relative overflow-hidden h-screen flex items-center" ref={heroRef}>
+      <section className="relative overflow-hidden h-screen flex items-center pt-16" ref={heroRef}>
         {/* Background with overlay */}
         <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 transition-opacity duration-700"
+          className="absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-700"
           style={{
             backgroundImage: `url(${bg_image})`,
-            backgroundSize: "cover",
+            zIndex: -1 // Ensure background stays behind content
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -188,9 +188,12 @@ function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex gap-4"
               >
-                <Link to="/mediniedutech/contact" className="px-8 py-3 bg-transparent border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300">
-                  Contact us
-                </Link>
+                <a
+  href="#explore-courses"
+  className="px-8 py-3 bg-transparent border border-white text-white font-semibold rounded-md hover:bg-white/10 transition duration-300"
+>
+  Explore Courses
+</a>
               </motion.div>
             </div>
           </div>
@@ -213,7 +216,7 @@ function HeroSection() {
       </section>
 
       {/* Explore Courses Section */}
-      <section id="explore-courses" className="py-16" ref={cardContainerRef}>
+      <section id="explore-courses" className="pt-16 pb-6" ref={cardContainerRef}>
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">Explore Our Courses</h2>
@@ -451,7 +454,7 @@ function HeroSection() {
             </div>
             
             {/* View all courses button */}
-            <div className="mt-12 text-center">
+            <div className="mt-4 text-center">
               <Link to="/courses" className="inline-flex items-center px-6 py-3 border border-white/30 rounded-md text-white hover:bg-white/10 transition duration-300">
                 View All Courses
                 <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
